@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="16483" started-at="2016-10-12T23:44:17Z" finished-at="2016-10-12T23:44:34Z">
+  <suite name="Default suite" duration-ms="14983" started-at="2016-10-13T22:23:53Z" finished-at="2016-10-13T22:24:08Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="16483" started-at="2016-10-12T23:44:17Z" finished-at="2016-10-12T23:44:34Z">
-      <class name="HMC.TestCheckOrder">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:HMC.TestCheckOrder@5b275dab]" name="setUp" is-config="true" duration-ms="3025" started-at="2016-10-12T16:44:17Z" finished-at="2016-10-12T16:44:20Z">
+    <test name="Default test" duration-ms="14983" started-at="2016-10-13T22:23:53Z" finished-at="2016-10-13T22:24:08Z">
+      <class name="NetSuite.TestSelectToolBar">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:NetSuite.TestSelectToolBar@29774679]" name="setUp" is-config="true" duration-ms="2869" started-at="2016-10-13T15:23:53Z" finished-at="2016-10-13T15:23:56Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testCheckOrder()[pri:0, instance:HMC.TestCheckOrder@5b275dab]" name="testCheckOrder" duration-ms="10396" started-at="2016-10-12T16:44:20Z" finished-at="2016-10-12T16:44:31Z">
+        <test-method status="PASS" signature="testSelectFromToolBar()[pri:0, instance:NetSuite.TestSelectToolBar@29774679]" name="testSelectFromToolBar" duration-ms="12098" started-at="2016-10-13T15:23:56Z" finished-at="2016-10-13T15:24:08Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testCheckOrder -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:HMC.TestCheckOrder@5b275dab]" name="tearDown" is-config="true" duration-ms="3046" started-at="2016-10-12T16:44:31Z" finished-at="2016-10-12T16:44:34Z">
+        </test-method> <!-- testSelectFromToolBar -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:NetSuite.TestSelectToolBar@29774679]" name="tearDown" is-config="true" duration-ms="1" started-at="2016-10-13T15:24:08Z" finished-at="2016-10-13T15:24:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- HMC.TestCheckOrder -->
+      </class> <!-- NetSuite.TestSelectToolBar -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

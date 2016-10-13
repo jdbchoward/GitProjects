@@ -3,14 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="HMC.TestNavToHMCHomePage">
+      <class name="NetSuite.TestSelectToolBar">
         <methods>
           <include name="tearDown"/>
-          <include name="testSignInWithBadInfo"/>
-          <include name="testSignInWithCorrectInfo"/>
           <include name="setUp"/>
+          <include name="testSelectFromToolBar"/>
         </methods>
-      </class> <!-- HMC.TestNavToHMCHomePage -->
+      </class> <!-- NetSuite.TestSelectToolBar -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
