@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="NetSuite.TestSelectToolBar">
+      <class name="WCMS.TestNavToWCMSHomePage">
         <methods>
-          <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="testSelectFromToolBar"/>
+          <include name="testSignInWithCorrectInfo"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- NetSuite.TestSelectToolBar -->
+      </class> <!-- WCMS.TestNavToWCMSHomePage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
