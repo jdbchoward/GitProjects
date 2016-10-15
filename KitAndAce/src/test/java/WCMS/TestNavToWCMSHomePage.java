@@ -54,8 +54,9 @@ public class TestNavToWCMSHomePage {
 
 		wcmsTestOperations.doLogOnSite("howard.zhang@kitandace.com", "Integrity101");
 	    wait.threadWait(3000);
-//	    Assert.assertTrue(wcmsTestOperations.checkSignInStatus());
+	    Assert.assertTrue(wcmsTestOperations.checkSignInStatus());
 	}
+	
 
 
 	@AfterClass(alwaysRun = true)

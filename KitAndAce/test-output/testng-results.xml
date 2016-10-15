@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="14105" started-at="2016-10-14T23:46:10Z" finished-at="2016-10-14T23:46:24Z">
+  <suite name="Default suite" duration-ms="14392" started-at="2016-10-15T00:05:17Z" finished-at="2016-10-15T00:05:31Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="14105" started-at="2016-10-14T23:46:10Z" finished-at="2016-10-14T23:46:24Z">
+    <test name="Default test" duration-ms="14392" started-at="2016-10-15T00:05:17Z" finished-at="2016-10-15T00:05:31Z">
       <class name="WCMS.TestNavToWCMSHomePage">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:WCMS.TestNavToWCMSHomePage@29774679]" name="setUp" is-config="true" duration-ms="2998" started-at="2016-10-14T16:46:10Z" finished-at="2016-10-14T16:46:13Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:WCMS.TestNavToWCMSHomePage@29774679]" name="setUp" is-config="true" duration-ms="2937" started-at="2016-10-14T17:05:17Z" finished-at="2016-10-14T17:05:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testSignInWithCorrectInfo()[pri:0, instance:WCMS.TestNavToWCMSHomePage@29774679]" name="testSignInWithCorrectInfo" duration-ms="8291" started-at="2016-10-14T16:46:13Z" finished-at="2016-10-14T16:46:21Z">
+        <test-method status="PASS" signature="testSignInWithCorrectInfo()[pri:0, instance:WCMS.TestNavToWCMSHomePage@29774679]" name="testSignInWithCorrectInfo" duration-ms="8493" started-at="2016-10-14T17:05:19Z" finished-at="2016-10-14T17:05:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSignInWithCorrectInfo -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:WCMS.TestNavToWCMSHomePage@29774679]" name="tearDown" is-config="true" duration-ms="2803" started-at="2016-10-14T16:46:21Z" finished-at="2016-10-14T16:46:24Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:WCMS.TestNavToWCMSHomePage@29774679]" name="tearDown" is-config="true" duration-ms="2950" started-at="2016-10-14T17:05:28Z" finished-at="2016-10-14T17:05:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

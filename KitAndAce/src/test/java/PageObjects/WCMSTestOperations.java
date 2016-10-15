@@ -31,7 +31,6 @@ public class WCMSTestOperations {
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
 	}
 
-	
 	/// ----------------------------------------------------------
 
 	public void doLogOnSite(String username, String psw) {
@@ -39,7 +38,7 @@ public class WCMSTestOperations {
 		driver.get("http://admindev.hybris.kitandace.com/cmscockpit/index.zul");
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        wait.threadWait(2000);
+		wait.threadWait(2000);
 		// start to login
 		driver.findElement(By.xpath("//input[@name='j_username']")).clear();
 		driver.findElement(By.xpath("//input[@name='j_username']")).sendKeys(username);
@@ -51,15 +50,21 @@ public class WCMSTestOperations {
 
 	public boolean checkSignInStatus() {
 
-		if (ElementExist(By.xpath("//td[@class='page-header-left']"))) {
-			String loginInfo = driver.findElement(By.xpath("//td[@class='page-header-left']")).getText();
-
-			return loginInfo.contains("Explorer:");
-		} else
+		List<WebElement> welcomes = driver.findElements(By.xpath("//span[contains(text(),'Welcome')]"));
+		if (welcomes != null && welcomes.size() > 0)
+			return true;
+		else
 			return false;
 
 	}
 
+	public void naviToKSCanada() {
+		driver.findElement(
+				By.xpath("//div[@class='advancedGroupboxPreLabel']/span[contains(text(),'Kit and Ace Canada')]"))
+				.click();
+		
+		
+	}
 
 	public boolean ElementExist(By Locator) {
 		try {
