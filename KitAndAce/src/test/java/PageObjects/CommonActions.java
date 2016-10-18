@@ -35,6 +35,23 @@ public class CommonActions {
 				+ content + "'";
 		((JavascriptExecutor) driver).executeScript(js, ele);
 	}
+	
+	public void javascriptScrollPage(WebDriver driver,int offset)
+	{
+		String js = "window.scrollBy(0,"+offset+")";		
+		((JavascriptExecutor) driver).executeScript(js, "");
+	}
+	
+	
+	public void javascriptMakeSelectOptionVisiable(WebDriver driver,String jQueryId)
+	{
+		String id="#"+jQueryId;
+		String js="jQuery("+"'"+id+"').css('display','block')";
+		 //Use JavascriptExecutor to make the element visible 
+//		((JavascriptExecutor)wd).executeScript("jQuery('#assignee').css('display','block')");
+		((JavascriptExecutor)driver).executeScript(js);
+		
+	}
 
 	/**
 	 * Switch WindowHandles,pageName is the title of page that u want to

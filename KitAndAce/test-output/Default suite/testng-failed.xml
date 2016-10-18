@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="WCMS.TestNavToWCMSHomePage">
+      <class name="TestSuite.TestMakeOrder">
         <methods>
           <include name="setUp"/>
-          <include name="testSignInWithCorrectInfo"/>
           <include name="tearDown"/>
+          <include name="testSignInWithCorrectInfo"/>
         </methods>
-      </class> <!-- WCMS.TestNavToWCMSHomePage -->
+      </class> <!-- TestSuite.TestMakeOrder -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

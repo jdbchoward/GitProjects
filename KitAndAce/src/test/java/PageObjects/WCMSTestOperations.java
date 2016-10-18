@@ -58,13 +58,41 @@ public class WCMSTestOperations {
 
 	}
 
-	public void naviToKSCanada() {
+	public void naviToKSCanadaStage() {
+		
 		driver.findElement(
 				By.xpath("//div[@class='advancedGroupboxPreLabel']/span[contains(text(),'Kit and Ace Canada')]"))
 				.click();
-		
+		wait.waitElementToBeDisplayed(By.xpath("//div[@class='advancedGroupboxPreLabel']/span[contains(text(),'Kit and Ace content catalog / Staged')]"));
+		driver.findElement(
+				By.xpath("//div[@class='advancedGroupboxPreLabel']/span[contains(text(),'Kit and Ace content catalog / Staged')]"))
+				.click();
 		
 	}
+	
+	//searchPage is the page u want to search
+	public void searchForPageToChange(String searchPage)
+	{
+		wait.waitElementToBeDisplayed(By.xpath("//td/input[@class='z-textbox' and @z.type='zul.vd.Txbox']"));
+		driver.findElement(By.xpath("//td/input[@class='z-textbox' and @z.type='zul.vd.Txbox']")).sendKeys(searchPage);
+		List<WebElement> searchBtn=driver.findElements(By.xpath("//img[@src='/cmscockpit/cockpit/images/BUTTON_search.png']"));
+		if(searchBtn!=null&&searchBtn.size()>0)
+		{
+			searchBtn.get(0).click();
+		}
+	}
+	
+	//when there is more than one edit button on the table, using index to location the one we need.
+	public void clickEdit(int editBtnIndex)
+	{
+		
+		List<WebElement> editBtns=driver.findElements(By.xpath("//img[@title='Edit' and @src='/cmscockpit/cockpit/images/icon_func_edit.png']"));
+		if(editBtns!=null&&editBtns.size()>0)
+		{
+			editBtns.get(editBtnIndex).click();
+		}
+	}
+	
 
 	public boolean ElementExist(By Locator) {
 		try {
