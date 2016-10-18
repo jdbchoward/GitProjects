@@ -1,12 +1,10 @@
 package TestSuite;
 
-import java.util.Calendar;
-import java.util.Date;
+
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
@@ -16,7 +14,6 @@ import PageObjects.BrowserLoader;
 import PageObjects.CommonActions;
 import PageObjects.ElementsRepositoryAction;
 import PageObjects.HMCTestOperations;
-import PageObjects.TestOperations;
 import PageObjects.UITestOperations;
 import PageObjects.Wait;
 import junit.framework.Assert;
@@ -90,6 +87,7 @@ public class TestMakeOrder {
 	    common.switchWindowHandles(driver, mainPageTilte);
 	    //----------
 	    driver.findElement(By.id("Content/OrganizerSearch[Order]_searchbutton")).click();
+	    Assert.assertTrue(hmcTestOperation.searchFromTable("Content/ClassificationOrganizerList[Order]_innertable",4, orderNumber));
 
 	}
 
@@ -98,8 +96,8 @@ public class TestMakeOrder {
 
 	@AfterClass(alwaysRun = true)
 	public void tearDown() throws Exception {
-//		driver.close();
-//		driver.quit();
+		driver.close();
+		driver.quit();
 	}
 
 }

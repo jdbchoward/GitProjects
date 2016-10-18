@@ -360,7 +360,7 @@ public class UITestOperations {
 		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='West Coast Brushed Long Sleeve']")));
 		
 		//choose size
-		chooseSize("91215","91216","91214","91217");		
+		chooseSize("91215","91216","91214","91217","91213");		
 		//add to bag
 		driver.findElement(By.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']")).click();
 		
@@ -371,7 +371,7 @@ public class UITestOperations {
         wait.threadWait(2000);
 		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='Double Dose Tee']")));
 		//choose size
-		chooseSize("69056","69057","69055","69058");
+		chooseSize("69056","69057","69055","69058","69054");
 		//add to bag
 		driver.findElement(By.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']")).click();
 		driver.get(url);
@@ -385,6 +385,7 @@ public class UITestOperations {
 		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[1]+"' and @data-size='L']")));
 		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[2]+"' and @data-size='S']")));
 		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[3]+"' and @data-size='XL']")));
+		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[4]+"' and @data-size='XS']")));
 		
 		for(WebElement w:size)
 		{
@@ -464,6 +465,9 @@ public class UITestOperations {
 		log.debug("spilted order number is: "+ orderNumber);
 		return orderNumber;
 	}
+	
+
+	
 
 	public boolean ElementExist(By Locator) {
 		try {

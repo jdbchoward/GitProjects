@@ -308,6 +308,37 @@ public class HMCTestOperations {
 
 	}
 
+	
+	//indexTD is the index of TD start with the information such as order number
+	public boolean searchFromTable(String tableID,int indexTD,String searchKey)
+	{
+		String trXpath="id('"+tableID+"')/tbody/tr";
+		 WebElement table_element = driver.findElement(By.id(tableID));
+	        List<WebElement> tr_collection=table_element.findElements(By.xpath(trXpath));
+            log.debug("NUMBER OF ROWS IN THIS TABLE = "+tr_collection.size());
+//	        System.out.println("NUMBER OF ROWS IN THIS TABLE = "+tr_collection.size());
+	        int row_num,col_num;
+	        row_num=1;
+	        for(WebElement trElement : tr_collection)
+	        {
+	            List<WebElement> td_collection=trElement.findElements(By.xpath("td"));
+	            log.debug("NUMBER OF COLUMNS="+td_collection.size());
+	            System.out.println("NUMBER OF COLUMNS="+td_collection.size());
+	            col_num=1;
+	            for(WebElement tdElement : td_collection)
+	            {
+	            	//go through all the table to find the line with information
+//	                System.out.println("row # "+row_num+", col # "+col_num+ "text="+tdElement.getText());
+	                if(col_num==indexTD && tdElement.getText().equalsIgnoreCase(searchKey))
+	                	return true;
+	                col_num++;
+	            }
+	            row_num++;
+	        } 
+	        return false;
+	}
+	
+	
 
 	public boolean ElementExist(By Locator) {
 		try {
