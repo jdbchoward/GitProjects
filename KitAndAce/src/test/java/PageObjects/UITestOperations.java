@@ -1,5 +1,6 @@
 package PageObjects;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -359,13 +360,7 @@ public class UITestOperations {
 		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='West Coast Brushed Long Sleeve']")));
 		
 		//choose size
-		try{
-		wait.waitElementToBeEnabled(By.xpath("//li[@data-code='91216' and @data-size='L']"));
-		driver.findElement(By.xpath("//li[@data-code='91216' and @data-size='L']")).click();
-		}catch(Exception e)
-		{
-		   log.debug("Size L for West Coast Brushed Long Sleeve is not available!!!");
-		}
+		chooseSize("91215","91216","91214","91217");		
 		//add to bag
 		driver.findElement(By.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']")).click();
 		
@@ -374,21 +369,32 @@ public class UITestOperations {
 		driver.get(url);		
 		common.javascriptScrollPage(driver, 5000);
         wait.threadWait(2000);
-		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='Compare And Contrast Henley']")));
+		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='Double Dose Tee']")));
 		//choose size
-		try{
-		wait.waitElementToBeEnabled(By.xpath("//li[@data-code='90301' and @data-size='L']"));
-		driver.findElement(By.xpath("//li[@data-code='90301' and @data-size='L']")).click();
-		}catch(Exception e)
-		{
-		   log.debug("Size L for Compare And Contrast Henley is not available!!!");
-		}
+		chooseSize("69056","69057","69055","69058");
 		//add to bag
 		driver.findElement(By.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']")).click();
 		driver.get(url);
 		
 	}
 	
+	public void chooseSize(String ... dataCode)
+	{	
+		List<WebElement> size=new ArrayList<WebElement>();
+		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[0]+"' and @data-size='M']")));
+		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[1]+"' and @data-size='L']")));
+		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[2]+"' and @data-size='S']")));
+		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[3]+"' and @data-size='XL']")));
+		
+		for(WebElement w:size)
+		{
+			if(!w.getAttribute("data-online").equalsIgnoreCase("outOfStock"))
+			{
+				w.click();
+				break;
+			}
+		}
+	}
 	
 	public void checkOut()
 	{
@@ -440,6 +446,23 @@ public class UITestOperations {
         driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 
 		
+	}
+	
+	
+	
+	public String getOrderNumber()
+	{	
+		String orderNumber="";
+		wait.waitElementToBeDisplayed(By.xpath("//span[contains(text(),'Your order number is')]"));
+		String orderString=driver.findElement(By.xpath("//span[contains(text(),'Your order number is')]")).getText();
+		if(orderString!=null)
+		{
+			String[] spilteString=orderString.split(" ");
+			orderNumber=spilteString[spilteString.length-1];
+		}
+		log.debug("order place string is: "+ orderString);
+		log.debug("spilted order number is: "+ orderNumber);
+		return orderNumber;
 	}
 
 	public boolean ElementExist(By Locator) {

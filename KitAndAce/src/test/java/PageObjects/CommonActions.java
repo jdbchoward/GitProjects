@@ -1,15 +1,22 @@
 package PageObjects;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import HMC.TestCheckOrder;
 
 public class CommonActions {
 
 	private ParseProperties settings;
 	private String parsePath = "src\\test\\resources\\Setting.properties";
+	static Logger log = Logger.getLogger(CommonActions.class.getName());
 
 	public ParseProperties getSettings() {
 		return new ParseProperties(parsePath);
@@ -50,6 +57,21 @@ public class CommonActions {
 		 //Use JavascriptExecutor to make the element visible 
 //		((JavascriptExecutor)wd).executeScript("jQuery('#assignee').css('display','block')");
 		((JavascriptExecutor)driver).executeScript(js);
+		
+	}
+	
+	
+	public void javascripDoubleClick(WebDriver driver, WebElement webElement) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].dblclick();", webElement);
+	}
+	
+	public String getTodayDate()
+	{
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		Date date = new Date();
+		date.setDate(date.getDate()-1);
+		log.debug(dateFormat.format(date));
+		return dateFormat.format(date);
 		
 	}
 
