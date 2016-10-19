@@ -26,19 +26,26 @@
  */
 package example;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+
 import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
+
 
 public class HttpClientExample {
 
@@ -82,6 +89,40 @@ public class HttpClientExample {
             }
         } finally {
             httpclient.close();
+        }
+    }
+    
+    
+    public void postData(String result,JSONObject obj) {
+        // Create a new HttpClient and Post Header
+//        HttpClient httpclient = new DefaultHttpClient();
+//        HttpParams myParams = new BasicHttpParams();
+//        HttpConnectionParams.setConnectionTimeout(myParams, 10000);
+//        HttpConnectionParams.setSoTimeout(myParams, 10000);
+        
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+
+
+        String json=obj.toString();
+
+        try {
+
+            HttpPost httppost = new HttpPost(result.toString());
+            httppost.setHeader("Content-type", "application/json");
+            StringEntity se = new StringEntity(obj.toString()); 
+            httppost.setEntity(se); 
+
+            HttpResponse response = httpclient.execute(httppost);
+            String temp = EntityUtils.toString(response.getEntity());
+            
+            
+          
+
+        } catch (ClientProtocolException e) {
+
+        } catch (IOException e) {
+        }finally{
+        	
         }
     }
 
