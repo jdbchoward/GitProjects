@@ -52,12 +52,13 @@ public class UITestOperations {
 
 	}
 
-//	public boolean doSignOut() {
-//		wait.threadWait(5000);
-//		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@data-i18n='localize_log-out']")));
-//
-//		return checkSignOutStatus();
-//	}
+	// public boolean doSignOut() {
+	// wait.threadWait(5000);
+	// common.javascriptClick(driver,
+	// driver.findElement(By.xpath("//a[@data-i18n='localize_log-out']")));
+	//
+	// return checkSignOutStatus();
+	// }
 
 	public boolean checkSignOutStatus() {
 		return !driver.getCurrentUrl().contains("sid");
@@ -141,7 +142,7 @@ public class UITestOperations {
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-		//close first time advertisement
+		// close first time advertisement
 		if (ElementExist(By.xpath("//button[@data-i18n='localize_continue-shopping']"))) {
 			List<WebElement> continueBtn = driver
 					.findElements(By.xpath("//button[@data-i18n='localize_continue-shopping']"));
@@ -249,8 +250,6 @@ public class UITestOperations {
 		return !checkUSSignInStatus();
 	}
 
-
-
 	public boolean searchShoeUS() {
 		driver.get("http://www.shoes.com/");
 		wait.threadWait(5000);
@@ -281,31 +280,34 @@ public class UITestOperations {
 	public void filterShoesUS() {
 		driver.findElement(By.xpath("//a[@data-facetval='adultfootwear:8.5']")).click();
 	}
-	
-	
-	
-	
-	///----------------------------------------------------------
+
+	/// ----------------------------------------------------------
 	public void OpenHomepage(WebDriver webdriver) {
 
 		driver.manage().window().maximize();
-		driver.get("https://dev.hybris.kitandace.com/ca/en/");
+		String testEnvironment = common.getSettings().getValue("testEnvironment");
+		if (testEnvironment.equalsIgnoreCase("dev"))
+			driver.get("https://dev.hybris.kitandace.com/ca/en/");
+		if (testEnvironment.equalsIgnoreCase("stage"))
+			driver.get("https://staging.hybris.kitandace.com/ca/en/");
+
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-		//close first time advertisement
-		if (ElementExist(By.xpath("//button[@class='modal__content__close modal__content__close--sm modal__content__close--dark js-modal-close js-newsletter-close']"))) {
-			WebElement closeBtn = driver.findElement(By.xpath("//button[@class='modal__content__close modal__content__close--sm modal__content__close--dark js-modal-close js-newsletter-close']"));
+		// close first time advertisement
+		if (ElementExist(By.xpath(
+				"//button[@class='modal__content__close modal__content__close--sm modal__content__close--dark js-modal-close js-newsletter-close']"))) {
+			WebElement closeBtn = driver.findElement(By.xpath(
+					"//button[@class='modal__content__close modal__content__close--sm modal__content__close--dark js-modal-close js-newsletter-close']"));
 
-			if (closeBtn != null) 
+			if (closeBtn != null)
 				common.javascriptClick(webdriver, closeBtn);
 		}
 
 		wait.threadWait(2000);
 
 	}
-	
-	
+
 	public void doSignSite(String username, String psw) {
 		driver.manage().window().maximize();
 		OpenHomepage(driver);
@@ -323,10 +325,9 @@ public class UITestOperations {
 		driver.findElement(By.xpath("//button[@class='btn btn--md btn--default btn--pw signin']")).click();
 
 	}
-	
-	
+
 	public boolean checkSignInStatus() {
-		
+
 		if (ElementExist(By.xpath("//a[contains(text(),' Account')]")))
 			return true;
 		else
@@ -337,137 +338,123 @@ public class UITestOperations {
 		WebElement account = driver.findElement(By.xpath("//a[contains(text(),' Account')]"));
 		account.click();
 		driver.findElement(By.xpath("//a[@class='account-sign-out-button']")).click();
-		
+
 		// wait.threadWait(3000);
 		return !checkSignInStatus();
 	}
-	
-	
-	
-	public void naviToManTShirts()
-	{
-		common.javascriptClick(driver,driver.findElement(By.xpath("//a[@href='/ca/en/c/Men/men' and @title='Men']")));
-		List<WebElement> tshirtBtns=driver.findElements(By.xpath("//a[@title='T-Shirts']"));
-		if(tshirtBtns!=null&&tshirtBtns.size()>1)
-		{
+
+	public void naviToManTShirts() {
+		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@href='/ca/en/c/Men/men' and @title='Men']")));
+		List<WebElement> tshirtBtns = driver.findElements(By.xpath("//a[@title='T-Shirts']"));
+		if (tshirtBtns != null && tshirtBtns.size() > 1) {
 			tshirtBtns.get(1).click();
 		}
 	}
-	
-	public void buy2ManTshirts()
-	{
-		String url=driver.getCurrentUrl();	
+
+	public void buy2ManTshirts() {
+		String url = driver.getCurrentUrl();
 		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='West Coast Brushed Long Sleeve']")));
-		
-		//choose size
-		chooseSize("91215","91216","91214","91217","91213");		
-		//add to bag
-		driver.findElement(By.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']")).click();
-		
-		//buy second one
-		log.debug("url: "+url);
-		driver.get(url);		
-		common.javascriptScrollPage(driver, 5000);
-        wait.threadWait(2000);
-		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='Double Dose Tee']")));
-		//choose size
-		chooseSize("69056","69057","69055","69058","69054");
-		//add to bag
-		driver.findElement(By.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']")).click();
+
+		// choose size
+		chooseSize("91215", "91216", "91214", "91217", "91213");
+		// add to bag
+		driver.findElement(By
+				.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"))
+				.click();
+
+		// buy second one
+		log.debug("url: " + url);
 		driver.get(url);
-		
+		common.javascriptScrollPage(driver, 5000);
+		wait.threadWait(2000);
+		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='Double Dose Tee']")));
+		// choose size
+		chooseSize("69056", "69057", "69055", "69058", "69054");
+		// add to bag
+		driver.findElement(By
+				.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"))
+				.click();
+		driver.get(url);
+
 	}
-	
-	public void chooseSize(String ... dataCode)
-	{	
-		List<WebElement> size=new ArrayList<WebElement>();
-		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[0]+"' and @data-size='M']")));
-		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[1]+"' and @data-size='L']")));
-		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[2]+"' and @data-size='S']")));
-		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[3]+"' and @data-size='XL']")));
-		size.add(driver.findElement(By.xpath("//li[@data-code='"+dataCode[4]+"' and @data-size='XS']")));
-		
-		for(WebElement w:size)
-		{
-			if(!w.getAttribute("data-online").equalsIgnoreCase("outOfStock"))
-			{
+
+	public void chooseSize(String... dataCode) {
+		List<WebElement> size = new ArrayList<WebElement>();
+		size.add(driver.findElement(By.xpath("//li[@data-code='" + dataCode[0] + "' and @data-size='M']")));
+		size.add(driver.findElement(By.xpath("//li[@data-code='" + dataCode[1] + "' and @data-size='L']")));
+		size.add(driver.findElement(By.xpath("//li[@data-code='" + dataCode[2] + "' and @data-size='S']")));
+		size.add(driver.findElement(By.xpath("//li[@data-code='" + dataCode[3] + "' and @data-size='XL']")));
+		size.add(driver.findElement(By.xpath("//li[@data-code='" + dataCode[4] + "' and @data-size='XS']")));
+
+		for (WebElement w : size) {
+			if (!w.getAttribute("data-online").equalsIgnoreCase("outOfStock")) {
 				w.click();
 				break;
 			}
 		}
 	}
-	
-	public void checkOut()
-	{
-		//click bag button
-		common.javascriptClick(driver, driver.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
-		//click checkout button
-        driver.findElement(By.xpath("//button[contains(text(),'Checkout')]")).click();
-        
-        //if address already been remembered , then skip this step
-        if(!ElementExist(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-address']")))        
-        {
-        	//fill in checkout information
-        	 driver.findElement(By.id("checkout-fisrt-name")).clear();
-             driver.findElement(By.id("checkout-fisrt-name")).sendKeys("Howard");
-             driver.findElement(By.id("checkout-last-name")).clear();
-             driver.findElement(By.id("checkout-last-name")).sendKeys("Zhang");
-             driver.findElement(By.id("checkout-address-1")).clear();
-             driver.findElement(By.id("checkout-address-1")).sendKeys("1234 Any street");
-             driver.findElement(By.id("checkout-city")).clear();
-             driver.findElement(By.id("checkout-city")).sendKeys("ANY");
-             driver.findElement(By.id("checkout-zip-code")).clear();
-             driver.findElement(By.id("checkout-zip-code")).sendKeys("V6B0Z0");
-             
-             
-             //make selector option visiable so that we can select
-             common.javascriptMakeSelectOptionVisiable(driver,"checkout-region-select");
-             Select provence = new Select(driver.findElement(By.id("checkout-region-select")));     
-             provence.selectByIndex(2);        
-             
-             driver.findElement(By.id("checkout-phone-number")).clear();
-             driver.findElement(By.id("checkout-phone-number")).sendKeys("7780000000");
-             
-             
-             common.javascriptMakeSelectOptionVisiable(driver,"phoneType-select");
-             Select phoneType = new Select(driver.findElement(By.id("phoneType-select")));     
-             phoneType.selectByIndex(2);     
-           
-        }
-        
-        driver.findElement(By.cssSelector("div.checkbox__circle.js-gift-option-checkbox")).click();
-        driver.findElement(By.xpath("//input[@placeholder='Enter your credit card number']")).clear();
-        driver.findElement(By.xpath("//input[@placeholder='Enter your credit card number']")).sendKeys("5500 0000 0000 0004");
-        driver.findElement(By.id("checkout-billing-cardholder")).clear();
-        driver.findElement(By.id("checkout-billing-cardholder")).sendKeys("Howard");
-        driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).clear();
-        driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).sendKeys("08/18");
-        driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).clear();
-        driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).sendKeys("737");
-        driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 
-		
-	}
-	
-	
-	
-	public String getOrderNumber()
-	{	
-		String orderNumber="";
-		wait.waitElementToBeDisplayed(By.xpath("//span[contains(text(),'Your order number is')]"));
-		String orderString=driver.findElement(By.xpath("//span[contains(text(),'Your order number is')]")).getText();
-		if(orderString!=null)
-		{
-			String[] spilteString=orderString.split(" ");
-			orderNumber=spilteString[spilteString.length-1];
+	public void checkOut() {
+		// click bag button
+		common.javascriptClick(driver, driver
+				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
+		// click checkout button
+		driver.findElement(By.xpath("//button[contains(text(),'Checkout')]")).click();
+
+		// if address already been remembered , then skip this step
+		if (!ElementExist(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-address']"))) {
+			// fill in checkout information
+			driver.findElement(By.id("checkout-fisrt-name")).clear();
+			driver.findElement(By.id("checkout-fisrt-name")).sendKeys("Howard");
+			driver.findElement(By.id("checkout-last-name")).clear();
+			driver.findElement(By.id("checkout-last-name")).sendKeys("Zhang");
+			driver.findElement(By.id("checkout-address-1")).clear();
+			driver.findElement(By.id("checkout-address-1")).sendKeys("1234 Any street");
+			driver.findElement(By.id("checkout-city")).clear();
+			driver.findElement(By.id("checkout-city")).sendKeys("ANY");
+			driver.findElement(By.id("checkout-zip-code")).clear();
+			driver.findElement(By.id("checkout-zip-code")).sendKeys("V6B0Z0");
+
+			// make selector option visiable so that we can select
+			common.javascriptMakeSelectOptionVisiable(driver, "checkout-region-select");
+			Select provence = new Select(driver.findElement(By.id("checkout-region-select")));
+			provence.selectByIndex(2);
+
+			driver.findElement(By.id("checkout-phone-number")).clear();
+			driver.findElement(By.id("checkout-phone-number")).sendKeys("7780000000");
+
+			common.javascriptMakeSelectOptionVisiable(driver, "phoneType-select");
+			Select phoneType = new Select(driver.findElement(By.id("phoneType-select")));
+			phoneType.selectByIndex(2);
+
 		}
-		log.debug("order place string is: "+ orderString);
-		log.debug("spilted order number is: "+ orderNumber);
+
+		driver.findElement(By.cssSelector("div.checkbox__circle.js-gift-option-checkbox")).click();
+		driver.findElement(By.xpath("//input[@placeholder='Enter your credit card number']")).clear();
+		driver.findElement(By.xpath("//input[@placeholder='Enter your credit card number']"))
+				.sendKeys("5500 0000 0000 0004");
+		driver.findElement(By.id("checkout-billing-cardholder")).clear();
+		driver.findElement(By.id("checkout-billing-cardholder")).sendKeys("Howard");
+		driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).clear();
+		driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).sendKeys("08/18");
+		driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).clear();
+		driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).sendKeys("737");
+		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
+
+	}
+
+	public String getOrderNumber() {
+		String orderNumber = "";
+		wait.waitElementToBeDisplayed(By.xpath("//span[contains(text(),'Your order number is')]"));
+		String orderString = driver.findElement(By.xpath("//span[contains(text(),'Your order number is')]")).getText();
+		if (orderString != null) {
+			String[] spilteString = orderString.split(" ");
+			orderNumber = spilteString[spilteString.length - 1];
+		}
+		log.debug("order place string is: " + orderString);
+		log.debug("spilted order number is: " + orderNumber);
 		return orderNumber;
 	}
-	
-
-	
 
 	public boolean ElementExist(By Locator) {
 		try {

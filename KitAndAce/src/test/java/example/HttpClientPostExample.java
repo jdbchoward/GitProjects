@@ -15,6 +15,11 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONArray;  
 import org.json.JSONObject; 
  
+
+/*
+ * curl -H "Content-Type: application/json" -X POST  -u myusername:mypassword -d '{"name":"davy jones" , "email":"davy@gmail.com"}' https://myApp.com/api/v1/json
+ *
+ */
 public class HttpClientPostExample
 {
     public static void main(String args[])

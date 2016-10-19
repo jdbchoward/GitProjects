@@ -31,19 +31,52 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing="0" cellpadding="0" class="result">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Test</td><td class="numi">3</td><td class="numi">3</td><td class="numi">0</td><td class="numi">0</td><td class="numi">38.8 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">Test</td><td class="numi">0</td><td class="numi">0</td><td class="numi_attn">1</td><td class="numi">0</td><td class="numi">3.7 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="passed" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
-<tr><th colspan="4">Test &#8212; passed</th></tr>
-<tr class="passedodd"><td rowspan="1">TEDHotelReservation.TestHotelFilter</td><td><a href="#m1"><b>testFilterByRating</b>  </a></td><td class="numi">1</td><td>1473349715605</td><td class="numi">17340</td></tr>
-<tr class="passedeven"><td rowspan="2">TEDHotelReservation.TestRoomSearch</td><td><a href="#m2"><b>testSearchInRegularWay</b>  </a></td><td class="numi">1</td><td>1473349715605</td><td class="numi">17021</td></tr><tr class="passedeven"><td><a href="#m3"><b>testSearchWhenDateFormatIsWrong</b>  </a></td><td class="numi">1</td><td>1473349732628</td><td class="numi">12409</td></tr>
+<tr><th colspan="4">Test &#8212; failed (configuration methods)</th></tr>
+<tr class="failedodd"><td rowspan="2">TestSuite.TestMakeOrder</td><td><a href="#m1"><b>setUp</b>  </a></td><td class="numi">1</td><td>1476895866433</td><td class="numi">0</td></tr><tr class="failedodd"><td><a href="#m2"><b>tearDown</b>  </a></td><td class="numi">1</td><td>1476895870104</td><td class="numi">0</td></tr>
+<tr><th colspan="4">Test &#8212; skipped</th></tr>
+<tr class="skippedodd"><td rowspan="1">TestSuite.TestMakeOrder</td><td><a href="#m3"><b>testSignInWithCorrectInfo</b>  </a></td><td class="numi">1</td><td>1476895870103</td><td class="numi">1</td></tr>
 </table>
 <h1>Test</h1>
-<h2 id="m1">TEDHotelReservation.TestRoomSearch:testSearchWhenDateFormatIsWrong</h2>
+<h2 id="m1">TestSuite.TestMakeOrder:setUp</h2>
+<div style="padding-left:3em">
+<p>session not created exception
+from unknown error: Runtime.executionContextCreated has invalid &apos;context&apos;: {&quot;auxData&quot;:{&quot;frameId&quot;:&quot;1488.1&quot;,&quot;isDefault&quot;:true},&quot;id&quot;:1,&quot;name&quot;:&quot;&quot;,&quot;origin&quot;:&quot;://&quot;}
+  (Session info: chrome=54.0.2840.59)
+  (Driver info: chromedriver=2.23.409699 (49b0fa931cda1caad0ae15b7d1b68004acd05129),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 2.52 seconds
+Build info: version: &apos;unknown&apos;, revision: &apos;31c43c8&apos;, time: &apos;2016-08-02 21:57:56 -0700&apos;
+System info: host: &apos;L-00008&apos;, ip: &apos;10.64.228.76&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver</p>
+sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at java.lang.reflect.Constructor.newInstance(Unknown Source)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:683)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:247)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:130)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:143)
+<br/>at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:170)
+<br/>at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:159)
+<br/>at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:148)
+<br/>at PageObjects.BrowserLoader.initBrowser(BrowserLoader.java:106)
+<br/>at PageObjects.BrowserLoader.&lt;init&gt;(BrowserLoader.java:32)
+<br/>at TestSuite.TestMakeOrder.setUp(TestMakeOrder.java:48)
+<br/>32 lines not shown
+</div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m2">TEDHotelReservation.TestRoomSearch:testSearchInRegularWay</h2>
+<h2 id="m2">TestSuite.TestMakeOrder:tearDown</h2>
+<div style="padding-left:3em">
+<p>null</p>
+TestSuite.TestMakeOrder.tearDown(TestMakeOrder.java:99)
+<br/>14 lines not shown
+</div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m3">TEDHotelReservation.TestHotelFilter:testFilterByRating</h2>
+<h2 id="m3">TestSuite.TestMakeOrder:testSignInWithCorrectInfo</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
 </body></html>

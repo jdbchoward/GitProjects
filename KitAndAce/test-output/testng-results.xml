@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="57614" started-at="2016-10-18T20:57:22Z" finished-at="2016-10-18T20:58:19Z">
+  <suite name="Default suite" duration-ms="72404" started-at="2016-10-19T17:08:37Z" finished-at="2016-10-19T17:09:49Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="57614" started-at="2016-10-18T20:57:22Z" finished-at="2016-10-18T20:58:19Z">
+    <test name="Default test" duration-ms="72404" started-at="2016-10-19T17:08:37Z" finished-at="2016-10-19T17:09:49Z">
       <class name="TestSuite.TestMakeOrder">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="setUp" is-config="true" duration-ms="3336" started-at="2016-10-18T13:57:22Z" finished-at="2016-10-18T13:57:25Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="setUp" is-config="true" duration-ms="3157" started-at="2016-10-19T10:08:37Z" finished-at="2016-10-19T10:08:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testSignInWithCorrectInfo()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="testSignInWithCorrectInfo" duration-ms="53120" started-at="2016-10-18T13:57:25Z" finished-at="2016-10-18T13:58:18Z">
+        <test-method status="PASS" signature="testSignInWithCorrectInfo()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="testSignInWithCorrectInfo" duration-ms="66025" started-at="2016-10-19T10:08:40Z" finished-at="2016-10-19T10:09:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSignInWithCorrectInfo -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="tearDown" is-config="true" duration-ms="1145" started-at="2016-10-18T13:58:18Z" finished-at="2016-10-18T13:58:19Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="tearDown" is-config="true" duration-ms="3209" started-at="2016-10-19T10:09:46Z" finished-at="2016-10-19T10:09:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="TestSuite.TestMakeOrder">
+      <class name="TestSuite1.RanorexTestCase">
         <methods>
           <include name="setUp"/>
+          <include name="testRanorexTestCase"/>
           <include name="tearDown"/>
-          <include name="testSignInWithCorrectInfo"/>
         </methods>
-      </class> <!-- TestSuite.TestMakeOrder -->
+      </class> <!-- TestSuite1.RanorexTestCase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
