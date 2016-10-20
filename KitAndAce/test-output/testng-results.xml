@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="72404" started-at="2016-10-19T17:08:37Z" finished-at="2016-10-19T17:09:49Z">
+  <suite name="Default suite" duration-ms="26826" started-at="2016-10-20T20:27:35Z" finished-at="2016-10-20T20:28:02Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="72404" started-at="2016-10-19T17:08:37Z" finished-at="2016-10-19T17:09:49Z">
-      <class name="TestSuite.TestMakeOrder">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="setUp" is-config="true" duration-ms="3157" started-at="2016-10-19T10:08:37Z" finished-at="2016-10-19T10:08:40Z">
+    <test name="Default test" duration-ms="26826" started-at="2016-10-20T20:27:35Z" finished-at="2016-10-20T20:28:02Z">
+      <class name="HMC.TestModifyProductQuantity">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:HMC.TestModifyProductQuantity@29774679]" name="setUp" is-config="true" duration-ms="3102" started-at="2016-10-20T13:27:35Z" finished-at="2016-10-20T13:27:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testSignInWithCorrectInfo()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="testSignInWithCorrectInfo" duration-ms="66025" started-at="2016-10-19T10:08:40Z" finished-at="2016-10-19T10:09:46Z">
+        <test-method status="PASS" signature="testModifyProductQuantity()[pri:0, instance:HMC.TestModifyProductQuantity@29774679]" name="testModifyProductQuantity" duration-ms="20558" started-at="2016-10-20T13:27:38Z" finished-at="2016-10-20T13:27:59Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testSignInWithCorrectInfo -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="tearDown" is-config="true" duration-ms="3209" started-at="2016-10-19T10:09:46Z" finished-at="2016-10-19T10:09:49Z">
+        </test-method> <!-- testModifyProductQuantity -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:HMC.TestModifyProductQuantity@29774679]" name="tearDown" is-config="true" duration-ms="3154" started-at="2016-10-20T13:27:59Z" finished-at="2016-10-20T13:28:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- TestSuite.TestMakeOrder -->
+      </class> <!-- HMC.TestModifyProductQuantity -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

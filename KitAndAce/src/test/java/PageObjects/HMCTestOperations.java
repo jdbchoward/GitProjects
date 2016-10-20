@@ -315,31 +315,93 @@ public class HMCTestOperations {
 
 	// indexTD is the index of TD start with the information such as order
 	// number
-	public boolean searchFromTable(String tableID, int indexTD, String searchKey) {
-		String trXpath = "id('" + tableID + "')/tbody/tr";
-		WebElement table_element = driver.findElement(By.id(tableID));
-		List<WebElement> tr_collection = table_element.findElements(By.xpath(trXpath));
+	public boolean searchFromTable(String tableID, int indexTD, String searchKey, WebElement table) {
+		boolean result = false;
+		WebElement table_element;
+		if (table != null)
+			table_element = table;
+		else
+			table_element = driver.findElement(By.id(tableID));
+
+		//  ".//"  is to find xpath under the element
+		List<WebElement> tr_collection = table_element.findElements(By.xpath(".//tbody/tr"));
 		log.debug("NUMBER OF ROWS IN THIS TABLE = " + tr_collection.size());
 		// System.out.println("NUMBER OF ROWS IN THIS TABLE =
 		// "+tr_collection.size());
 		int row_num, col_num;
 		row_num = 1;
 		for (WebElement trElement : tr_collection) {
+			
+			if (result)
+				break;
+			
 			List<WebElement> td_collection = trElement.findElements(By.xpath("td"));
-			log.debug("NUMBER OF COLUMNS=" + td_collection.size());
-			System.out.println("NUMBER OF COLUMNS=" + td_collection.size());
+			log.debug("Current row is: "+ row_num+" NUMBER OF COLUMNS=" + td_collection.size());
+//			System.out.println("Current row is: "+ row_num+" NUMBER OF COLUMNS=" + td_collection.size());
 			col_num = 1;
 			for (WebElement tdElement : td_collection) {
 				// go through all the table to find the line with information
 				// System.out.println("row # "+row_num+", col # "+col_num+
 				// "text="+tdElement.getText());
-				if (col_num == indexTD && tdElement.getText().equalsIgnoreCase(searchKey))
-					return true;
+				if (col_num == indexTD && tdElement.getText().equalsIgnoreCase(searchKey)) {
+					result = true;
+					break;
+				}
 				col_num++;
 			}
 			row_num++;
+			
 		}
-		return false;
+		return result;
+	}
+
+	public void naviToProduct(String productID, String quantity) {
+		driver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[catalog]_treeicon")).click();
+		wait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Product]_label"));
+		driver.findElement(By.id("Tree/GenericLeafNode[Product]_label")).click();
+		driver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Product.code]]_input"))
+				.sendKeys(productID);
+		driver.findElement(By.id("Content/OrganizerSearch[Product]_searchbutton")).click();
+
+		// open new window to modify product
+		String mainPageTilte = driver.getTitle();
+		wait.waitElementToBeDisplayed(
+				By.xpath("//div[contains(@id, 'Content/ItemDisplay[ktacProductCatalog - Staged]')]"));
+		Actions action = new Actions(driver);
+		action.doubleClick(driver
+				.findElement(By.xpath("//div[contains(@id, 'Content/ItemDisplay[ktacProductCatalog - Staged]')]")))
+				.perform();
+		driver.findElement(
+				By.xpath("//span[contains(@id, 'Content/EditorTab[KtacSizeVariantProduct.tab.product.stock]')]"))
+				.click();
+		String productPage = driver.getTitle();
+		driver.findElement(By.xpath("//div[contains(@id, 'Content/GenericShortcut[findstocklevelsforproduct]')]"))
+				.click();
+		common.switchWindowHandles(driver, "[findstocklevelsforproduct.title] - hybris Management Console (hMC)");
+		wait.threadWait(1000);
+		wait.waitElementToBeDisplayed(By.xpath("//div[contains(@id, 'ItemDisplay[1901 - eComm / Retail Canada]')]"));
+		action.doubleClick(
+				driver.findElement(By.xpath("//div[contains(@id, 'ItemDisplay[1901 - eComm / Retail Canada]')]")))
+				.perform();
+		driver.findElement(By.id("IntegerEditor[in Attribute[StockLevel.available]]_input")).clear();
+		driver.findElement(By.id("IntegerEditor[in Attribute[StockLevel.available]]_input")).sendKeys(quantity);
+		driver.findElement(By.id("ImageToolbarAction[organizer.editor.save.title]_label")).click();
+		driver.close();
+		common.switchWindowHandles(driver, productPage);
+
+	}
+
+	public boolean verifyProductQuanlityFromTable() {
+		String productPage = driver.getTitle();
+		driver.findElement(By.xpath("//div[contains(@id, 'Content/GenericShortcut[findstocklevelsforproduct]')]"))
+				.click();
+		common.switchWindowHandles(driver, "[findstocklevelsforproduct.title] - hybris Management Console (hMC)");
+		WebElement table = driver
+				.findElement(By.xpath("//table[contains(@id,'ClassificationOrganizerList[StockLevel]')]"));
+		boolean checked = searchFromTable(null, 6, "1001", table);
+		driver.close();
+		common.switchWindowHandles(driver, productPage);
+		return checked;
 	}
 
 	public boolean ElementExist(By Locator) {

@@ -87,7 +87,7 @@ public class TestMakeOrder {
 	    common.switchWindowHandles(driver, mainPageTilte);
 	    //----------
 	    driver.findElement(By.id("Content/OrganizerSearch[Order]_searchbutton")).click();
-	    Assert.assertTrue(hmcTestOperation.searchFromTable("Content/ClassificationOrganizerList[Order]_innertable",4, orderNumber));
+	    Assert.assertTrue(hmcTestOperation.searchFromTable("Content/ClassificationOrganizerList[Order]_innertable",4, orderNumber,null));
 
 	}
 
