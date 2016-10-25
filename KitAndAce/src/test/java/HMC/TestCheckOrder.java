@@ -12,6 +12,7 @@ import PageObjects.BrowserLoader;
 import PageObjects.CommonActions;
 import PageObjects.ElementsRepositoryAction;
 import PageObjects.HMCTestOperations;
+import PageObjects.InitWebDriver;
 import PageObjects.Wait;
 import junit.framework.Assert;
 
@@ -35,14 +36,14 @@ public class TestCheckOrder {
 	ElementsRepositoryAction elementsRepositoryAction;
 	HMCTestOperations hmcTestOperation;
 	static Logger log = Logger.getLogger(TestCheckOrder.class.getName());
+	public InitWebDriver initWebDriver;
 
 	@BeforeTest(alwaysRun = true)
 	public void setUp() throws Exception {
 
 		common = PageFactory.initElements(driver, CommonActions.class);
-		String browserType = common.getSettings().getValue("browserType");
-		BrowserLoader brower = new BrowserLoader(browserType);
-		driver = brower.driver;
+		initWebDriver = PageFactory.initElements(driver, InitWebDriver.class);
+		driver=initWebDriver.driver;
 		wait = new Wait(driver);
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
 		hmcTestOperation = PageFactory.initElements(driver, HMCTestOperations.class);

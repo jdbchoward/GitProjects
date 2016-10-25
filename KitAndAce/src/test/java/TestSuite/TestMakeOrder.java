@@ -11,9 +11,11 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import PageObjects.BrowserLoader;
+import PageObjects.BrowserStackLoader;
 import PageObjects.CommonActions;
 import PageObjects.ElementsRepositoryAction;
 import PageObjects.HMCTestOperations;
+import PageObjects.InitWebDriver;
 import PageObjects.UITestOperations;
 import PageObjects.Wait;
 import junit.framework.Assert;
@@ -39,14 +41,15 @@ public class TestMakeOrder {
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
 	static Logger log = Logger.getLogger(TestMakeOrder.class.getName());
+	public InitWebDriver initWebDriver;
 
 	@BeforeTest(alwaysRun = true)
 	public void setUp() throws Exception {
 
 		common = PageFactory.initElements(driver, CommonActions.class);
-		String browserType = common.getSettings().getValue("browserType");
-		BrowserLoader brower = new BrowserLoader(browserType);
-		driver = brower.driver;
+
+		initWebDriver = PageFactory.initElements(driver, InitWebDriver.class);
+		driver=initWebDriver.driver;
 		wait = new Wait(driver);
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
 		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);

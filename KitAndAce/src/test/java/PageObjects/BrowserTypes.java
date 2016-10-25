@@ -1,5 +1,5 @@
 package PageObjects;
 
 public enum BrowserTypes {
-    firefox,ie,chrome;
+    firefox,ie,chrome,Safari,Andriod,iOS;
 }

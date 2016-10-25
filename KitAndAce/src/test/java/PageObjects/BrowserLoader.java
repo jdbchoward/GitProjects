@@ -52,6 +52,8 @@ public class BrowserLoader {
 				// firefoxprofile.addExtension(firepath);
 				firefoxprofile.setPreference("webdriver.accept.untrusted.certs", "true");
 				firefoxprofile.setPreference("dom.disable_open_during_load", "false");
+				firefoxprofile.setPreference("browser.link.open_newwindow.restriction",1);
+				firefoxprofile.setPreference("privacy.popups.disable_from_plugins",0);
 				// firefoxprofile.setPreference("extensions.firebug.currentVersion",
 				// "1.12.1");
 			} catch (Exception e) {

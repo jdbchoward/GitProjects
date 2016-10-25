@@ -9,6 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import PageObjects.BrowserLoader;
+import PageObjects.BrowserStackLoader;
 import PageObjects.CommonActions;
 import PageObjects.ElementsRepositoryAction;
 import PageObjects.TestOperations;
@@ -42,6 +43,7 @@ public class TestSignInUS {
 		common = PageFactory.initElements(driver, CommonActions.class);
 		String browserType = common.getSettings().getValue("browserType");
 		BrowserLoader brower = new BrowserLoader(browserType);
+//		BrowserStackLoader brower=new BrowserStackLoader(browserType);
 		driver = brower.driver;
 		wait = new Wait(driver);
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
