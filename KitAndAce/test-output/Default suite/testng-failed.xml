@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="HMC.TestModifyProductQuantity">
+      <class name="WCMS.TestNavToCanadaStagePage">
         <methods>
-          <include name="testModifyProductQuantity"/>
-          <include name="tearDown"/>
+          <include name="testSearchPage"/>
+          <include name="testSignInWithCorrectInfo"/>
           <include name="setUp"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- HMC.TestModifyProductQuantity -->
+      </class> <!-- WCMS.TestNavToCanadaStagePage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -3,12 +3,16 @@ package PageObjects;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import HMC.TestCheckOrder;
 
@@ -90,5 +94,22 @@ public class CommonActions {
 			}
 
 		}
+	}
+	
+	
+	public Map<String,String> getBrowserName(WebDriver driver)
+	{
+		Map<String,String> systemInfo=new HashMap<String,String>();
+		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+	    String browserName = cap.getBrowserName().toLowerCase();
+	    systemInfo.put("browserName", browserName);
+	    log.debug(browserName);
+	    String os = cap.getPlatform().toString();
+	    systemInfo.put("os", os);
+	    log.debug(os);
+	    String v = cap.getVersion().toString();
+	    systemInfo.put("version", v);
+	    log.debug(v);
+	    return systemInfo;
 	}
 }

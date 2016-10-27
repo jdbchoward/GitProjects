@@ -60,6 +60,7 @@ public class WCMSTestOperations {
 
 	public void naviToKSCanadaStage() {
 		
+		wait.threadWait(2000);
 		driver.findElement(
 				By.xpath("//div[@class='advancedGroupboxPreLabel']/span[contains(text(),'Kit and Ace Canada')]"))
 				.click();
