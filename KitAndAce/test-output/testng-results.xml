@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="32865" started-at="2016-10-27T23:38:36Z" finished-at="2016-10-27T23:39:09Z">
+  <suite name="Default suite" duration-ms="110150" started-at="2016-10-28T16:15:19Z" finished-at="2016-10-28T16:17:10Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="32865" started-at="2016-10-27T23:38:36Z" finished-at="2016-10-27T23:39:09Z">
-      <class name="WCMS.TestNavToCanadaStagePage">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:WCMS.TestNavToCanadaStagePage@5e5792a0]" name="setUp" is-config="true" duration-ms="7061" started-at="2016-10-27T16:38:36Z" finished-at="2016-10-27T16:38:43Z">
+    <test name="Default test" duration-ms="110150" started-at="2016-10-28T16:15:19Z" finished-at="2016-10-28T16:17:10Z">
+      <class name="TestSuite.TestMakeOrder">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="setUp" is-config="true" duration-ms="7144" started-at="2016-10-28T09:15:19Z" finished-at="2016-10-28T09:15:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testSignInWithCorrectInfo()[pri:0, instance:WCMS.TestNavToCanadaStagePage@5e5792a0]" name="testSignInWithCorrectInfo" duration-ms="13578" started-at="2016-10-27T16:38:43Z" finished-at="2016-10-27T16:38:57Z">
+        <test-method status="PASS" signature="testSignInWithCorrectInfo()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="testSignInWithCorrectInfo" duration-ms="94444" started-at="2016-10-28T09:15:27Z" finished-at="2016-10-28T09:17:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSignInWithCorrectInfo -->
-        <test-method status="PASS" signature="testSearchPage()[pri:0, instance:WCMS.TestNavToCanadaStagePage@5e5792a0]" name="testSearchPage" duration-ms="4277" started-at="2016-10-27T16:38:57Z" depends-on-methods="WCMS.TestNavToCanadaStagePage.testSignInWithCorrectInfo" finished-at="2016-10-27T16:39:01Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSearchPage -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:WCMS.TestNavToCanadaStagePage@5e5792a0]" name="tearDown" is-config="true" duration-ms="7899" started-at="2016-10-27T16:39:01Z" finished-at="2016-10-27T16:39:09Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.TestMakeOrder@29774679]" name="tearDown" is-config="true" duration-ms="8550" started-at="2016-10-28T09:17:01Z" finished-at="2016-10-28T09:17:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- WCMS.TestNavToCanadaStagePage -->
+      </class> <!-- TestSuite.TestMakeOrder -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -435,8 +435,12 @@ public class UITestOperations {
 				.sendKeys("5500 0000 0000 0004");
 		driver.findElement(By.id("checkout-billing-cardholder")).clear();
 		driver.findElement(By.id("checkout-billing-cardholder")).sendKeys("Howard");
-		driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).clear();
-		driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).sendKeys("08/18");
+		//new release changed the exp to selection rather than input 
+//		driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).clear();
+//		driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).sendKeys("08/18");
+		new Select(driver.findElement(By.id("ccExpMonth"))).selectByVisibleText("8 - AUG");
+		new Select(driver.findElement(By.id("ccExpYear"))).selectByVisibleText("2018");
+
 		driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).clear();
 		driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).sendKeys("737");
 		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();

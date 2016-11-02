@@ -35,7 +35,12 @@ public class WCMSTestOperations {
 
 	public void doLogOnSite(String username, String psw) {
 		driver.manage().window().maximize();
+		String testEnvironment = common.getSettings().getValue("testEnvironment");
+		if (testEnvironment.equalsIgnoreCase("dev"))
 		driver.get("http://admindev.hybris.kitandace.com/cmscockpit/index.zul");
+		if (testEnvironment.equalsIgnoreCase("stage"))
+		driver.get("http://adminstaging.hybris.kitandace.com/cmscockpit/login.zul");
+		
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		wait.threadWait(2000);
