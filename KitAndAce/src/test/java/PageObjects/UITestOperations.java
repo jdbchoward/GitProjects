@@ -282,6 +282,9 @@ public class UITestOperations {
 	}
 
 	/// ----------------------------------------------------------
+	private String url_WestCoastBrushedLongSleeve="https://staging.hybris.kitandace.com/ca/en/Men/T-Shirts-and-Long-Sleeves/p/West-Coast-Brushed-Long-Sleeve/KM031092?color=KM031092-10001";
+	private String url_DoubleTakeButtonUp="https://staging.hybris.kitandace.com/ca/en/Men/p/Double-Take-Button-Up/KM021086?color=KM021086-10002";
+	
 	public void OpenHomepage(WebDriver webdriver) {
 
 		driver.manage().window().maximize();
@@ -315,7 +318,8 @@ public class UITestOperations {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		// start to login
-		driver.findElement(By.xpath("//button[@class='btn-link' and contains(text(),'Sign in')]")).click();
+//		driver.findElement(By.xpath("//button[@class='btn-link' and contains(text(),'Sign in')]")).click();
+		common.javascriptClick(driver, driver.findElement(By.xpath("//button[@class='btn-link' and contains(text(),'Sign in')]")));
 		wait.threadWait(2000);
 
 		driver.findElement(By.id("sign-in-form_email")).clear();
@@ -324,6 +328,22 @@ public class UITestOperations {
 		driver.findElement(By.id("sign-in-form_pwd")).sendKeys(psw);
 		driver.findElement(By.xpath("//button[@class='btn btn--md btn--default btn--pw signin']")).click();
 
+	}
+	
+	
+	public void killAdv()
+	{
+		// close first time advertisement
+		if (ElementExist(By.xpath(
+				"//button[@class='modal__content__close modal__content__close--sm modal__content__close--dark js-modal-close js-newsletter-close']"))) {
+			WebElement closeBtn = driver.findElement(By.xpath(
+					"//button[@class='modal__content__close modal__content__close--sm modal__content__close--dark js-modal-close js-newsletter-close']"));
+
+			if (closeBtn != null)
+				common.javascriptClick(driver, closeBtn);
+		}
+
+		wait.threadWait(2000);
 	}
 
 	public boolean checkSignInStatus() {
@@ -336,7 +356,8 @@ public class UITestOperations {
 
 	public boolean doSignOut() {
 		WebElement account = driver.findElement(By.xpath("//a[contains(text(),' Account')]"));
-		account.click();
+		common.javascriptClick(driver, account);
+//		account.click();
 		driver.findElement(By.xpath("//a[@class='account-sign-out-button']")).click();
 
 		// wait.threadWait(3000);
@@ -353,8 +374,11 @@ public class UITestOperations {
 
 	public void buy2ManTshirts() {
 		String url = driver.getCurrentUrl();
-		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='West Coast Brushed Long Sleeve']")));
-
+		
+//		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='West Coast Brushed Long Sleeve']")));
+		
+		driver.get(url_WestCoastBrushedLongSleeve);
+		killAdv();
 		// choose size
 		chooseSize("91215", "91216", "91214", "91217", "91213");
 		// add to bag
@@ -363,18 +387,20 @@ public class UITestOperations {
 				.click();
 
 		// buy second one
-		log.debug("url: " + url);
-		driver.get(url);
-		common.javascriptScrollPage(driver, 5000);
+//		log.debug("url: " + url);
+//		driver.get(url);
+//		common.javascriptScrollPage(driver, 5000);
+//		wait.threadWait(2000);
+//		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='Double Dose Tee']")));
+		driver.get(url_DoubleTakeButtonUp);
 		wait.threadWait(2000);
-		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='Double Dose Tee']")));
 		// choose size
-		chooseSize("69056", "69057", "69055", "69058", "69054");
+		chooseSize("88584", "88585", "88583", "88586", "88582");
 		// add to bag
 		driver.findElement(By
 				.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"))
 				.click();
-		driver.get(url);
+//		driver.get(url);
 
 	}
 

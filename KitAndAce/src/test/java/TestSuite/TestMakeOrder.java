@@ -58,7 +58,7 @@ public class TestMakeOrder {
 	}
 
 	@Test
-	public void testSignInWithCorrectInfo() throws Exception {
+	public void testMakeOrder() throws Exception {
 
 //		String orderNumber="00230007";
 		String orderNumber;

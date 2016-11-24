@@ -51,7 +51,7 @@ public class TestNavToCanadaStagePage {
 	}
 
 	@Test
-	public void testSignInWithCorrectInfo() throws Exception {
+	public void testGoToCanadaStagePage() throws Exception {
 
 		wcmsTestOperations.doLogOnSite("howard.zhang@kitandace.com", "Integrity101");
 	    wait.threadWait(3000);
@@ -60,7 +60,7 @@ public class TestNavToCanadaStagePage {
 	}
 	
 	
-	@Test(dependsOnMethods = { "testSignInWithCorrectInfo" })
+	@Test(dependsOnMethods = { "testGoToCanadaStagePage" })
 	public void testSearchPage()
 	{
 		wcmsTestOperations.searchForPageToChange("Home");

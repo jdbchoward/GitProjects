@@ -31,14 +31,50 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing="0" cellpadding="0" class="result">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">1</td><td class="numi">1</td><td class="numi">0</td><td class="numi">0</td><td class="numi">110.2 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">0</td><td class="numi">0</td><td class="numi_attn">1</td><td class="numi_attn">1</td><td class="numi">86.7 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="passed" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
-<tr><th colspan="4">Default test &#8212; passed</th></tr>
-<tr class="passedodd"><td rowspan="1">TestSuite.TestMakeOrder</td><td><a href="#m1"><b>testSignInWithCorrectInfo</b>  </a></td><td class="numi">1</td><td>1477671327106</td><td class="numi">94444</td></tr>
+<tr><th colspan="4">Default test &#8212; failed (configuration methods)</th></tr>
+<tr class="failedodd"><td rowspan="1">HybrisUI.TestNavToHomePage</td><td><a href="#m1"><b>tearDown</b>  </a></td><td class="numi">1</td><td>1479927916027</td><td class="numi">0</td></tr>
+<tr><th colspan="4">Default test &#8212; failed</th></tr>
+<tr class="failedodd"><td rowspan="1">HybrisUI.TestNavToHomePage</td><td><a href="#m2"><b>testSignInWithCorrectInfo</b>  </a></td><td class="numi">1</td><td>1479927872721</td><td class="numi">43302</td></tr>
+<tr><th colspan="4">Default test &#8212; skipped</th></tr>
+<tr class="skippedodd"><td rowspan="1">HybrisUI.TestNavToHomePage</td><td><a href="#m3"><b>testSignInWithBadInfo</b>  </a></td><td class="numi">1</td><td>1479927916026</td><td class="numi">0</td></tr>
 </table>
 <h1>Default test</h1>
-<h2 id="m1">TestSuite.TestMakeOrder:testSignInWithCorrectInfo</h2>
+<h2 id="m1">HybrisUI.TestNavToHomePage:tearDown</h2>
+<div style="padding-left:3em">
+<p>An unknown server-side error occurred while processing the command. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 11.09 seconds
+Build info: version: &apos;unknown&apos;, revision: &apos;31c43c8&apos;, time: &apos;2016-08-02 21:57:56 -0700&apos;
+System info: host: &apos;L-00008&apos;, ip: &apos;10.64.228.47&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{browserstack.finalTunnelFork=J7kQzrcFhcQp48Z8Ss9W, browserstack.tunnelIdentifier=, browserstack.asyncStop=true, language=Apache-HttpClient/4.5.2 (Java/1.8.0_91), platform=ANDROID, browserstack.local=true, acceptSslCerts=true, browser=android, acceptSslCert=false, webStorageEnabled=true, browserName=android, takesScreenshot=true, javascriptEnabled=true, 64bit=false, browserstack.debug=false, applicationCacheEnabled=true, rotatable=true, browserstack.forksUsed=false, os=android, browserstack.ie.noFlash=false, os_version=, mobile={browser=tablet, version=Google Nexus 7-4.1-1280x800}, handlesAlerts=true, version=16, browserConnectionEnabled=true, browserstack.video=true, webdriver.remote.sessionid=6f08ed69695c0550195db8103c97e0b9a4699e83, orig_os=macmav, locationContextEnabled=true, device=Google Nexus 7, proxy_type=privoxy}]
+Session ID: 6f08ed69695c0550195db8103c97e0b9a4699e83</p>
+sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at java.lang.reflect.Constructor.newInstance(Unknown Source)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:683)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:706)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:526)
+<br/>at HybrisUI.TestNavToHomePage.tearDown(TestNavToHomePage.java:72)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m2">HybrisUI.TestNavToHomePage:testSignInWithCorrectInfo</h2>
+<div style="padding-left:3em">
+<p>null</p>
+PageObjects.Wait.WaitUntilPageLoaded(Wait.java:84)
+<br/>at PageObjects.UITestOperations.OpenHomepage(UITestOperations.java:297)
+<br/>at PageObjects.UITestOperations.doSignSite(UITestOperations.java:316)
+<br/>at HybrisUI.TestNavToHomePage.testSignInWithCorrectInfo(TestNavToHomePage.java:57)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m3">HybrisUI.TestNavToHomePage:testSignInWithBadInfo</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
 </body></html>

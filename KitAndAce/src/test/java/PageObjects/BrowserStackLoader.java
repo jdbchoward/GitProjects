@@ -121,6 +121,9 @@ public class BrowserStackLoader {
 			caps.setCapability("browserName", "android");
 			caps.setCapability("platform", "ANDROID");
 			caps.setCapability("device", "Google Nexus 7");
+//			caps.setCapability("browserName", "android");
+//			caps.setCapability("platform", "ANDROID");
+//			caps.setCapability("device", "Amazon Kindle Fire HDX 7");
 			caps.setCapability("browserstack.local", "true");
 		    try {
 				driver = new RemoteWebDriver(new URL(URL), caps);
