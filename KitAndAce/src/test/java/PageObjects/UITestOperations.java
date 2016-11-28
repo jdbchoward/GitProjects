@@ -282,9 +282,9 @@ public class UITestOperations {
 	}
 
 	/// ----------------------------------------------------------
-	private String url_WestCoastBrushedLongSleeve="https://staging.hybris.kitandace.com/ca/en/Men/T-Shirts-and-Long-Sleeves/p/West-Coast-Brushed-Long-Sleeve/KM031092?color=KM031092-10001";
-	private String url_DoubleTakeButtonUp="https://staging.hybris.kitandace.com/ca/en/Men/p/Double-Take-Button-Up/KM021086?color=KM021086-10002";
-	
+	private String url_WestCoastBrushedLongSleeve = "https://staging.hybris.kitandace.com/ca/en/Men/T-Shirts-and-Long-Sleeves/p/West-Coast-Brushed-Long-Sleeve/KM031092?color=KM031092-10001";
+	private String url_DoubleTakeButtonUp = "https://staging.hybris.kitandace.com/ca/en/Men/p/Double-Take-Button-Up/KM021086?color=KM021086-10002";
+
 	public void OpenHomepage(WebDriver webdriver) {
 
 		driver.manage().window().maximize();
@@ -318,8 +318,10 @@ public class UITestOperations {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		// start to login
-//		driver.findElement(By.xpath("//button[@class='btn-link' and contains(text(),'Sign in')]")).click();
-		common.javascriptClick(driver, driver.findElement(By.xpath("//button[@class='btn-link' and contains(text(),'Sign in')]")));
+		// driver.findElement(By.xpath("//button[@class='btn-link' and
+		// contains(text(),'Sign in')]")).click();
+		common.javascriptClick(driver,
+				driver.findElement(By.xpath("//button[@class='btn-link' and contains(text(),'Sign in')]")));
 		wait.threadWait(2000);
 
 		driver.findElement(By.id("sign-in-form_email")).clear();
@@ -329,10 +331,8 @@ public class UITestOperations {
 		driver.findElement(By.xpath("//button[@class='btn btn--md btn--default btn--pw signin']")).click();
 
 	}
-	
-	
-	public void killAdv()
-	{
+
+	public void killAdv() {
 		// close first time advertisement
 		if (ElementExist(By.xpath(
 				"//button[@class='modal__content__close modal__content__close--sm modal__content__close--dark js-modal-close js-newsletter-close']"))) {
@@ -357,7 +357,7 @@ public class UITestOperations {
 	public boolean doSignOut() {
 		WebElement account = driver.findElement(By.xpath("//a[contains(text(),' Account')]"));
 		common.javascriptClick(driver, account);
-//		account.click();
+		// account.click();
 		driver.findElement(By.xpath("//a[@class='account-sign-out-button']")).click();
 
 		// wait.threadWait(3000);
@@ -374,9 +374,11 @@ public class UITestOperations {
 
 	public void buy2ManTshirts() {
 		String url = driver.getCurrentUrl();
-		
-//		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='West Coast Brushed Long Sleeve']")));
-		
+
+		// common.javascriptClick(driver,
+		// driver.findElement(By.xpath("//a[@title='West Coast Brushed Long
+		// Sleeve']")));
+
 		driver.get(url_WestCoastBrushedLongSleeve);
 		killAdv();
 		// choose size
@@ -387,11 +389,12 @@ public class UITestOperations {
 				.click();
 
 		// buy second one
-//		log.debug("url: " + url);
-//		driver.get(url);
-//		common.javascriptScrollPage(driver, 5000);
-//		wait.threadWait(2000);
-//		common.javascriptClick(driver, driver.findElement(By.xpath("//a[@title='Double Dose Tee']")));
+		// log.debug("url: " + url);
+		// driver.get(url);
+		// common.javascriptScrollPage(driver, 5000);
+		// wait.threadWait(2000);
+		// common.javascriptClick(driver,
+		// driver.findElement(By.xpath("//a[@title='Double Dose Tee']")));
 		driver.get(url_DoubleTakeButtonUp);
 		wait.threadWait(2000);
 		// choose size
@@ -400,8 +403,28 @@ public class UITestOperations {
 		driver.findElement(By
 				.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"))
 				.click();
-//		driver.get(url);
+		// driver.get(url);
 
+	}
+
+	public void buyManTshirtsWithAnonymousUser() {
+		String url = driver.getCurrentUrl();
+
+		// common.javascriptClick(driver,
+		// driver.findElement(By.xpath("//a[@title='West Coast Brushed Long
+		// Sleeve']")));
+
+		driver.get(url_WestCoastBrushedLongSleeve);
+		wait.WaitUntilPageLoaded();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		killAdv();
+		wait.threadWait(1000);
+		// choose size
+		chooseSize("91215", "91216", "91214", "91217", "91213");
+		// add to bag
+		WebElement btnAdd=driver.findElement(By
+				.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
+		common.javascriptClick(driver, btnAdd);
 	}
 
 	public void chooseSize(String... dataCode) {
@@ -420,6 +443,18 @@ public class UITestOperations {
 		}
 	}
 
+	public void AnonymousCheckOut(String email)
+	{
+		common.javascriptClick(driver, driver
+				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
+		// click checkout button
+		WebElement btnCheckOut=driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		common.javascriptClick(driver, btnCheckOut);
+        driver.findElement(By.id("checkout-email")).sendKeys(email);	
+		addUserInfo("Anonymous");
+		addBillInfo();		
+	}
+	
 	public void checkOut() {
 		// click bag button
 		common.javascriptClick(driver, driver
@@ -428,49 +463,58 @@ public class UITestOperations {
 		driver.findElement(By.xpath("//button[contains(text(),'Checkout')]")).click();
 
 		// if address already been remembered , then skip this step
-		if (!ElementExist(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-address']"))) {
-			// fill in checkout information
-			driver.findElement(By.id("checkout-fisrt-name")).clear();
-			driver.findElement(By.id("checkout-fisrt-name")).sendKeys("Howard");
-			driver.findElement(By.id("checkout-last-name")).clear();
-			driver.findElement(By.id("checkout-last-name")).sendKeys("Zhang");
-			driver.findElement(By.id("checkout-address-1")).clear();
-			driver.findElement(By.id("checkout-address-1")).sendKeys("1234 Any street");
-			driver.findElement(By.id("checkout-city")).clear();
-			driver.findElement(By.id("checkout-city")).sendKeys("ANY");
-			driver.findElement(By.id("checkout-zip-code")).clear();
-			driver.findElement(By.id("checkout-zip-code")).sendKeys("V6B0Z0");
+		if (!ElementExist(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-address']")))
+			addUserInfo("Zhang");
 
-			// make selector option visiable so that we can select
-			common.javascriptMakeSelectOptionVisiable(driver, "checkout-region-select");
-			Select provence = new Select(driver.findElement(By.id("checkout-region-select")));
-			provence.selectByIndex(2);
+		addBillInfo();
 
-			driver.findElement(By.id("checkout-phone-number")).clear();
-			driver.findElement(By.id("checkout-phone-number")).sendKeys("7780000000");
+	}
 
-			common.javascriptMakeSelectOptionVisiable(driver, "phoneType-select");
-			Select phoneType = new Select(driver.findElement(By.id("phoneType-select")));
-			phoneType.selectByIndex(2);
+	private void addUserInfo(String lastName) {
 
-		}
+		// fill in checkout information
+		driver.findElement(By.id("checkout-fisrt-name")).clear();
+		driver.findElement(By.id("checkout-fisrt-name")).sendKeys("Howard");
+		driver.findElement(By.id("checkout-last-name")).clear();
+		driver.findElement(By.id("checkout-last-name")).sendKeys(lastName);
+		driver.findElement(By.id("checkout-address-1")).clear();
+		driver.findElement(By.id("checkout-address-1")).sendKeys("1234 Any street");
+		driver.findElement(By.id("checkout-city")).clear();
+		driver.findElement(By.id("checkout-city")).sendKeys("ANY");
+		driver.findElement(By.id("checkout-zip-code")).clear();
+		driver.findElement(By.id("checkout-zip-code")).sendKeys("V6B0Z0");
 
+		// make selector option visiable so that we can select
+		common.javascriptMakeSelectOptionVisiable(driver, "checkout-region-select");
+		Select provence = new Select(driver.findElement(By.id("checkout-region-select")));
+		provence.selectByIndex(2);
+
+		driver.findElement(By.id("checkout-phone-number")).clear();
+		driver.findElement(By.id("checkout-phone-number")).sendKeys("7780000000");
+
+		common.javascriptMakeSelectOptionVisiable(driver, "phoneType-select");
+		Select phoneType = new Select(driver.findElement(By.id("phoneType-select")));
+		phoneType.selectByIndex(2);
+
+	}
+
+	private void addBillInfo() {
+		
 		driver.findElement(By.cssSelector("div.checkbox__circle.js-gift-option-checkbox")).click();
 		driver.findElement(By.xpath("//input[@placeholder='Enter your credit card number']")).clear();
 		driver.findElement(By.xpath("//input[@placeholder='Enter your credit card number']"))
 				.sendKeys("5500 0000 0000 0004");
 		driver.findElement(By.id("checkout-billing-cardholder")).clear();
 		driver.findElement(By.id("checkout-billing-cardholder")).sendKeys("Howard");
-		//new release changed the exp to selection rather than input 
-//		driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).clear();
-//		driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).sendKeys("08/18");
+		// new release changed the exp to selection rather than input
+		// driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).clear();
+		// driver.findElement(By.xpath("//input[@placeholder='Month/Year']")).sendKeys("08/18");
 		new Select(driver.findElement(By.id("ccExpMonth"))).selectByVisibleText("8 - AUG");
 		new Select(driver.findElement(By.id("ccExpYear"))).selectByVisibleText("2018");
 
 		driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).clear();
 		driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).sendKeys("737");
 		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
-
 	}
 
 	public String getOrderNumber() {
@@ -486,6 +530,24 @@ public class UITestOperations {
 		return orderNumber;
 	}
 
+	public boolean verifyConfirmationPage()
+	{
+		boolean confirmed=true;
+		confirmed=ElementExist(By.xpath("//h2[contains(text(),'Thank You')]"));
+		confirmed=ElementExist(By.xpath("//span[contains(text(),'howard.zhangkitandace@yahoo.com')]"));
+		confirmed=ElementExist(By.xpath("//span[contains(text(),'Your order number is')]"));
+		confirmed=ElementExist(By.xpath("//span[contains(text(),'Order Total:')]"));
+		confirmed=ElementExist(By.xpath("//span[contains(text(),'Payment Method:')]"));
+		confirmed=ElementExist(By.xpath("//div[contains(text(),'we will ship to')]"));
+		confirmed=ElementExist(By.xpath("//div[contains(text(),'CONTINUE SHOPPING')]"));
+		//check continue shopping button "Women" and "Men"
+		confirmed=driver.findElement(By.xpath("//div[@class='continue-shopping-component__buttons']/ul/li[1]/a")).getText().equalsIgnoreCase("Women");
+		confirmed=driver.findElement(By.xpath("//div[@class='continue-shopping-component__buttons']/ul/li[2]/a")).getText().equalsIgnoreCase("Men");
+
+		return confirmed;
+	}
+	
+	
 	public boolean ElementExist(By Locator) {
 		try {
 			driver.findElement(Locator);

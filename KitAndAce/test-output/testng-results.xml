@@ -1,118 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="1" failed="1" total="2" passed="0">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="86703" started-at="2016-11-23T19:04:00Z" finished-at="2016-11-23T19:05:27Z">
+  <suite name="Default suite" duration-ms="100221" started-at="2016-11-28T23:39:20Z" finished-at="2016-11-28T23:41:00Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="86703" started-at="2016-11-23T19:04:00Z" finished-at="2016-11-23T19:05:27Z">
-      <class name="HybrisUI.TestNavToHomePage">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:HybrisUI.TestNavToHomePage@3532ec19]" name="setUp" is-config="true" duration-ms="32289" started-at="2016-11-23T11:04:00Z" finished-at="2016-11-23T11:04:32Z">
+    <test name="Default test" duration-ms="100221" started-at="2016-11-28T23:39:20Z" finished-at="2016-11-28T23:41:00Z">
+      <class name="TestSuite.CheckoutSuite.FW1238">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@5e5792a0]" name="setUp" is-config="true" duration-ms="12500" started-at="2016-11-28T15:39:20Z" finished-at="2016-11-28T15:39:32Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="testSignInWithCorrectInfo()[pri:0, instance:HybrisUI.TestNavToHomePage@3532ec19]" name="testSignInWithCorrectInfo" duration-ms="43302" started-at="2016-11-23T11:04:32Z" finished-at="2016-11-23T11:05:16Z">
-          <exception class="java.lang.NullPointerException">
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException
-	at PageObjects.Wait.WaitUntilPageLoaded(Wait.java:84)
-	at PageObjects.UITestOperations.OpenHomepage(UITestOperations.java:297)
-	at PageObjects.UITestOperations.doSignSite(UITestOperations.java:316)
-	at HybrisUI.TestNavToHomePage.testSignInWithCorrectInfo(TestNavToHomePage.java:57)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        <test-method status="PASS" signature="anonymousCheckOut()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@5e5792a0]" name="anonymousCheckOut" duration-ms="50044" started-at="2016-11-28T15:39:32Z" finished-at="2016-11-28T15:40:23Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testSignInWithCorrectInfo -->
-        <test-method status="SKIP" signature="testSignInWithBadInfo()[pri:0, instance:HybrisUI.TestNavToHomePage@3532ec19]" name="testSignInWithBadInfo" duration-ms="0" started-at="2016-11-23T11:05:16Z" depends-on-methods="HybrisUI.TestNavToHomePage.testSignInWithCorrectInfo" finished-at="2016-11-23T11:05:16Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSignInWithBadInfo -->
-        <test-method status="FAIL" signature="tearDown()[pri:0, instance:HybrisUI.TestNavToHomePage@3532ec19]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-11-23T11:05:16Z" finished-at="2016-11-23T11:05:16Z">
-          <exception class="org.openqa.selenium.WebDriverException">
-            <message>
-              <![CDATA[An unknown server-side error occurred while processing the command. (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 11.09 seconds
-Build info: version: 'unknown', revision: '31c43c8', time: '2016-08-02 21:57:56 -0700'
-System info: host: 'L-00008', ip: '10.64.228.47', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_91'
-Driver info: org.openqa.selenium.remote.RemoteWebDriver
-Capabilities [{browserstack.finalTunnelFork=J7kQzrcFhcQp48Z8Ss9W, browserstack.tunnelIdentifier=, browserstack.asyncStop=true, language=Apache-HttpClient/4.5.2 (Java/1.8.0_91), platform=ANDROID, browserstack.local=true, acceptSslCerts=true, browser=android, acceptSslCert=false, webStorageEnabled=true, browserName=android, takesScreenshot=true, javascriptEnabled=true, 64bit=false, browserstack.debug=false, applicationCacheEnabled=true, rotatable=true, browserstack.forksUsed=false, os=android, browserstack.ie.noFlash=false, os_version=, mobile={browser=tablet, version=Google Nexus 7-4.1-1280x800}, handlesAlerts=true, version=16, browserConnectionEnabled=true, browserstack.video=true, webdriver.remote.sessionid=6f08ed69695c0550195db8103c97e0b9a4699e83, orig_os=macmav, locationContextEnabled=true, device=Google Nexus 7, proxy_type=privoxy}]
-Session ID: 6f08ed69695c0550195db8103c97e0b9a4699e83]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 11.09 seconds
-Build info: version: 'unknown', revision: '31c43c8', time: '2016-08-02 21:57:56 -0700'
-System info: host: 'L-00008', ip: '10.64.228.47', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_91'
-Driver info: org.openqa.selenium.remote.RemoteWebDriver
-Capabilities [{browserstack.finalTunnelFork=J7kQzrcFhcQp48Z8Ss9W, browserstack.tunnelIdentifier=, browserstack.asyncStop=true, language=Apache-HttpClient/4.5.2 (Java/1.8.0_91), platform=ANDROID, browserstack.local=true, acceptSslCerts=true, browser=android, acceptSslCert=false, webStorageEnabled=true, browserName=android, takesScreenshot=true, javascriptEnabled=true, 64bit=false, browserstack.debug=false, applicationCacheEnabled=true, rotatable=true, browserstack.forksUsed=false, os=android, browserstack.ie.noFlash=false, os_version=, mobile={browser=tablet, version=Google Nexus 7-4.1-1280x800}, handlesAlerts=true, version=16, browserConnectionEnabled=true, browserstack.video=true, webdriver.remote.sessionid=6f08ed69695c0550195db8103c97e0b9a4699e83, orig_os=macmav, locationContextEnabled=true, device=Google Nexus 7, proxy_type=privoxy}]
-Session ID: 6f08ed69695c0550195db8103c97e0b9a4699e83
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:683)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:706)
-	at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:526)
-	at HybrisUI.TestNavToHomePage.tearDown(TestNavToHomePage.java:72)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:138)
-	at org.testng.internal.TestMethodWorker.invokeAfterClassMethods(TestMethodWorker.java:225)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:114)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.WebDriverException -->
+        </test-method> <!-- anonymousCheckOut -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@5e5792a0]" name="tearDown" is-config="true" duration-ms="37639" started-at="2016-11-28T15:40:23Z" finished-at="2016-11-28T15:41:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- HybrisUI.TestNavToHomePage -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1238 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

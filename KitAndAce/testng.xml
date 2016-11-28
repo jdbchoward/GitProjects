@@ -4,6 +4,7 @@
 	<test name="Test" enabled="true">
 		<packages>
 			<package name="TestSuite.*" />
+			<!-- <package name="HMC.*" />-->
 		</packages>
 
 		<classes>
