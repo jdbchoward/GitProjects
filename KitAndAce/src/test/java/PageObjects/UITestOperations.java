@@ -559,6 +559,81 @@ public class UITestOperations {
 	}
 	
 	
+	public void registerUser()
+	{		
+		driver.manage().window().maximize();
+		OpenHomepage(driver);
+		wait.WaitUntilPageLoaded();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		// start to register
+		common.javascriptClick(driver,
+				driver.findElement(By.xpath("//button[@class='btn-link' and contains(text(),'Sign in')]")));
+		wait.threadWait(2000);		
+		driver.findElement(By.xpath("//button[@class='btn btn--md btn--bordered btn--pw create']")).click();
+		//fill in the form
+		driver.findElement(By.id("create-account-form_firstName")).sendKeys("Howard");  
+		driver.findElement(By.id("create-account-form_lastName")).sendKeys("Anonymous");
+		driver.findElement(By.id("create-account-form_email")).sendKeys("howard.zhangkitandace@yahoo.com");
+		driver.findElement(By.id("create-account-form_pwd")).sendKeys("10011001");
+		driver.findElement(By.xpath("//button[@class='btn btn--md btn--default btn--pw create-account']")).click();
+		
+	}
+	
+	public void addUserPaymentDetail()
+	{	
+		List<WebElement> btnAccounts=driver.findElements(By.xpath("//a[@href='/ca/en/my-account']"));
+		common.javascriptClick(driver,btnAccounts.get(0));
+		wait.threadWait(2000);	
+		
+		driver.findElement(By.xpath("//div[@class='action-btn content-block__button big js-account-new-wallet']")).click();
+		//add credit card
+		driver.findElement(By.id("edit-wallet-form_firstName")).clear();
+		driver.findElement(By.id("edit-wallet-form_firstName")).sendKeys("Howard");
+		
+		driver.findElement(By.id("edit-wallet-form_lastName")).clear();
+		driver.findElement(By.id("edit-wallet-form_lastName")).sendKeys("Zhang");
+
+		driver.findElement(By.id("edit-wallet-form_addressFirst")).clear();
+		driver.findElement(By.id("edit-wallet-form_addressFirst")).sendKeys("1234 Any street");
+
+		driver.findElement(By.id("edit-wallet-form_city")).clear();
+		driver.findElement(By.id("edit-wallet-form_city")).sendKeys("ANY");
+
+		driver.findElement(By.id("edit-wallet-form_zipCode")).clear();
+		driver.findElement(By.id("edit-wallet-form_zipCode")).sendKeys("V6B0Z0");
+		
+		driver.findElement(By.id("edit-wallet-form_phone")).clear();
+		driver.findElement(By.id("edit-wallet-form_phone")).sendKeys("7780000000");
+		
+		driver.findElement(By.id("checkout-billing-cardholder")).clear();
+		driver.findElement(By.id("checkout-billing-cardholder")).sendKeys("Howard");
+		
+		common.javascriptMakeSelectOptionVisiable(driver, "edit-wallet-form_province");
+		Select provence = new Select(driver.findElement(By.id("edit-wallet-form_province")));
+		provence.selectByIndex(2);
+
+		driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]")).clear();
+		driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]")).sendKeys("5500 0000 0000 0004");
+		new Select(driver.findElement(By.id("ccExpMonth"))).selectByVisibleText("8 - AUG");
+		new Select(driver.findElement(By.id("ccExpYear"))).selectByVisibleText("2018");
+		driver.findElement(By.id("frmCcCvv")).clear();
+		driver.findElement(By.id("frmCcCvv")).sendKeys("737");
+		
+		driver.findElement(By.xpath("//button[@class='button js-account-wallet-save']")).click();
+
+	}
+	
+	
+	public void addCreditCardWhenCheckOut()
+	{
+			common.javascriptClick(driver, driver
+					.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
+			// click checkout button
+			WebElement btnCheckOut=driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+			common.javascriptClick(driver, btnCheckOut);
+	}
+	
 	public boolean ElementExist(By Locator) {
 		try {
 			driver.findElement(Locator);
