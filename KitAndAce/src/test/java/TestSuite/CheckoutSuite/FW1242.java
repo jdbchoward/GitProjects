@@ -18,21 +18,21 @@ import junit.framework.Assert;
 /**
  * @Title: Automation TestSuite
  * @Package CheckoutSuite
- * @Description: Confirmation page display. Anonymous user.
+ * @Description: Anonymous user. Registration on confirmation page.
  * @author: Howard
  * @compay: Kit and Ace
- * @date 11/29/2016
+ * @date 11/30/2016
  * @version V1.0
  */
 
-public class FW1238 {
+public class FW1242 {
 	private WebDriver driver;
 	private Wait wait;
 	CommonActions common;
 	ElementsRepositoryAction elementsRepositoryAction;
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
-	static Logger log = Logger.getLogger(FW1238.class.getName());
+	static Logger log = Logger.getLogger(FW1242.class.getName());
 	public InitWebDriver initWebDriver;
 	String orderNumber;
 	// String orderNumber="00253014";
@@ -52,14 +52,20 @@ public class FW1238 {
 	}
 
 	@Test
-	public void anonymousConfirmationPage() throws Exception {
+	public void testRegistrationONConfirmPage() throws Exception {
 
 		// place order from Hybris system
 		uitestOperation.buyManTshirtsWithAnonymousUser();
 		uitestOperation.AnonymousCheckOut("howard.zhangkitandace@yahoo.com");
 		orderNumber = uitestOperation.getOrderNumber();
-		Assert.assertTrue(uitestOperation.verifyConfirmationPage());
-
+//		Assert.assertTrue(uitestOperation.verifyConfirmationPage());
+		
+		//create new account
+		driver.findElement(By.id("create-account-checkout_pwd")).sendKeys("10011001");
+		driver.findElement(By.id("create-account-checkout_checkPwd")).sendKeys("10011001");
+		driver.findElement(By.xpath("//button[@class='button js-checkout-confirm-create']")).click();
+		
+        Assert.assertTrue(uitestOperation.verifyAccountPage());
 	}
 
 	@AfterClass(alwaysRun = true)

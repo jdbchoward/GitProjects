@@ -548,6 +548,17 @@ public class UITestOperations {
 	}
 	
 	
+	public boolean verifyAccountPage()
+	{
+		boolean confirmed=true;
+		confirmed=driver.getCurrentUrl().toString().contains("my-account");
+		confirmed=driver.findElement(By.xpath("//h2/span[1]")).getText().equalsIgnoreCase("Howard");
+		confirmed=ElementExist(By.xpath("//a[contains(text(),'Order #')]"));
+		confirmed=ElementExist(By.xpath("//div[contains(text(),'Full Name')]"));		
+		return confirmed;
+	}
+	
+	
 	public boolean ElementExist(By Locator) {
 		try {
 			driver.findElement(Locator);

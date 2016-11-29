@@ -68,11 +68,16 @@ public class BrowserStackLoader {
 			break;
 		case ie:
 			caps = new DesiredCapabilities();
+//			caps.setCapability("browser", "IE");
+//			caps.setCapability("browser_version", "9.0");
+//			caps.setCapability("os", "Windows");
+//			caps.setCapability("os_version", "7");
+//			caps.setCapability("resolution", "1280x1024");
 			caps.setCapability("browser", "IE");
-			caps.setCapability("browser_version", "9.0");
+			caps.setCapability("browser_version", "11.0");
 			caps.setCapability("os", "Windows");
-			caps.setCapability("os_version", "7");
-			caps.setCapability("resolution", "1280x1024");
+			caps.setCapability("os_version", "10");
+			caps.setCapability("resolution", "1920x1080");
 			caps.setCapability("browserstack.ie.enablePopups", "true");
 			caps.setCapability("browserstack.local", "true");
 			try {
@@ -101,11 +106,16 @@ public class BrowserStackLoader {
 			
 		case Safari:
 			caps = new DesiredCapabilities();
+//			caps.setCapability("browser", "Safari");
+//			caps.setCapability("browser_version", "8.0");
+//			caps.setCapability("os", "OS X");
+//			caps.setCapability("os_version", "Yosemite");
+//			caps.setCapability("resolution", "1280x1024");
 			caps.setCapability("browser", "Safari");
-			caps.setCapability("browser_version", "8.0");
+			caps.setCapability("browser_version", "9.1");
 			caps.setCapability("os", "OS X");
-			caps.setCapability("os_version", "Yosemite");
-			caps.setCapability("resolution", "1280x1024");
+			caps.setCapability("os_version", "El Capitan");
+			caps.setCapability("resolution", "1920x1080");
 			caps.setCapability("browserstack.safari.enablePopups", "true");
 		    caps.setCapability("browserstack.local", "true");
 		    try {
