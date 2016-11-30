@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="45028" started-at="2016-11-29T23:14:27Z" finished-at="2016-11-29T23:15:12Z">
+  <suite name="Default suite" duration-ms="3425" started-at="2016-11-30T19:48:43Z" finished-at="2016-11-30T19:48:46Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="45028" started-at="2016-11-29T23:14:27Z" finished-at="2016-11-29T23:15:12Z">
+    <test name="Default test" duration-ms="3425" started-at="2016-11-30T19:48:43Z" finished-at="2016-11-30T19:48:46Z">
       <class name="TestSuite.CheckoutSuite.FW1230">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@5e5792a0]" name="setUp" is-config="true" duration-ms="3210" started-at="2016-11-29T15:14:27Z" finished-at="2016-11-29T15:14:31Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@3532ec19]" name="setUp" is-config="true" duration-ms="3406" started-at="2016-11-30T11:48:43Z" finished-at="2016-11-30T11:48:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testAddNewCCForOrder()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@5e5792a0]" name="testAddNewCCForOrder" duration-ms="33639" started-at="2016-11-29T15:14:31Z" finished-at="2016-11-29T15:15:04Z">
+        <test-method status="PASS" signature="testAddNewCCForOrder()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@3532ec19]" name="testAddNewCCForOrder" duration-ms="5" started-at="2016-11-30T11:48:46Z" finished-at="2016-11-30T11:48:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAddNewCCForOrder -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@5e5792a0]" name="tearDown" is-config="true" duration-ms="8164" started-at="2016-11-29T15:15:04Z" finished-at="2016-11-29T15:15:12Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@3532ec19]" name="tearDown" is-config="true" duration-ms="1" started-at="2016-11-30T11:48:46Z" finished-at="2016-11-30T11:48:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

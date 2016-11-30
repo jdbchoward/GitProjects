@@ -48,6 +48,8 @@ public class FW1230 {
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
 		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);
 		hmcTestOperation = PageFactory.initElements(driver, HMCTestOperations.class);
+		
+	
 
 	}
 
@@ -60,6 +62,11 @@ public class FW1230 {
 		uitestOperation.addUserPaymentDetail();
 		uitestOperation.buyManTshirtsWithAnonymousUser();
 		uitestOperation.addCreditCardWhenCheckOut();
+		
+		
+		
+		
+		
 //		// place order from Hybris system
 //		uitestOperation.buyManTshirtsWithAnonymousUser();
 //		uitestOperation.AnonymousCheckOut("howard.zhangkitandace@yahoo.com");

@@ -13,6 +13,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import POJO.BillingInfo;
+import POJO.UserInfo;
 import junit.framework.Assert;
 
 public class UITestOperations {
@@ -23,13 +25,19 @@ public class UITestOperations {
 	CommonActions common;
 	ElementsRepositoryAction elementsRepositoryAction;
 	static Logger log = Logger.getLogger(UITestOperations.class.getName());
-
+	public List<UserInfo> users=new ArrayList<UserInfo>();
+	public List<BillingInfo> billings=new ArrayList<BillingInfo>();
+	
+	
 	public UITestOperations(WebDriver driver) {
 		this.driver = driver;
 		baseUrl = "https://demox.mmxreservations.com/";
 		wait = new Wait(driver);
 		common = PageFactory.initElements(driver, CommonActions.class);
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
+		
+		this.users=common.getInformation(1).get("users");
+		this.billings=common.getInformation(2).get("billings");
 	}
 
 	public void doSignIn(String username, String psw) {
@@ -281,7 +289,8 @@ public class UITestOperations {
 		driver.findElement(By.xpath("//a[@data-facetval='adultfootwear:8.5']")).click();
 	}
 
-	/// ----------------------------------------------------------
+	/// ----------------------------------------------------------	
+	
 	private String url_WestCoastBrushedLongSleeve = "https://staging.hybris.kitandace.com/ca/en/Men/T-Shirts-and-Long-Sleeves/p/West-Coast-Brushed-Long-Sleeve/KM031092?color=KM031092-10001";
 	private String url_DoubleTakeButtonUp = "https://staging.hybris.kitandace.com/ca/en/Men/p/Double-Take-Button-Up/KM021086?color=KM021086-10002";
 
