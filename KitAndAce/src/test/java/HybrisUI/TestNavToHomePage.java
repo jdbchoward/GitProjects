@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import POJO.UserInfo;
 import PageObjects.BrowserLoader;
 import PageObjects.CommonActions;
 import PageObjects.ElementsRepositoryAction;
@@ -38,6 +40,7 @@ public class TestNavToHomePage {
 	UITestOperations uitestOperation;
 	static Logger log = Logger.getLogger(TestNavToHomePage.class.getName());
 	public InitWebDriver initWebDriver;
+	public UserInfo userHybris,userHMC;
 
 	@BeforeTest(alwaysRun = true)
 	public void setUp() throws Exception {
@@ -48,13 +51,15 @@ public class TestNavToHomePage {
 		wait = new Wait(driver);
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
 		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);
+		userHybris=uitestOperation.users.get(0);
+		userHMC=uitestOperation.users.get(2);
 
 	}
 
 	@Test
 	public void testSignInWithCorrectInfo() throws Exception {
 
-		uitestOperation.doSignSite("howard.zhang.kitandace@outlook.com", "10011001");
+		uitestOperation.doSignSite(userHybris);
 	    wait.threadWait(3000);
 	    Assert.assertTrue(uitestOperation.checkSignInStatus());
 		uitestOperation.doSignOut();
@@ -63,7 +68,10 @@ public class TestNavToHomePage {
 	@Test(dependsOnMethods = { "testSignInWithCorrectInfo" })
 	public void testSignInWithBadInfo() throws Exception {
 
-		uitestOperation.doSignSite("aa", "111");
+		UserInfo user=new UserInfo();
+		user.setEmail("aa");
+		user.setPassword("111");
+		uitestOperation.doSignSite(user);
 		Assert.assertTrue(!uitestOperation.checkSignInStatus());
 	}
 

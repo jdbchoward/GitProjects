@@ -8,11 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import POJO.UserInfo;
 import PageObjects.BrowserLoader;
 import PageObjects.CommonActions;
 import PageObjects.ElementsRepositoryAction;
 import PageObjects.HMCTestOperations;
 import PageObjects.InitWebDriver;
+import PageObjects.UITestOperations;
 import PageObjects.Wait;
 import junit.framework.Assert;
 
@@ -34,9 +37,11 @@ public class TestNavToHMCHomePage {
 	private Wait wait;
 	CommonActions common;
 	ElementsRepositoryAction elementsRepositoryAction;
+	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
 	static Logger log = Logger.getLogger(TestNavToHMCHomePage.class.getName());
 	public InitWebDriver initWebDriver;
+	public UserInfo userHybris,userHMC;
 
 	@BeforeTest(alwaysRun = true)
 	public void setUp() throws Exception {
@@ -46,14 +51,17 @@ public class TestNavToHMCHomePage {
 		driver=initWebDriver.driver;
 		wait = new Wait(driver);
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
+		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);
 		hmcTestOperation = PageFactory.initElements(driver, HMCTestOperations.class);
+		userHybris=uitestOperation.users.get(0);
+		userHMC=uitestOperation.users.get(2);
 
 	}
 
 	@Test
 	public void testSignInWithCorrectInfo() throws Exception {
 
-		hmcTestOperation.doLogOnSite("howard.zhang@kitandace.com", "Integrity101");
+		hmcTestOperation.doLogOnSite(userHMC);
 	    wait.threadWait(3000);
 	    Assert.assertTrue(hmcTestOperation.checkSignInStatus());
 	}

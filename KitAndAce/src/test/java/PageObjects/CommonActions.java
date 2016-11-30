@@ -206,8 +206,8 @@ public class CommonActions {
 		BillingInfo billing=new BillingInfo();
 		billing.setCardNum((row.getCell(0).toString()));
 		billing.setExpMonth(row.getCell(1).toString());
-		billing.setExpYear(row.getCell(2).toString());
-		billing.setCvc(row.getCell(3).toString());
+		billing.setExpYear(row.getCell(2).toString().substring(0,4));
+		billing.setCvc(row.getCell(3).toString().substring(0,3));
 		return billing;
 	}
 	

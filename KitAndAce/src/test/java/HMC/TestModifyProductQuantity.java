@@ -9,12 +9,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import POJO.UserInfo;
 import PageObjects.BrowserLoader;
 import PageObjects.BrowserStackLoader;
 import PageObjects.CommonActions;
 import PageObjects.ElementsRepositoryAction;
 import PageObjects.HMCTestOperations;
 import PageObjects.InitWebDriver;
+import PageObjects.UITestOperations;
 import PageObjects.Wait;
 import junit.framework.Assert;
 
@@ -36,9 +39,11 @@ public class TestModifyProductQuantity {
 	private Wait wait;
 	CommonActions common;
 	ElementsRepositoryAction elementsRepositoryAction;
+	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
 	static Logger log = Logger.getLogger(TestCheckOrder.class.getName());
 	public InitWebDriver initWebDriver;
+	public UserInfo userHybris,userHMC;
 
 	@BeforeTest(alwaysRun = true)
 	public void setUp() throws Exception {
@@ -49,14 +54,17 @@ public class TestModifyProductQuantity {
 		
 		wait = new Wait(driver);
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
+		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);
 		hmcTestOperation = PageFactory.initElements(driver, HMCTestOperations.class);
+		userHybris=uitestOperation.users.get(0);
+		userHMC=uitestOperation.users.get(2);
 
 	}
 
 	@Test
 	public void testModifyProductQuantity() throws Exception {
 
-		hmcTestOperation.doLogOnSite("howard.zhang@kitandace.com", "Integrity101");
+		hmcTestOperation.doLogOnSite(userHMC);
 	    wait.threadWait(3000);
 	   
 	    //this test case is to modify item id:91215

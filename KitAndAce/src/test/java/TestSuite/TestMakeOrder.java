@@ -10,6 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import POJO.BillingInfo;
+import POJO.UserInfo;
 import PageObjects.BrowserLoader;
 import PageObjects.BrowserStackLoader;
 import PageObjects.CommonActions;
@@ -42,6 +45,8 @@ public class TestMakeOrder {
 	HMCTestOperations hmcTestOperation;
 	static Logger log = Logger.getLogger(TestMakeOrder.class.getName());
 	public InitWebDriver initWebDriver;
+	public UserInfo userHybris,userHMC;
+	public BillingInfo billing;
 
 	@BeforeTest(alwaysRun = true)
 	public void setUp() throws Exception {
@@ -54,6 +59,10 @@ public class TestMakeOrder {
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
 		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);
 		hmcTestOperation = PageFactory.initElements(driver, HMCTestOperations.class);
+		
+		userHybris=uitestOperation.users.get(0);
+		userHMC=uitestOperation.users.get(2);
+		billing=uitestOperation.billings.get(0);
 
 	}
 
@@ -63,14 +72,14 @@ public class TestMakeOrder {
 //		String orderNumber="00230007";
 		String orderNumber;
 		//place order from Hybris system
-		uitestOperation.doSignSite("howard.zhang.kitandace@outlook.com", "10011001");
+		uitestOperation.doSignSite(userHybris);
 	    wait.threadWait(3000);
 	    uitestOperation.naviToManTShirts();
 	    uitestOperation.buy2ManTshirts();
-	    uitestOperation.checkOut();	    
+	    uitestOperation.checkOut(userHybris,billing);	    
 	    orderNumber=uitestOperation.getOrderNumber();
 	    //verify order in HMC system.
-		hmcTestOperation.doLogOnSite("howard.zhang@kitandace.com", "Integrity101");
+		hmcTestOperation.doLogOnSite(userHMC);
 	    wait.threadWait(3000);
 	    //expand tree
 	    driver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[order]_treeicon")).click();

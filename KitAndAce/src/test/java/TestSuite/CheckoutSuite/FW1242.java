@@ -7,6 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import POJO.BillingInfo;
+import POJO.UserInfo;
 import PageObjects.CommonActions;
 import PageObjects.ElementsRepositoryAction;
 import PageObjects.HMCTestOperations;
@@ -34,6 +37,8 @@ public class FW1242 {
 	HMCTestOperations hmcTestOperation;
 	static Logger log = Logger.getLogger(FW1242.class.getName());
 	public InitWebDriver initWebDriver;
+	public UserInfo userHybris,userHMC;
+	public BillingInfo billing;
 	String orderNumber;
 	// String orderNumber="00253014";
 
@@ -48,6 +53,10 @@ public class FW1242 {
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
 		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);
 		hmcTestOperation = PageFactory.initElements(driver, HMCTestOperations.class);
+		
+		userHybris=uitestOperation.users.get(1);
+		userHMC=uitestOperation.users.get(2);
+		billing=uitestOperation.billings.get(0);
 
 	}
 
@@ -56,13 +65,13 @@ public class FW1242 {
 
 		// place order from Hybris system
 		uitestOperation.buyManTshirtsWithAnonymousUser();
-		uitestOperation.AnonymousCheckOut("howard.zhangkitandace@yahoo.com");
+		uitestOperation.AnonymousCheckOut(userHybris,billing);
 		orderNumber = uitestOperation.getOrderNumber();
 //		Assert.assertTrue(uitestOperation.verifyConfirmationPage());
 		
 		//create new account
-		driver.findElement(By.id("create-account-checkout_pwd")).sendKeys("10011001");
-		driver.findElement(By.id("create-account-checkout_checkPwd")).sendKeys("10011001");
+		driver.findElement(By.id("create-account-checkout_pwd")).sendKeys(userHybris.getPassword());
+		driver.findElement(By.id("create-account-checkout_checkPwd")).sendKeys(userHybris.getPassword());
 		driver.findElement(By.xpath("//button[@class='button js-checkout-confirm-create']")).click();
 		
         Assert.assertTrue(uitestOperation.verifyAccountPage());
@@ -72,7 +81,7 @@ public class FW1242 {
 	public void tearDown() throws Exception {
 
 		// login to HMC system. prepare to delete test date
-		hmcTestOperation.doLogOnSite("howard.zhang@kitandace.com", "Integrity101");
+		hmcTestOperation.doLogOnSite(userHMC);
 		wait.threadWait(3000);
 		// expand tree
 		driver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[order]_treeicon")).click();

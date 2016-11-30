@@ -12,6 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import POJO.UserInfo;
 import junit.framework.Assert;
 
 public class HMCTestOperations {
@@ -282,7 +283,7 @@ public class HMCTestOperations {
 
 	/// ----------------------------------------------------------
 
-	public void doLogOnSite(String username, String psw) {
+	public void doLogOnSite(UserInfo user) {
 		driver.manage().window().maximize();
 		String testEnvironment = common.getSettings().getValue("testEnvironment");
 		if (testEnvironment.equalsIgnoreCase("dev"))
@@ -296,9 +297,9 @@ public class HMCTestOperations {
 
 		// start to login
 		driver.findElement(By.id("Main_user")).clear();
-		driver.findElement(By.id("Main_user")).sendKeys(username);
+		driver.findElement(By.id("Main_user")).sendKeys(user.getEmail());
 		driver.findElement(By.id("Main_password")).clear();
-		driver.findElement(By.id("Main_password")).sendKeys(psw);
+		driver.findElement(By.id("Main_password")).sendKeys(user.getPassword());
 		driver.findElement(By.id("Main_label")).click();
 
 	}
