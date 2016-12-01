@@ -456,6 +456,7 @@ public class UITestOperations {
 	{
 		common.javascriptClick(driver, driver
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
+		wait.threadWait(1000);
 		// click checkout button
 		WebElement btnCheckOut=driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
 		common.javascriptClick(driver, btnCheckOut);

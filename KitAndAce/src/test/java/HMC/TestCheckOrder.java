@@ -61,7 +61,7 @@ public class TestCheckOrder {
 	@Test
 	public void testCheckOrder() throws Exception {
 
-		hmcTestOperation.doLogOnSite(userHMC);
+		hmcTestOperation.doLogOnSite(userHMC,driver);
 	    wait.threadWait(3000);
 	    //expand tree
 	    driver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[order]_treeicon")).click();

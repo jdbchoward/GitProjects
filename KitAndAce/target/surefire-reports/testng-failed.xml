@@ -5,6 +5,7 @@
     <classes>
       <class name="TestSuite.CheckoutSuite.FW1242">
         <methods>
+          <include name="testRegistrationONConfirmPage"/>
           <include name="setUp"/>
           <include name="tearDown"/>
         </methods>
@@ -17,7 +18,6 @@
       </class> <!-- TestSuite.CheckoutSuite.FW1238 -->
       <class name="TestSuite.CheckoutSuite.FW1230">
         <methods>
-          <include name="testAddNewCCForOrder"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>
@@ -26,7 +26,6 @@
         <methods>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="anonymousCheckOut"/>
         </methods>
       </class> <!-- TestSuite.CheckoutSuite.FW1212 -->
     </classes>

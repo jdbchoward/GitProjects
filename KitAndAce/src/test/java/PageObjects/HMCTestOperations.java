@@ -283,8 +283,7 @@ public class HMCTestOperations {
 
 	/// ----------------------------------------------------------
 
-	public void doLogOnSite(UserInfo user) {
-		driver.manage().window().maximize();
+	public void doLogOnSite(UserInfo user,WebDriver driver) {
 		String testEnvironment = common.getSettings().getValue("testEnvironment");
 		if (testEnvironment.equalsIgnoreCase("dev"))
 			driver.get("https://admindev.hybris.kitandace.com/hmc/hybris");
@@ -317,7 +316,7 @@ public class HMCTestOperations {
 
 	// indexTD is the index of TD start with the information such as order
 	// number
-	public boolean searchFromTable(String tableID, int indexTD, String searchKey, WebElement table) {
+	public boolean searchFromTable(String tableID, int indexTD, String searchKey, WebElement table,WebDriver driver) {
 		boolean result = false;
 		WebElement table_element;
 		if (table != null)
@@ -404,7 +403,7 @@ public class HMCTestOperations {
 
 	}
 
-	public boolean verifyProductQuanlityFromTable() {
+	public boolean verifyProductQuanlityFromTable(WebDriver driver) {
 		String productPage = driver.getTitle();
 		wait.threadWait(2000);
 		driver.findElement(By.xpath("//div[contains(text(),'Find Stock Levels for Product')]")).click();
@@ -412,7 +411,7 @@ public class HMCTestOperations {
 		common.switchWindowHandles(driver, "[findstocklevelsforproduct.title] - hybris Management Console (hMC)");
 		WebElement table = driver
 				.findElement(By.xpath("//table[contains(@id,'ClassificationOrganizerList[StockLevel]')]"));
-		boolean checked = searchFromTable(null, 6, "1001", table);
+		boolean checked = searchFromTable(null, 6, "1001", table,driver);
 		driver.close();
 		common.switchWindowHandles(driver, productPage);
 		return checked;

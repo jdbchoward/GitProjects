@@ -61,7 +61,7 @@ public class TestNavToHMCHomePage {
 	@Test
 	public void testSignInWithCorrectInfo() throws Exception {
 
-		hmcTestOperation.doLogOnSite(userHMC);
+		hmcTestOperation.doLogOnSite(userHMC,driver);
 	    wait.threadWait(3000);
 	    Assert.assertTrue(hmcTestOperation.checkSignInStatus());
 	}

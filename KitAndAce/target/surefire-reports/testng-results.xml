@@ -2,62 +2,117 @@
 <testng-results skipped="0" failed="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="CheckoutSuite" duration-ms="185099" started-at="2016-12-01T00:06:19Z" finished-at="2016-12-01T00:09:24Z">
+  <suite name="CheckoutSuite" duration-ms="240076" started-at="2016-12-01T22:01:26Z" finished-at="2016-12-01T22:05:26Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="185099" started-at="2016-12-01T00:06:19Z" finished-at="2016-12-01T00:09:24Z">
+    <test name="Test" duration-ms="240076" started-at="2016-12-01T22:01:26Z" finished-at="2016-12-01T22:05:26Z">
       <class name="TestSuite.CheckoutSuite.FW1212">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1212@69d9c55]" name="setUp" is-config="true" duration-ms="26" started-at="2016-11-30T16:06:19Z" finished-at="2016-11-30T16:06:19Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1212@69d9c55]" name="setUp" is-config="true" duration-ms="13" started-at="2016-12-01T14:01:26Z" finished-at="2016-12-01T14:01:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@153f5a29]" name="setUp" is-config="true" duration-ms="0" started-at="2016-11-30T16:06:19Z" finished-at="2016-11-30T16:06:19Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1242@52af6cff]" name="setUp" is-config="true" duration-ms="0" started-at="2016-12-01T14:01:26Z" finished-at="2016-12-01T14:01:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@7f560810]" name="setUp" is-config="true" duration-ms="0" started-at="2016-11-30T16:06:19Z" finished-at="2016-11-30T16:06:19Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@153f5a29]" name="setUp" is-config="true" duration-ms="0" started-at="2016-12-01T14:01:26Z" finished-at="2016-12-01T14:01:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1242@52af6cff]" name="setUp" is-config="true" duration-ms="0" started-at="2016-11-30T16:06:19Z" finished-at="2016-11-30T16:06:19Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@7f560810]" name="setUp" is-config="true" duration-ms="0" started-at="2016-12-01T14:01:26Z" finished-at="2016-12-01T14:01:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="anonymousCheckOut()[pri:0, instance:TestSuite.CheckoutSuite.FW1212@69d9c55]" name="anonymousCheckOut" duration-ms="43795" started-at="2016-11-30T16:06:19Z" finished-at="2016-11-30T16:07:03Z">
+        <test-method status="PASS" signature="anonymousCheckOut()[pri:0, instance:TestSuite.CheckoutSuite.FW1212@69d9c55]" name="anonymousCheckOut" duration-ms="40596" started-at="2016-12-01T14:01:26Z" finished-at="2016-12-01T14:02:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- anonymousCheckOut -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1212@69d9c55]" name="tearDown" is-config="true" duration-ms="7239" started-at="2016-11-30T16:07:03Z" finished-at="2016-11-30T16:07:10Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1212@69d9c55]" name="tearDown" is-config="true" duration-ms="9829" started-at="2016-12-01T14:02:07Z" finished-at="2016-12-01T14:02:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- TestSuite.CheckoutSuite.FW1212 -->
       <class name="TestSuite.CheckoutSuite.FW1242">
-        <test-method status="PASS" signature="testRegistrationONConfirmPage()[pri:0, instance:TestSuite.CheckoutSuite.FW1242@52af6cff]" name="testRegistrationONConfirmPage" duration-ms="23087" started-at="2016-11-30T16:08:46Z" finished-at="2016-11-30T16:09:09Z">
+        <test-method status="PASS" signature="testRegistrationONConfirmPage()[pri:0, instance:TestSuite.CheckoutSuite.FW1242@52af6cff]" name="testRegistrationONConfirmPage" duration-ms="22359" started-at="2016-12-01T14:04:46Z" finished-at="2016-12-01T14:05:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testRegistrationONConfirmPage -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1242@52af6cff]" name="tearDown" is-config="true" duration-ms="15037" started-at="2016-11-30T16:09:09Z" finished-at="2016-11-30T16:09:24Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1242@52af6cff]" name="tearDown" is-config="true" duration-ms="18093" started-at="2016-12-01T14:05:08Z" finished-at="2016-12-01T14:05:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- TestSuite.CheckoutSuite.FW1242 -->
       <class name="TestSuite.CheckoutSuite.FW1230">
-        <test-method status="PASS" signature="testAddNewCCForOrder()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@7f560810]" name="testAddNewCCForOrder" duration-ms="48023" started-at="2016-11-30T16:07:10Z" finished-at="2016-11-30T16:07:58Z">
+        <test-method status="PASS" signature="testAddNewCCForOrder()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@7f560810]" name="testAddNewCCForOrder" duration-ms="39771" started-at="2016-12-01T14:02:17Z" finished-at="2016-12-01T14:02:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAddNewCCForOrder -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@7f560810]" name="tearDown" is-config="true" duration-ms="10023" started-at="2016-11-30T16:07:58Z" finished-at="2016-11-30T16:08:08Z">
+        <test-method status="FAIL" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@7f560810]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-12-01T14:02:57Z" finished-at="2016-12-01T14:02:57Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"id","selector":"Tree/GenericLeafNode[Customer]_label"}
+  (Session info: chrome=54.0.2840.99)
+  (Driver info: chromedriver=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 30.06 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: 'unknown', revision: '31c43c8', time: '2016-08-02 21:57:56 -0700'
+System info: host: 'L-00008', ip: '10.64.228.67', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_91'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf), userDataDir=C:\Users\HOWARD~1.ZHA\AppData\Local\Temp\scoped_dir2172_15832}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=54.0.2840.99, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 87e847c89d166b662d3c1f2c8b38f7e4
+*** Element info: {Using=id, value=Tree/GenericLeafNode[Customer]_label}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"id","selector":"Tree/GenericLeafNode[Customer]_label"}
+  (Session info: chrome=54.0.2840.99)
+  (Driver info: chromedriver=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 30.06 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: 'unknown', revision: '31c43c8', time: '2016-08-02 21:57:56 -0700'
+System info: host: 'L-00008', ip: '10.64.228.67', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_91'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf), userDataDir=C:\Users\HOWARD~1.ZHA\AppData\Local\Temp\scoped_dir2172_15832}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=54.0.2840.99, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 87e847c89d166b662d3c1f2c8b38f7e4
+*** Element info: {Using=id, value=Tree/GenericLeafNode[Customer]_label}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:683)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:377)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:427)
+	at org.openqa.selenium.By$ById.findElement(By.java:218)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:369)
+	at PageObjects.Wait.waitElementToBeDisplayed(Wait.java:128)
+	at TestSuite.CheckoutSuite.FW1230.tearDown(FW1230.java:111)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:138)
+	at org.testng.internal.TestMethodWorker.invokeAfterClassMethods(TestMethodWorker.java:225)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:114)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- TestSuite.CheckoutSuite.FW1230 -->
       <class name="TestSuite.CheckoutSuite.FW1238">
-        <test-method status="PASS" signature="anonymousConfirmationPage()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@153f5a29]" name="anonymousConfirmationPage" duration-ms="23333" started-at="2016-11-30T16:08:08Z" finished-at="2016-11-30T16:08:32Z">
+        <test-method status="PASS" signature="anonymousConfirmationPage()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@153f5a29]" name="anonymousConfirmationPage" duration-ms="22734" started-at="2016-12-01T14:04:05Z" finished-at="2016-12-01T14:04:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- anonymousConfirmationPage -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@153f5a29]" name="tearDown" is-config="true" duration-ms="14511" started-at="2016-11-30T16:08:32Z" finished-at="2016-11-30T16:08:46Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@153f5a29]" name="tearDown" is-config="true" duration-ms="17680" started-at="2016-12-01T14:04:28Z" finished-at="2016-12-01T14:04:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

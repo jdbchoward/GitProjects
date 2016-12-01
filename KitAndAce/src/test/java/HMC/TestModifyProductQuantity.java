@@ -64,12 +64,12 @@ public class TestModifyProductQuantity {
 	@Test
 	public void testModifyProductQuantity() throws Exception {
 
-		hmcTestOperation.doLogOnSite(userHMC);
+		hmcTestOperation.doLogOnSite(userHMC,driver);
 	    wait.threadWait(3000);
 	   
 	    //this test case is to modify item id:91215
 	    hmcTestOperation.naviToProduct("91215","1001");
-	    Assert.assertTrue(hmcTestOperation.verifyProductQuanlityFromTable());
+	    Assert.assertTrue(hmcTestOperation.verifyProductQuanlityFromTable(driver));
 
 	}
 

@@ -31,23 +31,54 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing="0" cellpadding="0" class="result">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Test</td><td class="numi">4</td><td class="numi">4</td><td class="numi">0</td><td class="numi">0</td><td class="numi">185.1 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">Test</td><td class="numi">4</td><td class="numi">4</td><td class="numi">0</td><td class="numi">0</td><td class="numi">240.1 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="passed" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
+<tr><th colspan="4">Test &#8212; failed (configuration methods)</th></tr>
+<tr class="failedodd"><td rowspan="1">TestSuite.CheckoutSuite.FW1230</td><td><a href="#m1"><b>tearDown</b>  </a></td><td class="numi">1</td><td>1480629777007</td><td class="numi">0</td></tr>
 <tr><th colspan="4">Test &#8212; passed</th></tr>
-<tr class="passedodd"><td rowspan="1">TestSuite.CheckoutSuite.FW1212</td><td><a href="#m1"><b>anonymousCheckOut</b>  </a></td><td class="numi">1</td><td>1480550779637</td><td class="numi">43795</td></tr>
-<tr class="passedeven"><td rowspan="1">TestSuite.CheckoutSuite.FW1230</td><td><a href="#m2"><b>testAddNewCCForOrder</b>  </a></td><td class="numi">1</td><td>1480550830673</td><td class="numi">48023</td></tr>
-<tr class="passedodd"><td rowspan="1">TestSuite.CheckoutSuite.FW1238</td><td><a href="#m3"><b>anonymousConfirmationPage</b>  </a></td><td class="numi">1</td><td>1480550888720</td><td class="numi">23333</td></tr>
-<tr class="passedeven"><td rowspan="1">TestSuite.CheckoutSuite.FW1242</td><td><a href="#m4"><b>testRegistrationONConfirmPage</b>  </a></td><td class="numi">1</td><td>1480550926564</td><td class="numi">23087</td></tr>
+<tr class="passedodd"><td rowspan="1">TestSuite.CheckoutSuite.FW1212</td><td><a href="#m2"><b>anonymousCheckOut</b>  </a></td><td class="numi">1</td><td>1480629686811</td><td class="numi">40596</td></tr>
+<tr class="passedeven"><td rowspan="1">TestSuite.CheckoutSuite.FW1230</td><td><a href="#m3"><b>testAddNewCCForOrder</b>  </a></td><td class="numi">1</td><td>1480629737236</td><td class="numi">39771</td></tr>
+<tr class="passedodd"><td rowspan="1">TestSuite.CheckoutSuite.FW1238</td><td><a href="#m4"><b>anonymousConfirmationPage</b>  </a></td><td class="numi">1</td><td>1480629845998</td><td class="numi">22734</td></tr>
+<tr class="passedeven"><td rowspan="1">TestSuite.CheckoutSuite.FW1242</td><td><a href="#m5"><b>testRegistrationONConfirmPage</b>  </a></td><td class="numi">1</td><td>1480629886412</td><td class="numi">22359</td></tr>
 </table>
 <h1>Test</h1>
-<h2 id="m1">TestSuite.CheckoutSuite.FW1230:testAddNewCCForOrder</h2>
+<h2 id="m1">TestSuite.CheckoutSuite.FW1230:tearDown</h2>
+<div style="padding-left:3em">
+<p>no such element: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;Tree/GenericLeafNode[Customer]_label&quot;}
+  (Session info: chrome=54.0.2840.99)
+  (Driver info: chromedriver=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 30.06 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;unknown&apos;, revision: &apos;31c43c8&apos;, time: &apos;2016-08-02 21:57:56 -0700&apos;
+System info: host: &apos;L-00008&apos;, ip: &apos;10.64.228.67&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf), userDataDir=C:\Users\HOWARD~1.ZHA\AppData\Local\Temp\scoped_dir2172_15832}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=54.0.2840.99, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 87e847c89d166b662d3c1f2c8b38f7e4
+*** Element info: {Using=id, value=Tree/GenericLeafNode[Customer]_label}</p>
+sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at java.lang.reflect.Constructor.newInstance(Unknown Source)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:683)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:377)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:427)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:218)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:369)
+<br/>at PageObjects.Wait.waitElementToBeDisplayed(Wait.java:128)
+<br/>at TestSuite.CheckoutSuite.FW1230.tearDown(FW1230.java:111)
+<br/>14 lines not shown
+</div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m2">TestSuite.CheckoutSuite.FW1242:testRegistrationONConfirmPage</h2>
+<h2 id="m2">TestSuite.CheckoutSuite.FW1212:anonymousCheckOut</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m3">TestSuite.CheckoutSuite.FW1238:anonymousConfirmationPage</h2>
+<h2 id="m3">TestSuite.CheckoutSuite.FW1230:testAddNewCCForOrder</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m4">TestSuite.CheckoutSuite.FW1212:anonymousCheckOut</h2>
+<h2 id="m4">TestSuite.CheckoutSuite.FW1242:testRegistrationONConfirmPage</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m5">TestSuite.CheckoutSuite.FW1238:anonymousConfirmationPage</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
 </body></html>

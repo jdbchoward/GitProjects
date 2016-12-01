@@ -15,6 +15,7 @@ import PageObjects.ElementsRepositoryAction;
 import PageObjects.HMCTestOperations;
 import PageObjects.InitWebDriver;
 import PageObjects.UITestOperations;
+import PageObjects.VerifyTearDownOperations;
 import PageObjects.Wait;
 import junit.framework.Assert;
 
@@ -29,12 +30,13 @@ import junit.framework.Assert;
  */
 
 public class FW1238 {
-	private WebDriver driver;
-	private Wait wait;
+	private WebDriver driver,verifyDriver;
+	private Wait wait,verifyWait;
 	CommonActions common;
 	ElementsRepositoryAction elementsRepositoryAction;
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
+	public VerifyTearDownOperations verifyTearDownOperations;
 	static Logger log = Logger.getLogger(FW1238.class.getName());
 	public InitWebDriver initWebDriver;
 	public UserInfo userHybris,userHMC;
@@ -63,6 +65,13 @@ public class FW1238 {
 		billing=uitestOperation.billings.get(0);
 	}
 	
+	private void initVerifyTearDown()
+	{
+		verifyTearDownOperations= PageFactory.initElements(driver, VerifyTearDownOperations.class);
+		verifyDriver=verifyTearDownOperations.driver;
+		verifyWait=verifyTearDownOperations.wait;
+	}
+	
 	@Test
 	public void anonymousConfirmationPage() throws Exception {
 
@@ -78,37 +87,40 @@ public class FW1238 {
 	@AfterClass(alwaysRun = true)
 	public void tearDown() throws Exception {
 
+	    initVerifyTearDown();
 		// login to HMC system. prepare to delete test date
-		hmcTestOperation.doLogOnSite(userHMC);
-		wait.threadWait(3000);
+		hmcTestOperation.doLogOnSite(userHMC,verifyDriver);
+		verifyWait.threadWait(3000);
 		// expand tree
-		driver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[order]_treeicon")).click();
-		wait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Order]_label"));
-		driver.findElement(By.id("Tree/GenericLeafNode[Order]_label")).click();
-		driver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Order.code]]_input")).sendKeys(orderNumber);
-		driver.findElement(By.id("Content/DateEditor[in Content/GenericCondition[Order.date]]_date")).sendKeys(common.getTodayDate());
+		verifyDriver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[order]_treeicon")).click();
+		verifyWait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Order]_label"));
+		verifyDriver.findElement(By.id("Tree/GenericLeafNode[Order]_label")).click();
+		verifyDriver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Order.code]]_input")).sendKeys(orderNumber);
+		verifyDriver.findElement(By.id("Content/DateEditor[in Content/GenericCondition[Order.date]]_date")).sendKeys(common.getTodayDate());
 
-		driver.findElement(By.id("Content/OrganizerSearch[Order]_searchbutton")).click();
+		verifyDriver.findElement(By.id("Content/OrganizerSearch[Order]_searchbutton")).click();
 
 		// delete order so that we can delete User later
-		driver.findElement(By
+		verifyDriver.findElement(By
 				.xpath("//table[@id='Content/ClassificationOrganizerList[Order]_innertable']/tbody/tr[2]/td[4]/div/div"))
 				.click();
-		driver.findElement(By.id("Content/ClassificationOrganizerList[Order][delete]_img")).click();
-		driver.switchTo().alert().accept();
-		wait.threadWait(1000);
+		verifyDriver.findElement(By.id("Content/ClassificationOrganizerList[Order][delete]_img")).click();
+		verifyDriver.switchTo().alert().accept();
+		verifyWait.threadWait(1000);
 		// Navigate to User and Delete that TEST USER
-		driver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[user]_label")).click();
-		wait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Customer]_label"));
-		driver.findElement(By.id("Tree/GenericLeafNode[Customer]_label")).click();
-		driver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Customer.name]]_input"))
+		verifyDriver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[user]_label")).click();
+		verifyWait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Customer]_label"));
+		verifyDriver.findElement(By.id("Tree/GenericLeafNode[Customer]_label")).click();
+		verifyDriver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Customer.name]]_input"))
 				.sendKeys("howard");
-		driver.findElement(By.id("Content/OrganizerSearch[Customer]_searchbutton")).click();
-		driver.findElement(By.xpath("//div[contains(text(),'Howard Anonymous')]")).click();
-		driver.findElement(By.id("Content/ClassificationOrganizerList[Customer][delete]_img")).click();
-		driver.switchTo().alert().accept();
+		verifyDriver.findElement(By.id("Content/OrganizerSearch[Customer]_searchbutton")).click();
+		verifyDriver.findElement(By.xpath("//div[contains(text(),'Howard Anonymous')]")).click();
+		verifyDriver.findElement(By.id("Content/ClassificationOrganizerList[Customer][delete]_img")).click();
+		verifyDriver.switchTo().alert().accept();
 		driver.close();
 		driver.quit();
+		verifyDriver.close();
+		verifyDriver.quit();
 	}
 
 }
