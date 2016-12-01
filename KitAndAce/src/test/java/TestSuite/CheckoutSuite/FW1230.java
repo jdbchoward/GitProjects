@@ -80,22 +80,11 @@ public class FW1230 {
 		uitestOperation.registerUser(userHybris);
 		uitestOperation.addUserPaymentDetail(userHybris,billing);
 		uitestOperation.buyManTshirtsWithAnonymousUser();
-		uitestOperation.addCreditCardWhenCheckOut();
-			
 		
-		
-//		// place order from Hybris system
-//		uitestOperation.buyManTshirtsWithAnonymousUser();
-//		uitestOperation.AnonymousCheckOut("howard.zhangkitandace@yahoo.com");
-//		orderNumber = uitestOperation.getOrderNumber();
-////		Assert.assertTrue(uitestOperation.verifyConfirmationPage());
-//		
-//		//create new account
-//		driver.findElement(By.id("create-account-checkout_pwd")).sendKeys("10011001");
-//		driver.findElement(By.id("create-account-checkout_checkPwd")).sendKeys("10011001");
-//		driver.findElement(By.xpath("//button[@class='button js-checkout-confirm-create']")).click();
-//		
-//        Assert.assertTrue(uitestOperation.verifyAccountPage());
+		//new a billing for add
+		billing=uitestOperation.billings.get(1);
+		uitestOperation.addCreditCardWhenCheckOut(userHybris,billing);
+
 	}
 
 	@AfterClass(alwaysRun = true)

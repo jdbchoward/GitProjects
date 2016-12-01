@@ -569,7 +569,6 @@ public class UITestOperations {
 	
 	public void registerUser(UserInfo user)
 	{		
-		driver.manage().window().maximize();
 		OpenHomepage(driver);
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -627,19 +626,61 @@ public class UITestOperations {
 		new Select(driver.findElement(By.id("ccExpYear"))).selectByVisibleText(billing.getExpYear());
 		driver.findElement(By.id("frmCcCvv")).clear();
 		driver.findElement(By.id("frmCcCvv")).sendKeys(billing.getCvc());
-		
 		driver.findElement(By.xpath("//button[@class='button js-account-wallet-save']")).click();
 
 	}
 	
 	
-	public void addCreditCardWhenCheckOut()
+	
+	public void addCreditCardWhenCheckOut(UserInfo user,BillingInfo billing)
 	{
 			common.javascriptClick(driver, driver
 					.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
 			// click checkout button
 			WebElement btnCheckOut=driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
 			common.javascriptClick(driver, btnCheckOut);
+			driver.findElement(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-billing-info']")).click();
+			wait.threadWait(1000);
+			common.javascriptClick(driver,driver.findElement(By.id("checkout-address-same-as-shipping")));
+			wait.threadWait(1000);
+			
+			driver.findElement(By.id("checkout-billing-fisrt-name")).clear();
+			driver.findElement(By.id("checkout-billing-fisrt-name")).sendKeys(user.getFirstName());
+			
+			driver.findElement(By.id("checkout-billing-last-name")).clear();
+			driver.findElement(By.id("checkout-billing-last-name")).sendKeys(user.getLastName());
+
+			driver.findElement(By.id("checkout-billing-address-1")).clear();
+			driver.findElement(By.id("checkout-billing-address-1")).sendKeys(user.getAddress());
+
+			driver.findElement(By.id("checkout-billing-city")).clear();
+			driver.findElement(By.id("checkout-billing-city")).sendKeys(user.getCity());
+
+			driver.findElement(By.id("checkout-billing-zip-code")).clear();
+			driver.findElement(By.id("checkout-billing-zip-code")).sendKeys(user.getZip());
+			
+			driver.findElement(By.id("checkout-billingAddressForm-phone-number")).clear();
+			driver.findElement(By.id("checkout-billingAddressForm-phone-number")).sendKeys(user.getPhone());
+			
+			
+			common.javascriptMakeSelectOptionVisiable(driver, "checkout-billing-region-select");
+			Select provence = new Select(driver.findElement(By.id("checkout-billing-region-select")));
+			provence.selectByIndex(2);			
+			
+			driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]")).clear();
+			driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]")).sendKeys(billing.getCardNum());
+			driver.findElement(By.id("checkout-billing-cardholder")).sendKeys(user.getFirstName());
+			new Select(driver.findElement(By.id("ccExpMonth"))).selectByVisibleText(billing.getExpMonth());
+			new Select(driver.findElement(By.id("ccExpYear"))).selectByVisibleText(billing.getExpYear());
+			driver.findElement(By.id("frmCcCvv")).sendKeys(billing.getCvc());		
+			
+			
+			driver.findElement(By.xpath("//a[@class='btn btn--sm btn--bordered js-add-new-billing-info-btn']")).click();
+			wait.threadWait(5000);
+			// check account
+			common.javascriptClick(driver,
+					driver.findElement(By.xpath("//a[@class='btn-link' and contains(text(),' Account')]")));
+			wait.threadWait(2000);		
 	}
 	
 	public boolean ElementExist(By Locator) {
