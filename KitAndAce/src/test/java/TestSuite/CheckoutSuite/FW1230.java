@@ -47,6 +47,10 @@ public class FW1230 {
 
 		common = PageFactory.initElements(driver, CommonActions.class);
 
+	}
+
+	private void init()	
+	{
 		initWebDriver = PageFactory.initElements(driver, InitWebDriver.class);
 		driver = initWebDriver.driver;
 		wait = new Wait(driver);
@@ -57,12 +61,11 @@ public class FW1230 {
 		userHybris=uitestOperation.users.get(1);
 		userHMC=uitestOperation.users.get(2);
 		billing=uitestOperation.billings.get(0);
-
 	}
-
+	
 	@Test
 	public void testAddNewCCForOrder() throws Exception {
-
+		init();
 	//register one new user
 		uitestOperation.registerUser(userHybris);
 		uitestOperation.addUserPaymentDetail(userHybris,billing);

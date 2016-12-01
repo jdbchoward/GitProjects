@@ -46,7 +46,10 @@ public class FW1242 {
 	public void setUp() throws Exception {
 
 		common = PageFactory.initElements(driver, CommonActions.class);
+	}
 
+	private void init()	
+	{
 		initWebDriver = PageFactory.initElements(driver, InitWebDriver.class);
 		driver = initWebDriver.driver;
 		wait = new Wait(driver);
@@ -57,12 +60,11 @@ public class FW1242 {
 		userHybris=uitestOperation.users.get(1);
 		userHMC=uitestOperation.users.get(2);
 		billing=uitestOperation.billings.get(0);
-
 	}
-
+	
 	@Test
 	public void testRegistrationONConfirmPage() throws Exception {
-
+		init();
 		// place order from Hybris system
 		uitestOperation.buyManTshirtsWithAnonymousUser();
 		uitestOperation.AnonymousCheckOut(userHybris,billing);

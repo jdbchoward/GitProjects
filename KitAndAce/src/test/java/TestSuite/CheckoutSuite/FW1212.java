@@ -51,8 +51,12 @@ public class FW1212 {
 	@BeforeTest(alwaysRun = true)
 	public void setUp() throws Exception {
 
-		common = PageFactory.initElements(driver, CommonActions.class);
-
+		common = PageFactory.initElements(driver, CommonActions.class);		
+	}
+	
+	
+	private void init()
+	{
 		initWebDriver = PageFactory.initElements(driver, InitWebDriver.class);
 		driver=initWebDriver.driver;
 		wait = new Wait(driver);
@@ -68,6 +72,7 @@ public class FW1212 {
 	@Test
 	public void anonymousCheckOut() throws Exception {
 
+		init();
 //		String orderNumber="00253014";
 		String orderNumber;
 		//place order from Hybris system

@@ -1,53 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="49624" started-at="2016-11-24T00:14:55Z" finished-at="2016-11-24T00:15:44Z">
+  <suite name="CheckoutSuite" duration-ms="185099" started-at="2016-12-01T00:06:19Z" finished-at="2016-12-01T00:09:24Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="49624" started-at="2016-11-24T00:14:55Z" finished-at="2016-11-24T00:15:44Z">
-      <class name="HMC.TestCheckOrder">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:HMC.TestCheckOrder@5a61f5df]" name="setUp" is-config="true" duration-ms="3205" started-at="2016-11-23T16:14:55Z" finished-at="2016-11-23T16:14:58Z">
+    <test name="Test" duration-ms="185099" started-at="2016-12-01T00:06:19Z" finished-at="2016-12-01T00:09:24Z">
+      <class name="TestSuite.CheckoutSuite.FW1212">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1212@69d9c55]" name="setUp" is-config="true" duration-ms="26" started-at="2016-11-30T16:06:19Z" finished-at="2016-11-30T16:06:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:HMC.TestModifyProductQuantity@3dd3bcd]" name="setUp" is-config="true" duration-ms="2586" started-at="2016-11-23T16:14:58Z" finished-at="2016-11-23T16:15:01Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@153f5a29]" name="setUp" is-config="true" duration-ms="0" started-at="2016-11-30T16:06:19Z" finished-at="2016-11-30T16:06:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:HMC.TestNavToHMCHomePage@97e1986]" name="setUp" is-config="true" duration-ms="2526" started-at="2016-11-23T16:15:01Z" finished-at="2016-11-23T16:15:03Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@7f560810]" name="setUp" is-config="true" duration-ms="0" started-at="2016-11-30T16:06:19Z" finished-at="2016-11-30T16:06:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testCheckOrder()[pri:0, instance:HMC.TestCheckOrder@5a61f5df]" name="testCheckOrder" duration-ms="11616" started-at="2016-11-23T16:15:03Z" finished-at="2016-11-23T16:15:15Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1242@52af6cff]" name="setUp" is-config="true" duration-ms="0" started-at="2016-11-30T16:06:19Z" finished-at="2016-11-30T16:06:19Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testCheckOrder -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:HMC.TestCheckOrder@5a61f5df]" name="tearDown" is-config="true" duration-ms="3271" started-at="2016-11-23T16:15:15Z" finished-at="2016-11-23T16:15:18Z">
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="anonymousCheckOut()[pri:0, instance:TestSuite.CheckoutSuite.FW1212@69d9c55]" name="anonymousCheckOut" duration-ms="43795" started-at="2016-11-30T16:06:19Z" finished-at="2016-11-30T16:07:03Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- HMC.TestCheckOrder -->
-      <class name="HMC.TestModifyProductQuantity">
-        <test-method status="PASS" signature="testModifyProductQuantity()[pri:0, instance:HMC.TestModifyProductQuantity@3dd3bcd]" name="testModifyProductQuantity" duration-ms="38323" started-at="2016-11-23T16:15:03Z" finished-at="2016-11-23T16:15:42Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testModifyProductQuantity -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:HMC.TestModifyProductQuantity@3dd3bcd]" name="tearDown" is-config="true" duration-ms="2825" started-at="2016-11-23T16:15:42Z" finished-at="2016-11-23T16:15:44Z">
+        </test-method> <!-- anonymousCheckOut -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1212@69d9c55]" name="tearDown" is-config="true" duration-ms="7239" started-at="2016-11-30T16:07:03Z" finished-at="2016-11-30T16:07:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- HMC.TestModifyProductQuantity -->
-      <class name="HMC.TestNavToHMCHomePage">
-        <test-method status="PASS" signature="testSignInWithCorrectInfo()[pri:0, instance:HMC.TestNavToHMCHomePage@97e1986]" name="testSignInWithCorrectInfo" duration-ms="8958" started-at="2016-11-23T16:15:03Z" finished-at="2016-11-23T16:15:12Z">
+      </class> <!-- TestSuite.CheckoutSuite.FW1212 -->
+      <class name="TestSuite.CheckoutSuite.FW1242">
+        <test-method status="PASS" signature="testRegistrationONConfirmPage()[pri:0, instance:TestSuite.CheckoutSuite.FW1242@52af6cff]" name="testRegistrationONConfirmPage" duration-ms="23087" started-at="2016-11-30T16:08:46Z" finished-at="2016-11-30T16:09:09Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testSignInWithCorrectInfo -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:HMC.TestNavToHMCHomePage@97e1986]" name="tearDown" is-config="true" duration-ms="3309" started-at="2016-11-23T16:15:12Z" finished-at="2016-11-23T16:15:15Z">
+        </test-method> <!-- testRegistrationONConfirmPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1242@52af6cff]" name="tearDown" is-config="true" duration-ms="15037" started-at="2016-11-30T16:09:09Z" finished-at="2016-11-30T16:09:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- HMC.TestNavToHMCHomePage -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1242 -->
+      <class name="TestSuite.CheckoutSuite.FW1230">
+        <test-method status="PASS" signature="testAddNewCCForOrder()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@7f560810]" name="testAddNewCCForOrder" duration-ms="48023" started-at="2016-11-30T16:07:10Z" finished-at="2016-11-30T16:07:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewCCForOrder -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1230@7f560810]" name="tearDown" is-config="true" duration-ms="10023" started-at="2016-11-30T16:07:58Z" finished-at="2016-11-30T16:08:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1230 -->
+      <class name="TestSuite.CheckoutSuite.FW1238">
+        <test-method status="PASS" signature="anonymousConfirmationPage()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@153f5a29]" name="anonymousConfirmationPage" duration-ms="23333" started-at="2016-11-30T16:08:08Z" finished-at="2016-11-30T16:08:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- anonymousConfirmationPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1238@153f5a29]" name="tearDown" is-config="true" duration-ms="14511" started-at="2016-11-30T16:08:32Z" finished-at="2016-11-30T16:08:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1238 -->
     </test> <!-- Test -->
-  </suite> <!-- Suite -->
+  </suite> <!-- CheckoutSuite -->
 </testng-results>

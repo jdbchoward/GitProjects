@@ -3,13 +3,32 @@
 <suite thread-count="3" verbose="0" name="Failed suite [Suite]" parallel="classes">
   <test name="Test(failed)" parallel="classes">
     <classes>
-      <class name="TestSuite.TestMakeOrder">
+      <class name="TestSuite.CheckoutSuite.FW1242">
         <methods>
           <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="testSignInWithCorrectInfo"/>
         </methods>
-      </class> <!-- TestSuite.TestMakeOrder -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1242 -->
+      <class name="TestSuite.CheckoutSuite.FW1238">
+        <methods>
+          <include name="anonymousConfirmationPage"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- TestSuite.CheckoutSuite.FW1238 -->
+      <class name="TestSuite.CheckoutSuite.FW1230">
+        <methods>
+          <include name="testAddNewCCForOrder"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- TestSuite.CheckoutSuite.FW1230 -->
+      <class name="TestSuite.CheckoutSuite.FW1212">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- TestSuite.CheckoutSuite.FW1212 -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
