@@ -25,19 +25,18 @@ public class UITestOperations {
 	CommonActions common;
 	ElementsRepositoryAction elementsRepositoryAction;
 	static Logger log = Logger.getLogger(UITestOperations.class.getName());
-	public List<UserInfo> users=new ArrayList<UserInfo>();
-	public List<BillingInfo> billings=new ArrayList<BillingInfo>();
-	
-	
+	public List<UserInfo> users = new ArrayList<UserInfo>();
+	public List<BillingInfo> billings = new ArrayList<BillingInfo>();
+
 	public UITestOperations(WebDriver driver) {
 		this.driver = driver;
 		baseUrl = "https://demox.mmxreservations.com/";
 		wait = new Wait(driver);
 		common = PageFactory.initElements(driver, CommonActions.class);
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
-		
-		this.users=common.getInformation(1).get("users");
-		this.billings=common.getInformation(2).get("billings");
+
+		this.users = common.getInformation(1).get("users");
+		this.billings = common.getInformation(2).get("billings");
 	}
 
 	public void doSignIn(String username, String psw) {
@@ -289,8 +288,8 @@ public class UITestOperations {
 		driver.findElement(By.xpath("//a[@data-facetval='adultfootwear:8.5']")).click();
 	}
 
-	/// ----------------------------------------------------------	
-	
+	/// ----------------------------------------------------------
+
 	private String url_WestCoastBrushedLongSleeve = "https://staging.hybris.kitandace.com/ca/en/Men/T-Shirts-and-Long-Sleeves/p/West-Coast-Brushed-Long-Sleeve/KM031092?color=KM031092-10001";
 	private String url_DoubleTakeButtonUp = "https://staging.hybris.kitandace.com/ca/en/Men/p/Double-Take-Button-Up/KM021086?color=KM021086-10002";
 
@@ -431,8 +430,8 @@ public class UITestOperations {
 		// choose size
 		chooseSize("91215", "91216", "91214", "91217", "91213");
 		// add to bag
-		WebElement btnAdd=driver.findElement(By
-				.xpath("//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
+		WebElement btnAdd = driver.findElement(By.xpath(
+				"//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
 		common.javascriptClick(driver, btnAdd);
 	}
 
@@ -452,20 +451,19 @@ public class UITestOperations {
 		}
 	}
 
-	public void AnonymousCheckOut(UserInfo user,BillingInfo billing)
-	{
+	public void AnonymousCheckOut(UserInfo user, BillingInfo billing) {
 		common.javascriptClick(driver, driver
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
 		wait.threadWait(1000);
 		// click checkout button
-		WebElement btnCheckOut=driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
 		common.javascriptClick(driver, btnCheckOut);
-        driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());	
+		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
 		addUserInfo(user);
-		addBillInfo(billing);		
+		addBillInfo(billing);
 	}
-	
-	public void checkOut(UserInfo user,BillingInfo billing) {
+
+	public void checkOut(UserInfo user, BillingInfo billing) {
 		// click bag button
 		common.javascriptClick(driver, driver
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
@@ -509,7 +507,7 @@ public class UITestOperations {
 	}
 
 	private void addBillInfo(BillingInfo billing) {
-		
+
 		driver.findElement(By.cssSelector("div.checkbox__circle.js-gift-option-checkbox")).click();
 		driver.findElement(By.xpath("//input[@placeholder='Enter your credit card number']")).clear();
 		driver.findElement(By.xpath("//input[@placeholder='Enter your credit card number']"))
@@ -538,37 +536,34 @@ public class UITestOperations {
 		return orderNumber;
 	}
 
-	public boolean verifyConfirmationPage()
-	{
-		boolean confirmed=true;
-		confirmed=ElementExist(By.xpath("//h2[contains(text(),'Thank You')]"));
-		confirmed=ElementExist(By.xpath("//span[contains(text(),'howard.zhangkitandace@yahoo.com')]"));
-		confirmed=ElementExist(By.xpath("//span[contains(text(),'Your order number is')]"));
-		confirmed=ElementExist(By.xpath("//span[contains(text(),'Order Total:')]"));
-		confirmed=ElementExist(By.xpath("//span[contains(text(),'Payment Method:')]"));
-		confirmed=ElementExist(By.xpath("//div[contains(text(),'we will ship to')]"));
-		confirmed=ElementExist(By.xpath("//div[contains(text(),'CONTINUE SHOPPING')]"));
-		//check continue shopping button "Women" and "Men"
-		confirmed=driver.findElement(By.xpath("//div[@class='continue-shopping-component__buttons']/ul/li[1]/a")).getText().equalsIgnoreCase("Women");
-		confirmed=driver.findElement(By.xpath("//div[@class='continue-shopping-component__buttons']/ul/li[2]/a")).getText().equalsIgnoreCase("Men");
+	public boolean verifyConfirmationPage() {
+		boolean confirmed = true;
+		confirmed = ElementExist(By.xpath("//h2[contains(text(),'Thank You')]"));
+		confirmed = ElementExist(By.xpath("//span[contains(text(),'howard.zhangkitandace@yahoo.com')]"));
+		confirmed = ElementExist(By.xpath("//span[contains(text(),'Your order number is')]"));
+		confirmed = ElementExist(By.xpath("//span[contains(text(),'Order Total:')]"));
+		confirmed = ElementExist(By.xpath("//span[contains(text(),'Payment Method:')]"));
+		confirmed = ElementExist(By.xpath("//div[contains(text(),'we will ship to')]"));
+		confirmed = ElementExist(By.xpath("//div[contains(text(),'CONTINUE SHOPPING')]"));
+		// check continue shopping button "Women" and "Men"
+		confirmed = driver.findElement(By.xpath("//div[@class='continue-shopping-component__buttons']/ul/li[1]/a"))
+				.getText().equalsIgnoreCase("Women");
+		confirmed = driver.findElement(By.xpath("//div[@class='continue-shopping-component__buttons']/ul/li[2]/a"))
+				.getText().equalsIgnoreCase("Men");
 
 		return confirmed;
 	}
-	
-	
-	public boolean verifyAccountPage()
-	{
-		boolean confirmed=true;
-		confirmed=driver.getCurrentUrl().toString().contains("my-account");
-		confirmed=driver.findElement(By.xpath("//h2/span[1]")).getText().equalsIgnoreCase("Howard");
-		confirmed=ElementExist(By.xpath("//a[contains(text(),'Order #')]"));
-		confirmed=ElementExist(By.xpath("//div[contains(text(),'Full Name')]"));		
+
+	public boolean verifyAccountPage() {
+		boolean confirmed = true;
+		confirmed = driver.getCurrentUrl().toString().contains("my-account");
+		confirmed = driver.findElement(By.xpath("//h2/span[1]")).getText().equalsIgnoreCase("Howard");
+		confirmed = ElementExist(By.xpath("//a[contains(text(),'Order #')]"));
+		confirmed = ElementExist(By.xpath("//div[contains(text(),'Full Name')]"));
 		return confirmed;
 	}
-	
-	
-	public void registerUser(UserInfo user)
-	{		
+
+	public void registerUser(UserInfo user) {
 		OpenHomepage(driver);
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -576,28 +571,28 @@ public class UITestOperations {
 		// start to register
 		common.javascriptClick(driver,
 				driver.findElement(By.xpath("//button[@class='btn-link' and contains(text(),'Sign in')]")));
-		wait.threadWait(2000);		
+		wait.threadWait(2000);
 		driver.findElement(By.xpath("//button[@class='btn btn--md btn--bordered btn--pw create']")).click();
-		//fill in the form
-		driver.findElement(By.id("create-account-form_firstName")).sendKeys(user.getFirstName());  
+		// fill in the form
+		driver.findElement(By.id("create-account-form_firstName")).sendKeys(user.getFirstName());
 		driver.findElement(By.id("create-account-form_lastName")).sendKeys(user.getLastName());
 		driver.findElement(By.id("create-account-form_email")).sendKeys(user.getEmail());
 		driver.findElement(By.id("create-account-form_pwd")).sendKeys(user.getPassword());
 		driver.findElement(By.xpath("//button[@class='btn btn--md btn--default btn--pw create-account']")).click();
-		
+
 	}
-	
-	public void addUserPaymentDetail(UserInfo user,BillingInfo billing)
-	{	
-		List<WebElement> btnAccounts=driver.findElements(By.xpath("//a[@href='/ca/en/my-account']"));
-		common.javascriptClick(driver,btnAccounts.get(0));
-		wait.threadWait(2000);	
-		
-		driver.findElement(By.xpath("//div[@class='action-btn content-block__button big js-account-new-wallet']")).click();
-		//add credit card
+
+	public void addUserPaymentDetail(UserInfo user, BillingInfo billing) {
+		List<WebElement> btnAccounts = driver.findElements(By.xpath("//a[@href='/ca/en/my-account']"));
+		common.javascriptClick(driver, btnAccounts.get(0));
+		wait.threadWait(2000);
+
+		driver.findElement(By.xpath("//div[@class='action-btn content-block__button big js-account-new-wallet']"))
+				.click();
+		// add credit card
 		driver.findElement(By.id("edit-wallet-form_firstName")).clear();
 		driver.findElement(By.id("edit-wallet-form_firstName")).sendKeys(user.getFirstName());
-		
+
 		driver.findElement(By.id("edit-wallet-form_lastName")).clear();
 		driver.findElement(By.id("edit-wallet-form_lastName")).sendKeys(user.getLastName());
 
@@ -609,19 +604,21 @@ public class UITestOperations {
 
 		driver.findElement(By.id("edit-wallet-form_zipCode")).clear();
 		driver.findElement(By.id("edit-wallet-form_zipCode")).sendKeys(user.getZip());
-		
+
 		driver.findElement(By.id("edit-wallet-form_phone")).clear();
 		driver.findElement(By.id("edit-wallet-form_phone")).sendKeys(user.getPhone());
-		
+
 		driver.findElement(By.id("checkout-billing-cardholder")).clear();
 		driver.findElement(By.id("checkout-billing-cardholder")).sendKeys(user.getFirstName());
-		
+
 		common.javascriptMakeSelectOptionVisiable(driver, "edit-wallet-form_province");
 		Select provence = new Select(driver.findElement(By.id("edit-wallet-form_province")));
 		provence.selectByIndex(2);
 
-		driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]")).clear();
-		driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]")).sendKeys(billing.getCardNum());
+		driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]"))
+				.clear();
+		driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]"))
+				.sendKeys(billing.getCardNum());
 		new Select(driver.findElement(By.id("ccExpMonth"))).selectByVisibleText(billing.getExpMonth());
 		new Select(driver.findElement(By.id("ccExpYear"))).selectByVisibleText(billing.getExpYear());
 		driver.findElement(By.id("frmCcCvv")).clear();
@@ -629,60 +626,72 @@ public class UITestOperations {
 		driver.findElement(By.xpath("//button[@class='button js-account-wallet-save']")).click();
 
 	}
-	
-	
-	
-	public void addCreditCardWhenCheckOut(UserInfo user,BillingInfo billing)
-	{
-			common.javascriptClick(driver, driver
-					.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
-			// click checkout button
-			WebElement btnCheckOut=driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
-			common.javascriptClick(driver, btnCheckOut);
-			driver.findElement(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-billing-info']")).click();
-			wait.threadWait(1000);
-			common.javascriptClick(driver,driver.findElement(By.id("checkout-address-same-as-shipping")));
-			wait.threadWait(1000);
-			
-			driver.findElement(By.id("checkout-billing-fisrt-name")).clear();
-			driver.findElement(By.id("checkout-billing-fisrt-name")).sendKeys(user.getFirstName());
-			
-			driver.findElement(By.id("checkout-billing-last-name")).clear();
-			driver.findElement(By.id("checkout-billing-last-name")).sendKeys(user.getLastName());
 
-			driver.findElement(By.id("checkout-billing-address-1")).clear();
-			driver.findElement(By.id("checkout-billing-address-1")).sendKeys(user.getAddress());
+	public void addCreditCardWhenCheckOut(UserInfo user, BillingInfo billing) {
+		common.javascriptClick(driver, driver
+				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
+		// click checkout button
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		common.javascriptClick(driver, btnCheckOut);
+		driver.findElement(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-billing-info']")).click();
+		wait.threadWait(1000);
+		common.javascriptClick(driver, driver.findElement(By.id("checkout-address-same-as-shipping")));
+		wait.threadWait(1000);
 
-			driver.findElement(By.id("checkout-billing-city")).clear();
-			driver.findElement(By.id("checkout-billing-city")).sendKeys(user.getCity());
+		driver.findElement(By.id("checkout-billing-fisrt-name")).clear();
+		driver.findElement(By.id("checkout-billing-fisrt-name")).sendKeys(user.getFirstName());
 
-			driver.findElement(By.id("checkout-billing-zip-code")).clear();
-			driver.findElement(By.id("checkout-billing-zip-code")).sendKeys(user.getZip());
-			
-			driver.findElement(By.id("checkout-billingAddressForm-phone-number")).clear();
-			driver.findElement(By.id("checkout-billingAddressForm-phone-number")).sendKeys(user.getPhone());
-			
-			
-			common.javascriptMakeSelectOptionVisiable(driver, "checkout-billing-region-select");
-			Select provence = new Select(driver.findElement(By.id("checkout-billing-region-select")));
-			provence.selectByIndex(2);			
-			
-			driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]")).clear();
-			driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]")).sendKeys(billing.getCardNum());
-			driver.findElement(By.id("checkout-billing-cardholder")).sendKeys(user.getFirstName());
-			new Select(driver.findElement(By.id("ccExpMonth"))).selectByVisibleText(billing.getExpMonth());
-			new Select(driver.findElement(By.id("ccExpYear"))).selectByVisibleText(billing.getExpYear());
-			driver.findElement(By.id("frmCcCvv")).sendKeys(billing.getCvc());		
-			
-			
-			driver.findElement(By.xpath("//a[@class='btn btn--sm btn--bordered js-add-new-billing-info-btn']")).click();
-			wait.threadWait(5000);
-			// check account
-			common.javascriptClick(driver,
-					driver.findElement(By.xpath("//a[@class='btn-link' and contains(text(),' Account')]")));
-			wait.threadWait(2000);		
+		driver.findElement(By.id("checkout-billing-last-name")).clear();
+		driver.findElement(By.id("checkout-billing-last-name")).sendKeys(user.getLastName());
+
+		driver.findElement(By.id("checkout-billing-address-1")).clear();
+		driver.findElement(By.id("checkout-billing-address-1")).sendKeys(user.getAddress());
+
+		driver.findElement(By.id("checkout-billing-city")).clear();
+		driver.findElement(By.id("checkout-billing-city")).sendKeys(user.getCity());
+
+		driver.findElement(By.id("checkout-billing-zip-code")).clear();
+		driver.findElement(By.id("checkout-billing-zip-code")).sendKeys(user.getZip());
+
+		driver.findElement(By.id("checkout-billingAddressForm-phone-number")).clear();
+		driver.findElement(By.id("checkout-billingAddressForm-phone-number")).sendKeys(user.getPhone());
+
+		common.javascriptMakeSelectOptionVisiable(driver, "checkout-billing-region-select");
+		Select provence = new Select(driver.findElement(By.id("checkout-billing-region-select")));
+		provence.selectByIndex(2);
+
+		driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]"))
+				.clear();
+		driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]"))
+				.sendKeys(billing.getCardNum());
+		driver.findElement(By.id("checkout-billing-cardholder")).sendKeys(user.getFirstName());
+		new Select(driver.findElement(By.id("ccExpMonth"))).selectByVisibleText(billing.getExpMonth());
+		new Select(driver.findElement(By.id("ccExpYear"))).selectByVisibleText(billing.getExpYear());
+		driver.findElement(By.id("frmCcCvv")).sendKeys(billing.getCvc());
+
+		driver.findElement(By.xpath("//a[@class='btn btn--sm btn--bordered js-add-new-billing-info-btn']")).click();
+		wait.threadWait(5000);
+		// check account
+		common.javascriptClick(driver,
+				driver.findElement(By.xpath("//a[@class='btn-link' and contains(text(),' Account')]")));
+		wait.threadWait(2000);
 	}
-	
+
+	public void selectCreditCardWhenCheckOut(BillingInfo billing) {
+		// click checkout button
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		common.javascriptClick(driver, btnCheckOut);
+		wait.waitElementToBeEnabled(By.xpath("//button[contains(text(),'Place my order')]"));
+		common.javascriptMakeSelectOptionVisiable(driver, "checkout-card-select");
+		Select selectCC=new Select(driver.findElement(By.id("checkout-card-select")));
+		selectCC.selectByIndex(1);
+		//get select credit card's last 4 number and compare to the original one
+		String last4numberOfSelectCard=selectCC.getOptions().get(1).getText().substring(4, 8);
+		String last4numberOfBilling=billing.getCardNum().substring(15, 19);
+		Assert.assertEquals(last4numberOfSelectCard, last4numberOfBilling);
+		
+	}
+
 	public boolean ElementExist(By Locator) {
 		try {
 			driver.findElement(Locator);
