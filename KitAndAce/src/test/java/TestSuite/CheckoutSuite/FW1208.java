@@ -23,14 +23,14 @@ import junit.framework.Assert;
 /**
  * @Title: Automation TestSuite
  * @Package CheckoutSuite
- * @Description: Add new CC for the Order. Positive
+ * @Description: Logged user with several SAs, CCs.
  * @author: Howard
  * @compay: Kit and Ace
- * @date 12/5/2016
+ * @date 12/8/2016
  * @version V1.0
  */
 
-public class FW1233 {
+public class FW1208 {
 	private WebDriver driver, verifyDriver;
 	private Wait wait, verifyWait;
 	CommonActions common;
@@ -38,7 +38,7 @@ public class FW1233 {
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
 	public VerifyTearDownOperations verifyTearDownOperations;
-	static Logger log = Logger.getLogger(FW1233.class.getName());
+	static Logger log = Logger.getLogger(FW1208.class.getName());
 	public InitWebDriver initWebDriver;
 	public UserInfo userHybris, userHMC;
 	public BillingInfo billing;
@@ -77,14 +77,16 @@ public class FW1233 {
 		// register one new user
 		uitestOperation.registerUser(userHybris);
 		// add 2 credit card
+		uitestOperation.addUserAddressDetail(userHybris, billing);
 		uitestOperation.addUserPaymentDetail(userHybris, billing);
-		uitestOperation.addUserPaymentDetail(userHybris, uitestOperation.billings.get(1));
+		uitestOperation.addUserAddressDetail(userHMC, uitestOperation.billings.get(1));
+		uitestOperation.addUserPaymentDetail(userHMC, uitestOperation.billings.get(1));
 		uitestOperation.buyManTshirtsWithAnonymousUser();
 		
 		// click checkout button
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Edit your options')]"));
 		common.javascriptClick(driver, btnCheckOut);
-		uitestOperation.selectCreditCardWhenCheckOut(billing);
+		uitestOperation.selectAnotherAddressAndCC(uitestOperation.billings.get(1));
 
 	}
 

@@ -461,6 +461,7 @@ public class UITestOperations {
 		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
 		addUserInfo(user);
 		addBillInfo(billing);
+		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 	}
 
 	public void checkOut(UserInfo user, BillingInfo billing) {
@@ -475,6 +476,7 @@ public class UITestOperations {
 			addUserInfo(user);
 
 		addBillInfo(billing);
+		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 
 	}
 
@@ -520,7 +522,7 @@ public class UITestOperations {
 
 		driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).clear();
 		driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).sendKeys(billing.getCvc());
-		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
+		
 	}
 
 	public String getOrderNumber() {
@@ -676,11 +678,49 @@ public class UITestOperations {
 				driver.findElement(By.xpath("//a[@class='btn-link' and contains(text(),' Account')]")));
 		wait.threadWait(2000);
 	}
+	
+	
+	
+	public void addUserAddressDetail(UserInfo user, BillingInfo billing) {
+		List<WebElement> btnAccounts = driver.findElements(By.xpath("//a[@href='/ca/en/my-account']"));
+		common.javascriptClick(driver, btnAccounts.get(0));
+		wait.threadWait(2000);
+
+		driver.findElement(By.xpath("//div[@class='action-btn content-block__button big js-account-new-address']"))
+				.click();
+		// add credit card
+		driver.findElement(By.id("edit-address-form_firstName")).clear();
+		driver.findElement(By.id("edit-address-form_firstName")).sendKeys(user.getFirstName());
+
+		driver.findElement(By.id("edit-address-form_lastName")).clear();
+		driver.findElement(By.id("edit-address-form_lastName")).sendKeys(user.getLastName());
+
+		driver.findElement(By.id("edit-address-form_addressFirst")).clear();
+		driver.findElement(By.id("edit-address-form_addressFirst")).sendKeys(user.getAddress());
+
+		driver.findElement(By.id("edit-address-form_city")).clear();
+		driver.findElement(By.id("edit-address-form_city")).sendKeys(user.getCity());
+
+		driver.findElement(By.id("edit-address-form_zipCode")).clear();
+		driver.findElement(By.id("edit-address-form_zipCode")).sendKeys(user.getZip());
+
+		driver.findElement(By.id("edit-address-form_phone")).clear();
+		driver.findElement(By.id("edit-address-form_phone")).sendKeys(user.getPhone());
+
+		common.javascriptMakeSelectOptionVisiable(driver, "province-select");
+		Select provence = new Select(driver.findElement(By.id("province-select")));
+		provence.selectByIndex(2);
+
+		driver.findElement(By.xpath("//button[@class='button js-account-address-save']")).click();
+
+	}
+	
+	
 
 	public void selectCreditCardWhenCheckOut(BillingInfo billing) {
-		// click checkout button
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
-		common.javascriptClick(driver, btnCheckOut);
+//		// click checkout button
+//		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+//		common.javascriptClick(driver, btnCheckOut);
 		wait.waitElementToBeEnabled(By.xpath("//button[contains(text(),'Place my order')]"));
 		common.javascriptMakeSelectOptionVisiable(driver, "checkout-card-select");
 		Select selectCC=new Select(driver.findElement(By.id("checkout-card-select")));
@@ -691,6 +731,62 @@ public class UITestOperations {
 		Assert.assertEquals(last4numberOfSelectCard, last4numberOfBilling);
 		
 	}
+	
+	
+	public void selectAnotherAddressAndCC(BillingInfo billing)
+	{
+		selectCreditCardWhenCheckOut(billing);
+		common.javascriptMakeSelectOptionVisiable(driver, "checkout-select-delivery-address");
+		Select selectCC=new Select(driver.findElement(By.id("checkout-select-delivery-address")));
+		selectCC.selectByIndex(1);
+	}
+	
+	
+	public void AnonymousCheckOutAndVerifyInfo(UserInfo user, BillingInfo billing) {
+		common.javascriptClick(driver, driver
+				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
+		wait.threadWait(1000);
+		// click checkout button
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		common.javascriptClick(driver, btnCheckOut);
+		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
+		addUserInfo(user);
+		addBillInfo(billing);
+		verifyAnonymousCheckPage(user,billing);
+		
+	}
+	
+	public void verifyAnonymousCheckPage(UserInfo user, BillingInfo billing)
+	{
+		boolean verified=true;
+		//checking the number of blocks :
+		List<WebElement> webElements=driver.findElements(By.xpath("//legend[@class='form__title']"));
+		Assert.assertTrue(webElements!=null && webElements.size()>=3);
+		
+		//checking where had sign and email
+		verified=ElementExist(By.xpath("//div[@class='order-summary__title clearfix']"));
+		verified=ElementExist(By.xpath("//a[@class='js-checkout-sign-in']"));
+		verified=ElementExist(By.id("checkout-email"));
+		
+		//checking order summary
+		List<String> titles=new ArrayList<String>();
+		titles.add("Subtotal");titles.add("Tax");titles.add("Order total");
+		List<WebElement> summary=driver.findElements(By.xpath("//div[@class='order-summary__price__title pull-left']"));
+		for(WebElement orderSummary:summary)
+		{
+			
+			if(orderSummary.getText().length()>0)
+				verified=titles.contains(orderSummary.getText());
+		}
+		
+		
+		//try to input user and billing information , if no issue input, that means all the field are exist.
+		addUserInfo(user);
+		addBillInfo(billing);
+		
+	
+	}
+
 
 	public boolean ElementExist(By Locator) {
 		try {
