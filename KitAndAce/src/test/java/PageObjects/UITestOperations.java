@@ -761,7 +761,7 @@ public class UITestOperations {
 		boolean verified=true;
 		//checking the number of blocks :
 		List<WebElement> webElements=driver.findElements(By.xpath("//legend[@class='form__title']"));
-		Assert.assertTrue(webElements!=null && webElements.size()>=3);
+		Assert.assertTrue(webElements!=null && webElements.size()>=2);
 		
 		//checking where had sign and email
 		verified=ElementExist(By.xpath("//div[@class='order-summary__title clearfix']"));
@@ -785,6 +785,13 @@ public class UITestOperations {
 		addBillInfo(billing);
 		
 	
+	}
+	
+	
+	public void verifyCheckOutPageWhenNOTLogined(UserInfo user, BillingInfo billing) {
+		//if all the fields can be input which means all these fields are exsit.		
+			addUserInfo(user);
+			verifyAnonymousCheckPage(user,billing);
 	}
 
 
