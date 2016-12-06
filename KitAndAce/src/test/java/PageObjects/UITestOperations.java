@@ -463,6 +463,27 @@ public class UITestOperations {
 		addBillInfo(billing);
 		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 	}
+	
+	
+	public void AnonymousCheckOutAndThenLogin(UserInfo user, BillingInfo billing) {
+		common.javascriptClick(driver, driver
+				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
+		wait.waitElementToBeDisplayed(By.xpath("//button[contains(text(),'Checkout')]"));
+		// click checkout button
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		common.javascriptClick(driver, btnCheckOut);
+		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
+		wait.threadWait(1000);
+		wait.waitElementToBeDisplayed(By.xpath("//a[@class='js-checkout-sign-in']"));
+		driver.findElement(By.xpath("//a[@class='js-checkout-sign-in']")).click();
+		wait.waitElementToBeDisplayed(By.id("signin-email"));
+		//login on the checkout page
+		driver.findElement(By.id("signin-email")).clear();
+		driver.findElement(By.id("signin-email")).sendKeys(user.getEmail());
+		driver.findElement(By.id("signin-password")).sendKeys(user.getPassword());
+		driver.findElement(By.xpath("//button[@class='btn btn--default btn--md js-checkout-signin-btn']")).click();
+		
+	}
 
 	public void checkOut(UserInfo user, BillingInfo billing) {
 		// click bag button

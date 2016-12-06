@@ -72,13 +72,10 @@ public class FW1210 {
 	}
 
 	@Test
-	public void testAddNewCCForOrder() throws Exception {
+	public void testVerifyCheckOutPageWhenNOTLogined() throws Exception {
 		init();
 		// register one new user
 		uitestOperation.registerUser(userHybris);
-//		// add 2 credit card
-//		uitestOperation.addUserPaymentDetail(userHybris, billing);
-//		uitestOperation.addUserPaymentDetail(userHybris, uitestOperation.billings.get(1));
 		wait.threadWait(1000);
 		uitestOperation.buyManTshirtsWithAnonymousUser();
 		
@@ -86,7 +83,6 @@ public class FW1210 {
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		uitestOperation.verifyCheckOutPageWhenNOTLogined(userHybris,billing);
-//		uitestOperation.selectCreditCardWhenCheckOut(billing);
 
 	}
 

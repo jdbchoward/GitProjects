@@ -23,14 +23,14 @@ import junit.framework.Assert;
 /**
  * @Title: Automation TestSuite
  * @Package CheckoutSuite
- * @Description: Logged user with several SAs, CCs.
+ * @Description:  Login user on Checkout page.
  * @author: Howard
  * @compay: Kit and Ace
- * @date 12/8/2016
+ * @date 12/14/2016
  * @version V1.0
  */
 
-public class FW1208 {
+public class FW1223 {
 	private WebDriver driver, verifyDriver;
 	private Wait wait, verifyWait;
 	CommonActions common;
@@ -38,7 +38,7 @@ public class FW1208 {
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
 	public VerifyTearDownOperations verifyTearDownOperations;
-	static Logger log = Logger.getLogger(FW1208.class.getName());
+	static Logger log = Logger.getLogger(FW1223.class.getName());
 	public InitWebDriver initWebDriver;
 	public UserInfo userHybris, userHMC;
 	public BillingInfo billing;
@@ -72,7 +72,7 @@ public class FW1208 {
 	}
 
 	@Test
-	public void testLoggedWithSeveralSaCc() throws Exception {
+	public void testLoginOnCheckoutPage() throws Exception {
 		init();
 		// register one new user
 		uitestOperation.registerUser(userHybris);
@@ -81,12 +81,14 @@ public class FW1208 {
 		uitestOperation.addUserPaymentDetail(userHybris, billing);
 		uitestOperation.addUserAddressDetail(userHMC, uitestOperation.billings.get(1));
 		uitestOperation.addUserPaymentDetail(userHMC, uitestOperation.billings.get(1));
+		
+		//logout
+		uitestOperation.doSignOut();
+		//buy item
 		uitestOperation.buyManTshirtsWithAnonymousUser();
 		
-		// click checkout button
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Edit your options')]"));
-		common.javascriptClick(driver, btnCheckOut);
-		uitestOperation.selectAnotherAddressAndCC(uitestOperation.billings.get(1));
+		// checkout
+		uitestOperation.AnonymousCheckOutAndThenLogin(userHybris,billing);
 
 	}
 

@@ -72,7 +72,7 @@ public class FW1211 {
 	}
 
 	@Test
-	public void testAddNewCCForOrder() throws Exception {
+	public void testConfirmationPageDisplay() throws Exception {
 		init();
 		// register one new user
 		uitestOperation.registerUser(userHybris);

@@ -23,7 +23,7 @@ import junit.framework.Assert;
 /**
  * @Title: Automation TestSuite
  * @Package CheckoutSuite
- * @Description: Add new CC for the Order. Positive
+ * @Description: Select CC. Positive
  * @author: Howard
  * @compay: Kit and Ace
  * @date 12/5/2016
@@ -72,7 +72,7 @@ public class FW1233 {
 	}
 
 	@Test
-	public void testAddNewCCForOrder() throws Exception {
+	public void testSelectCCWhenCheckOut() throws Exception {
 		init();
 		// register one new user
 		uitestOperation.registerUser(userHybris);
