@@ -68,9 +68,12 @@ public class TestModifyProductQuantity {
 	    wait.threadWait(3000);
 	   
 	    //this test case is to modify item id:91215
-	    hmcTestOperation.naviToProduct("91215","1001");
+	    hmcTestOperation.naviToProduct("91215","1001");	    
 	    Assert.assertTrue(hmcTestOperation.verifyProductQuanlityFromTable(driver));
-
+	    
+	    driver.findElement(By.id("Content/OrganizerComponent[organizersearch][Product]_togglelabel")).click();
+	    hmcTestOperation.changeQuantity("88584", "1001");
+	    Assert.assertTrue(hmcTestOperation.verifyProductQuanlityFromTable(driver));
 	}
 
 

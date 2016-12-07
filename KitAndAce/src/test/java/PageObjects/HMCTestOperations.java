@@ -283,13 +283,12 @@ public class HMCTestOperations {
 
 	/// ----------------------------------------------------------
 
-	public void doLogOnSite(UserInfo user,WebDriver driver) {
+	public void doLogOnSite(UserInfo user, WebDriver driver) {
 		String testEnvironment = common.getSettings().getValue("testEnvironment");
 		if (testEnvironment.equalsIgnoreCase("dev"))
 			driver.get("https://admindev.hybris.kitandace.com/hmc/hybris");
 		if (testEnvironment.equalsIgnoreCase("stage"))
 			driver.get("http://adminstaging.hybris.kitandace.com/hmc/hybris");
-		
 
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -316,7 +315,7 @@ public class HMCTestOperations {
 
 	// indexTD is the index of TD start with the information such as order
 	// number
-	public boolean searchFromTable(String tableID, int indexTD, String searchKey, WebElement table,WebDriver driver) {
+	public boolean searchFromTable(String tableID, int indexTD, String searchKey, WebElement table, WebDriver driver) {
 		boolean result = false;
 		WebElement table_element;
 		if (table != null)
@@ -324,7 +323,7 @@ public class HMCTestOperations {
 		else
 			table_element = driver.findElement(By.id(tableID));
 
-		//  ".//"  is to find xpath under the element
+		// ".//" is to find xpath under the element
 		List<WebElement> tr_collection = table_element.findElements(By.xpath(".//tbody/tr"));
 		log.debug("NUMBER OF ROWS IN THIS TABLE = " + tr_collection.size());
 		// System.out.println("NUMBER OF ROWS IN THIS TABLE =
@@ -332,13 +331,14 @@ public class HMCTestOperations {
 		int row_num, col_num;
 		row_num = 1;
 		for (WebElement trElement : tr_collection) {
-			
+
 			if (result)
 				break;
-			
+
 			List<WebElement> td_collection = trElement.findElements(By.xpath("td"));
-			log.debug("Current row is: "+ row_num+" NUMBER OF COLUMNS=" + td_collection.size());
-//			System.out.println("Current row is: "+ row_num+" NUMBER OF COLUMNS=" + td_collection.size());
+			log.debug("Current row is: " + row_num + " NUMBER OF COLUMNS=" + td_collection.size());
+			// System.out.println("Current row is: "+ row_num+" NUMBER OF
+			// COLUMNS=" + td_collection.size());
 			col_num = 1;
 			for (WebElement tdElement : td_collection) {
 				// go through all the table to find the line with information
@@ -351,7 +351,7 @@ public class HMCTestOperations {
 				col_num++;
 			}
 			row_num++;
-			
+
 		}
 		return result;
 	}
@@ -360,23 +360,36 @@ public class HMCTestOperations {
 		driver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[catalog]_treeicon")).click();
 		wait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Product]_label"));
 		driver.findElement(By.id("Tree/GenericLeafNode[Product]_label")).click();
-		driver.findElement(By.xpath("//input[contains(@id,'Content/StringEditor[in Content/GenericCondition[Product.code]]_input')]"))
+		changeQuantity(productID,quantity);
+	}
+
+	public void changeQuantity(String productID, String quantity) {
+		
+		driver.findElement(By
+				.xpath("//input[contains(@id,'Content/StringEditor[in Content/GenericCondition[Product.code]]_input')]")).clear();
+		driver.findElement(By
+				.xpath("//input[contains(@id,'Content/StringEditor[in Content/GenericCondition[Product.code]]_input')]"))
 				.sendKeys(productID);
 		wait.threadWait(1000);
 		driver.findElement(By.xpath("//span[contains(text(),'Search')]")).click();
 
 		// open new window to modify product
 		String mainPageTilte = driver.getTitle();
-//		wait.waitElementToBeDisplayed(
-//				By.xpath("//div[contains(@id, 'Content/ItemDisplay[ktacProductCatalog - Staged]')]"));
-//		Actions action = new Actions(driver);
-//		action.doubleClick(driver
-//				.findElement(By.xpath("//div[contains(@id, 'Content/ItemDisplay[ktacProductCatalog - Staged]')]")))
-//				.perform();
+		// wait.waitElementToBeDisplayed(
+		// By.xpath("//div[contains(@id, 'Content/ItemDisplay[ktacProductCatalog
+		// - Staged]')]"));
+		// Actions action = new Actions(driver);
+		// action.doubleClick(driver
+		// .findElement(By.xpath("//div[contains(@id,
+		// 'Content/ItemDisplay[ktacProductCatalog - Staged]')]")))
+		// .perform();
+		
+		
 		wait.threadWait(2000);
-		List<WebElement> products=driver.findElements(By.xpath("//span[contains(@id, 'Content/OrganizerListEntry[91215')]"));
-		if(products!=null && products.size()>0)
-		{
+		String xpath="//span[contains(@id, 'Content/OrganizerListEntry["+productID+"')]";
+		List<WebElement> products = driver
+				.findElements(By.xpath(xpath));
+		if (products != null && products.size() > 0) {
 			products.get(0).click();
 		}
 		wait.threadWait(3000);
@@ -387,21 +400,25 @@ public class HMCTestOperations {
 		wait.threadWait(2000);
 		driver.findElement(By.xpath("//div[contains(text(),'Find Stock Levels for Product')]")).click();
 		wait.threadWait(3000);
-		common.switchWindowHandles(driver, "[findstocklevelsforproduct.title] - hybris Management Console (hMC)");		
-		log.debug("current window is: "+driver.getTitle());
-		List<WebElement> productQuantities=driver.findElements(By.xpath("//span[contains(@id, 'OrganizerListEntry[91215')]"));
-		if(productQuantities!=null && productQuantities.size()>0)
-		{
+		common.switchWindowHandles(driver, "[findstocklevelsforproduct.title] - hybris Management Console (hMC)");
+		log.debug("current window is: " + driver.getTitle());
+		xpath="//span[contains(@id, 'OrganizerListEntry["+productID+"')]";
+		List<WebElement> productQuantities = driver
+				.findElements(By.xpath(xpath));
+		if (productQuantities != null && productQuantities.size() > 0) {
 			productQuantities.get(0).click();
 		}
-		
-		driver.findElement(By.xpath("//input[contains(@id,'IntegerEditor[in Attribute[StockLevel.available]')]")).clear();
-		driver.findElement(By.xpath("//input[contains(@id,'IntegerEditor[in Attribute[StockLevel.available]')]")).sendKeys(quantity);
+
+		driver.findElement(By.xpath("//input[contains(@id,'IntegerEditor[in Attribute[StockLevel.available]')]"))
+				.clear();
+		driver.findElement(By.xpath("//input[contains(@id,'IntegerEditor[in Attribute[StockLevel.available]')]"))
+				.sendKeys(quantity);
 		driver.findElement(By.xpath("//div[contains(@id,'ImageToolbarAction[organizer.editor.save.title]')]")).click();
 		driver.close();
 		common.switchWindowHandles(driver, productPage);
-
 	}
+	
+	
 
 	public boolean verifyProductQuanlityFromTable(WebDriver driver) {
 		String productPage = driver.getTitle();
@@ -411,7 +428,7 @@ public class HMCTestOperations {
 		common.switchWindowHandles(driver, "[findstocklevelsforproduct.title] - hybris Management Console (hMC)");
 		WebElement table = driver
 				.findElement(By.xpath("//table[contains(@id,'ClassificationOrganizerList[StockLevel]')]"));
-		boolean checked = searchFromTable(null, 6, "1001", table,driver);
+		boolean checked = searchFromTable(null, 6, "1001", table, driver);
 		driver.close();
 		common.switchWindowHandles(driver, productPage);
 		return checked;
