@@ -692,11 +692,6 @@ public class UITestOperations {
 	}
 
 	public void addCreditCardWhenCheckOut(UserInfo user, BillingInfo billing) {
-		common.javascriptClick(driver, driver
-				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
-		// click checkout button
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
-		common.javascriptClick(driver, btnCheckOut);
 		driver.findElement(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-billing-info']")).click();
 		wait.threadWait(1000);
 		common.javascriptClick(driver, driver.findElement(By.id("checkout-address-same-as-shipping")));

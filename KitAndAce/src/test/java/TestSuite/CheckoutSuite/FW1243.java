@@ -23,14 +23,14 @@ import junit.framework.Assert;
 /**
  * @Title: Automation TestSuite
  * @Package CheckoutSuite
- * @Description: Add new CC for the Order. Positive
+ * @Description: Add new CC for the Order. Page display. Positive
  * @author: Howard
  * @compay: Kit and Ace
- * @date 12/2/2016
+ * @date 12/20/2016
  * @version V1.0
  */
 
-public class FW1230 {
+public class FW1243 {
 	private WebDriver driver,verifyDriver;
 	private Wait wait,verifyWait;
 	CommonActions common;
@@ -38,7 +38,7 @@ public class FW1230 {
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
 	public VerifyTearDownOperations verifyTearDownOperations;
-	static Logger log = Logger.getLogger(FW1230.class.getName());
+	static Logger log = Logger.getLogger(FW1243.class.getName());
 	public InitWebDriver initWebDriver;
 	public UserInfo userHybris,userHMC;
 	public BillingInfo billing;
@@ -79,17 +79,18 @@ public class FW1230 {
 		init();
 	//register one new user
 		uitestOperation.registerUser(userHybris);
+		uitestOperation.addUserAddressDetail(userHybris, billing);
 		uitestOperation.addUserPaymentDetail(userHybris,billing);
 		uitestOperation.buyManTshirtsWithAnonymousUser();
 		
 		//new a billing for add
-		billing=uitestOperation.billings.get(1);	
+		billing=uitestOperation.billings.get(1);
 		
 		
 		//checkout
 		common.javascriptClick(driver, driver.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));		
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
-		common.javascriptClick(driver, btnCheckOut);
+		WebElement editOptions = driver.findElement(By.xpath("//button[contains(text(),'Edit your options')]"));
+		common.javascriptClick(driver, editOptions);
 		uitestOperation.addCreditCardWhenCheckOut(userHybris,billing);
 
 	}
