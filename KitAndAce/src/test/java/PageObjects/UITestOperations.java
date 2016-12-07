@@ -735,6 +735,30 @@ public class UITestOperations {
 				driver.findElement(By.xpath("//a[@class='btn-link' and contains(text(),' Account')]")));
 		wait.threadWait(2000);
 	}
+	
+	
+	
+	public void addCreditCardWhenCheckOutSameAsSA(UserInfo user, BillingInfo billing) {
+		driver.findElement(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-billing-info']")).click();
+		wait.threadWait(1000);
+
+		driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]"))
+				.clear();
+		driver.findElement(By.xpath("//input[contains(@class,'cc-card-number__field field js-credit-card__number')]"))
+				.sendKeys(billing.getCardNum());
+		driver.findElement(By.id("checkout-billing-cardholder")).sendKeys(user.getFirstName());
+		new Select(driver.findElement(By.id("ccExpMonth"))).selectByVisibleText(billing.getExpMonth());
+		new Select(driver.findElement(By.id("ccExpYear"))).selectByVisibleText(billing.getExpYear());
+		driver.findElement(By.id("frmCcCvv")).sendKeys(billing.getCvc());
+
+		driver.findElement(By.xpath("//a[@class='btn btn--sm btn--bordered js-add-new-billing-info-btn']")).click();
+		wait.threadWait(5000);
+		// check account
+		common.javascriptClick(driver,
+				driver.findElement(By.xpath("//a[@class='btn-link' and contains(text(),' Account')]")));
+		wait.threadWait(2000);
+	}
+
 
 	public void addUserAddressDetail(UserInfo user, BillingInfo billing) {
 		List<WebElement> btnAccounts = driver.findElements(By.xpath("//a[@href='/ca/en/my-account']"));
@@ -844,6 +868,19 @@ public class UITestOperations {
 		// exsit.
 		addUserInfo(user);
 		verifyAnonymousCheckPage(user, billing);
+	}
+	
+	
+	public void verifyDeliveryCost(int selectedIndex,int cost)
+	{
+		List<WebElement> checkboxElement=driver.findElements(By.xpath("//div[@class='checkbox__circle js-shipping-option-checkbox']"));
+	
+//		Assert.assertTrue(checkboxElement.get(selectedIndex).getAttribute("checked").equals("true"));
+		
+		String costString=driver.findElement(By.xpath("//div[@class='order-summary__price__val pull-right transform-uppercase']")).getText();
+		
+		Assert.assertTrue(costString.equalsIgnoreCase("$"+Integer.toString(cost)));
+	
 	}
 
 	public boolean ElementExist(By Locator) {
