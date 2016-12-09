@@ -85,7 +85,7 @@ public class FW1213 {
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Edit your options')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		
-		uitestOperation.verifyDeliveryCost(1,0);
+		uitestOperation.verifyDeliveryCost(0,0);
 		
 		
 		wait.waitElementToBeEnabled(By.xpath("//button[contains(text(),'Place my order')]"));

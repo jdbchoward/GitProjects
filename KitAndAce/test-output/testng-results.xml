@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="75488" started-at="2016-12-07T22:39:42Z" finished-at="2016-12-07T22:40:57Z">
+  <suite name="Default suite" duration-ms="48818" started-at="2016-12-09T18:24:10Z" finished-at="2016-12-09T18:24:59Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="75488" started-at="2016-12-07T22:39:42Z" finished-at="2016-12-07T22:40:57Z">
-      <class name="TestSuite.CheckoutSuite.FW1213">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1213@3532ec19]" name="setUp" is-config="true" duration-ms="19" started-at="2016-12-07T14:39:42Z" finished-at="2016-12-07T14:39:42Z">
+    <test name="Default test" duration-ms="48818" started-at="2016-12-09T18:24:10Z" finished-at="2016-12-09T18:24:59Z">
+      <class name="TestSuite.CheckoutSuite.FW1216">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1216@3532ec19]" name="setUp" is-config="true" duration-ms="21" started-at="2016-12-09T10:24:10Z" finished-at="2016-12-09T10:24:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testConfirmationPageDisplay()[pri:0, instance:TestSuite.CheckoutSuite.FW1213@3532ec19]" name="testConfirmationPageDisplay" duration-ms="48294" started-at="2016-12-07T14:39:42Z" finished-at="2016-12-07T14:40:30Z">
+        <test-method status="PASS" signature="checkEnterAddressVerification()[pri:0, instance:TestSuite.CheckoutSuite.FW1216@3532ec19]" name="checkEnterAddressVerification" duration-ms="43584" started-at="2016-12-09T10:24:10Z" finished-at="2016-12-09T10:24:54Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testConfirmationPageDisplay -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1213@3532ec19]" name="tearDown" is-config="true" duration-ms="27162" started-at="2016-12-07T14:40:30Z" finished-at="2016-12-07T14:40:57Z">
+        </test-method> <!-- checkEnterAddressVerification -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1216@3532ec19]" name="tearDown" is-config="true" duration-ms="5200" started-at="2016-12-09T10:24:54Z" finished-at="2016-12-09T10:24:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- TestSuite.CheckoutSuite.FW1213 -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1216 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
