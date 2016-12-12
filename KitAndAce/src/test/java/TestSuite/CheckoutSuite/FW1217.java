@@ -29,23 +29,23 @@ import junit.framework.Assert;
 /**   
 * @Title: Automation TestSuite 
 * @Package CheckoutSuite 
-* @Description:  Enter shipping address - Negative 
+* @Description:  User not logged in. Changing country. Positive
 * @author: Howard
 * @compay: Kit and Ace     
-* @date 12/30/2016 
+* @date 1/4/2016 
 * @version V1.0   
 */
 
 
 
-public class FW1215 {
+public class FW1217 {
 	private WebDriver driver,verifyDriver;
 	private Wait wait,verifyWait;
 	CommonActions common;
 	ElementsRepositoryAction elementsRepositoryAction;
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
-	static Logger log = Logger.getLogger(FW1215.class.getName());
+	static Logger log = Logger.getLogger(FW1217.class.getName());
 	public InitWebDriver initWebDriver;
 	public UserInfo userHybris,userHMC;
 	public BillingInfo billing;
@@ -81,7 +81,7 @@ public class FW1215 {
 	}
 
 	@Test
-	public void checkEnterAddressVerification() throws Exception {
+	public void checkChangeCountry() throws Exception {
 
 		init();
 		
@@ -94,12 +94,9 @@ public class FW1215 {
 		// click checkout button
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
 		common.javascriptClick(driver, btnCheckOut);
-		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
-		
-		wait.threadWait(5000);	    
-	    
-	    uitestOperation.AnonymousCheckOutAfterVerifyFields(userHybris,billing);	 
-	    
+		//change country and check currecy 
+		uitestOperation.changeCountryWhenCheckOut(); 
+    
 	    
 
 	}

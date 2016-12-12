@@ -464,16 +464,14 @@ public class UITestOperations {
 		addBillInfo(billing);
 		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 	}
-	
-	
-	public void AnonymousCheckOutAfterVerifyFields(UserInfo user, BillingInfo billing)
-	{
+
+	public void AnonymousCheckOutAfterVerifyFields(UserInfo user, BillingInfo billing) {
 		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
 		addUserInfo(user);
 		addBillInfo(billing);
-//		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
+		// driver.findElement(By.xpath("//button[contains(text(),' Place my
+		// order')]")).click();
 	}
-	
 
 	public void AnonymousCheckOutAndThenLogin(UserInfo user, BillingInfo billing) {
 		common.javascriptClick(driver, driver
@@ -520,26 +518,25 @@ public class UITestOperations {
 		List<WebElement> btnEdits = driver.findElements(By.xpath("//button[contains(text(),'Edit')]"));
 		if (btnEdits != null && btnEdits.size() > 0) {
 			btnEdits.get(1).click();
-		}		
-		
+		}
+
 		wait.threadWait(5000);
 		// change quanlity for second item
 		List<WebElement> btnQuanlity = driver.findElements(By.xpath("//button[@class='counter__btn js-bag-qty-plus']"));
-		
-		System.out.println("btnQuanlity: " +btnQuanlity.size());
-		if (btnQuanlity != null && btnQuanlity.size() > 0) {			
-			common.javascriptClick(driver, btnQuanlity.get(1));				
+
+		System.out.println("btnQuanlity: " + btnQuanlity.size());
+		if (btnQuanlity != null && btnQuanlity.size() > 0) {
+			common.javascriptClick(driver, btnQuanlity.get(1));
 		}
 
 		// click update
 		List<WebElement> btnUpdate = driver.findElements(By.xpath("//button[contains(text(),'Update')]"));
-		if (btnUpdate != null && btnUpdate.size() > 0) {			
-			common.javascriptClick(driver, btnUpdate.get(1));		
+		if (btnUpdate != null && btnUpdate.size() > 0) {
+			common.javascriptClick(driver, btnUpdate.get(1));
 		}
 
 	}
-	
-	
+
 	public void editOrderColorSize() {
 		// edit order
 		wait.waitElementToBeDisplayed(By.xpath("//a[@class='pull-right js-edit-order']"));
@@ -550,30 +547,31 @@ public class UITestOperations {
 		List<WebElement> btnEdits = driver.findElements(By.xpath("//button[contains(text(),'Edit')]"));
 		if (btnEdits != null && btnEdits.size() > 0) {
 			btnEdits.get(1).click();
-		}		
-		
+		}
+
 		wait.threadWait(5000);
-//		// change quanlity for second item
-//		List<WebElement> btnQuanlity = driver.findElements(By.xpath("//button[@class='counter__btn js-bag-qty-plus']"));
-//		
-//		System.out.println("btnQuanlity: " +btnQuanlity.size());
-//		if (btnQuanlity != null && btnQuanlity.size() > 0) {			
-//			common.javascriptClick(driver, btnQuanlity.get(1));				
-//		}
-		
-		//change color and size
-		List<WebElement> colors=driver.findElements(By.xpath("//a[@data-colorcode='KM031092-10022']"));
+		// // change quanlity for second item
+		// List<WebElement> btnQuanlity =
+		// driver.findElements(By.xpath("//button[@class='counter__btn
+		// js-bag-qty-plus']"));
+		//
+		// System.out.println("btnQuanlity: " +btnQuanlity.size());
+		// if (btnQuanlity != null && btnQuanlity.size() > 0) {
+		// common.javascriptClick(driver, btnQuanlity.get(1));
+		// }
+
+		// change color and size
+		List<WebElement> colors = driver.findElements(By.xpath("//a[@data-colorcode='KM031092-10022']"));
 		common.javascriptClick(driver, colors.get(1));
 		wait.threadWait(2000);
 		driver.findElement(By.xpath("//button[@data-colorcode='KM031092-10022' and @data-sizecode='91998']")).click();
 
-//		// click update
-//		List<WebElement> btnUpdate = driver.findElements(By.xpath("//button[contains(text(),'Update')]"));
-//		if (btnUpdate != null && btnUpdate.size() > 0) {			
-//			common.javascriptClick(driver, btnUpdate.get(1));		
-//		}
-		
-
+		// // click update
+		// List<WebElement> btnUpdate =
+		// driver.findElements(By.xpath("//button[contains(text(),'Update')]"));
+		// if (btnUpdate != null && btnUpdate.size() > 0) {
+		// common.javascriptClick(driver, btnUpdate.get(1));
+		// }
 
 	}
 
@@ -661,17 +659,15 @@ public class UITestOperations {
 		confirmed = ElementExist(By.xpath("//div[contains(text(),'Full Name')]"));
 		return confirmed;
 	}
-	
-	
-	public boolean verifyUpdatedQuanlity(int quanlityNum)
-	{
-		List<WebElement> quanlity=driver.findElements(By.xpath("//table[@class='order-summary__list__i__details']/tbody/tr[2]/td[4]"));
-		for(WebElement w : quanlity)
-		{
-			if(w.getText()!=null && Integer.parseInt(w.getText())==quanlityNum)
+
+	public boolean verifyUpdatedQuanlity(int quanlityNum) {
+		List<WebElement> quanlity = driver
+				.findElements(By.xpath("//table[@class='order-summary__list__i__details']/tbody/tr[2]/td[4]"));
+		for (WebElement w : quanlity) {
+			if (w.getText() != null && Integer.parseInt(w.getText()) == quanlityNum)
 				return true;
 		}
-		
+
 		return false;
 	}
 
@@ -783,9 +779,7 @@ public class UITestOperations {
 				driver.findElement(By.xpath("//a[@class='btn-link' and contains(text(),' Account')]")));
 		wait.threadWait(2000);
 	}
-	
-	
-	
+
 	public void addCreditCardWhenCheckOutSameAsSA(UserInfo user, BillingInfo billing) {
 		driver.findElement(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-billing-info']")).click();
 		wait.threadWait(1000);
@@ -806,7 +800,6 @@ public class UITestOperations {
 				driver.findElement(By.xpath("//a[@class='btn-link' and contains(text(),' Account')]")));
 		wait.threadWait(2000);
 	}
-
 
 	public void addUserAddressDetail(UserInfo user, BillingInfo billing) {
 		List<WebElement> btnAccounts = driver.findElements(By.xpath("//a[@href='/ca/en/my-account']"));
@@ -866,6 +859,43 @@ public class UITestOperations {
 		selectCC.selectByIndex(1);
 	}
 
+	public void changeCountryWhenCheckOut() {
+		common.javascriptMakeSelectOptionVisiable(driver, "checkout-country-select");
+		Select selectCC = new Select(driver.findElement(By.id("checkout-country-select")));
+		selectCC.selectByIndex(1);
+		wait.waitElementToBeDisplayed(
+				By.xpath("//button[@class='modal__content__ok js-checkout-change-country-close is-active']"));
+		driver.findElement(By.xpath("//button[@class='modal__content__ok js-checkout-change-country-close is-active']"))
+				.click();
+		String totalprice = driver.findElement(By.xpath("//div[@class='order-summary__price__val pull-right']"))
+				.getText();
+
+		Assert.assertTrue(totalprice.contains("¥"));
+	}
+
+	public void removeOrderFromCheckOutPage(int itemIndex, boolean all, int totalItems) {
+		// edit order
+		wait.waitElementToBeDisplayed(By.xpath("//a[@class='pull-right js-edit-order']"));
+		driver.findElement(By.xpath("//a[@class='pull-right js-edit-order']")).click();
+
+		wait.waitElementToBeDisplayed(By.xpath("//span[@class='icon -close']"));
+		// click close button
+		List<WebElement> btnRemoveItems = driver.findElements(By.xpath("//span[@class='icon -close']"));		
+		wait.threadWait(3000);
+		if (!all) {
+			btnRemoveItems.get(itemIndex + 1).click();
+			wait.threadWait(1500);
+		} else {
+			for (int i = 2; i <= totalItems + 1; i++) {
+				btnRemoveItems.get(i).click();
+				wait.threadWait(1500);
+			}
+		}
+		// close cart [first one close botton is index 1]
+		btnRemoveItems.get(1).click();
+
+	}
+
 	public void AnonymousCheckOutAndVerifyInfo(UserInfo user, BillingInfo billing) {
 		common.javascriptClick(driver, driver
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
@@ -917,18 +947,19 @@ public class UITestOperations {
 		addUserInfo(user);
 		verifyAnonymousCheckPage(user, billing);
 	}
-	
-	
-	public void verifyDeliveryCost(int selectedIndex,int cost)
-	{
-		List<WebElement> checkboxElement=driver.findElements(By.xpath("//div[@class='checkbox__circle js-shipping-option-checkbox']"));
-	
-//		Assert.assertTrue(checkboxElement.get(selectedIndex).isSelected());
-		
-		String costString=driver.findElement(By.xpath("//div[@class='order-summary__price__val pull-right transform-uppercase']")).getText();
-		
-		Assert.assertTrue(costString.equalsIgnoreCase("$"+Integer.toString(cost)));
-	
+
+	public void verifyDeliveryCost(int selectedIndex, int cost) {
+		List<WebElement> checkboxElement = driver
+				.findElements(By.xpath("//div[@class='checkbox__circle js-shipping-option-checkbox']"));
+
+		// Assert.assertTrue(checkboxElement.get(selectedIndex).isSelected());
+
+		String costString = driver
+				.findElement(By.xpath("//div[@class='order-summary__price__val pull-right transform-uppercase']"))
+				.getText();
+
+		Assert.assertTrue(costString.equalsIgnoreCase("$" + Integer.toString(cost)));
+
 	}
 
 	public boolean ElementExist(By Locator) {
