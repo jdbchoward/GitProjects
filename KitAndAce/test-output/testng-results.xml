@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="101865" started-at="2016-12-12T20:20:33Z" finished-at="2016-12-12T20:22:14Z">
+  <suite name="Default suite" duration-ms="20270" started-at="2016-12-13T17:48:52Z" finished-at="2016-12-13T17:49:12Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="101865" started-at="2016-12-12T20:20:33Z" finished-at="2016-12-12T20:22:14Z">
-      <class name="TestSuite.CheckoutSuite.FW1219">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1219@3532ec19]" name="setUp" is-config="true" duration-ms="12" started-at="2016-12-12T12:20:33Z" finished-at="2016-12-12T12:20:33Z">
+    <test name="Default test" duration-ms="20270" started-at="2016-12-13T17:48:52Z" finished-at="2016-12-13T17:49:12Z">
+      <class name="TestSuite.CheckoutSuite.FW1220">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1220@3532ec19]" name="setUp" is-config="true" duration-ms="11" started-at="2016-12-13T09:48:52Z" finished-at="2016-12-13T09:48:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testConfirmationPageDisplay()[pri:0, instance:TestSuite.CheckoutSuite.FW1219@3532ec19]" name="testConfirmationPageDisplay" duration-ms="84577" started-at="2016-12-12T12:20:33Z" finished-at="2016-12-12T12:21:57Z">
+        <test-method status="PASS" signature="checkChangeCountry()[pri:0, instance:TestSuite.CheckoutSuite.FW1220@3532ec19]" name="checkChangeCountry" duration-ms="17314" started-at="2016-12-13T09:48:52Z" finished-at="2016-12-13T09:49:09Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testConfirmationPageDisplay -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1219@3532ec19]" name="tearDown" is-config="true" duration-ms="17263" started-at="2016-12-12T12:21:57Z" finished-at="2016-12-12T12:22:14Z">
+        </test-method> <!-- checkChangeCountry -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1220@3532ec19]" name="tearDown" is-config="true" duration-ms="2931" started-at="2016-12-13T09:49:09Z" finished-at="2016-12-13T09:49:12Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- TestSuite.CheckoutSuite.FW1219 -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1220 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
