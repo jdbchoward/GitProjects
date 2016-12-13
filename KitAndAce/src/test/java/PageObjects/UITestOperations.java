@@ -801,6 +801,13 @@ public class UITestOperations {
 		wait.threadWait(2000);
 	}
 
+	
+	public void addAddressWhenCheckOut(UserInfo user, BillingInfo billing) {		
+		addUserInfo(user);
+	}
+
+
+	
 	public void addUserAddressDetail(UserInfo user, BillingInfo billing) {
 		List<WebElement> btnAccounts = driver.findElements(By.xpath("//a[@href='/ca/en/my-account']"));
 		common.javascriptClick(driver, btnAccounts.get(0));
