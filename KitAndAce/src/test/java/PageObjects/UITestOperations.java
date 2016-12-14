@@ -918,16 +918,30 @@ public class UITestOperations {
 	}
 
 	public void verifyAnonymousCheckPage(UserInfo user, BillingInfo billing) {
+
+		checkBasicCheckOutInfo(false);
+		// try to input user and billing information , if no issue input, that
+		// means all the field are exist.
+		addUserInfo(user);
+		addBillInfo(billing);
+
+	}
+	
+	
+	public void checkBasicCheckOutInfo(boolean signedIn)
+	{
 		boolean verified = true;
 		// checking the number of blocks :
 		List<WebElement> webElements = driver.findElements(By.xpath("//legend[@class='form__title']"));
 		Assert.assertTrue(webElements != null && webElements.size() >= 2);
 
+		if(!signedIn)
+		{
 		// checking where had sign and email
 		verified = ElementExist(By.xpath("//div[@class='order-summary__title clearfix']"));
 		verified = ElementExist(By.xpath("//a[@class='js-checkout-sign-in']"));
 		verified = ElementExist(By.id("checkout-email"));
-
+		}
 		// checking order summary
 		List<String> titles = new ArrayList<String>();
 		titles.add("Subtotal");
@@ -940,12 +954,6 @@ public class UITestOperations {
 			if (orderSummary.getText().length() > 0)
 				verified = titles.contains(orderSummary.getText());
 		}
-
-		// try to input user and billing information , if no issue input, that
-		// means all the field are exist.
-		addUserInfo(user);
-		addBillInfo(billing);
-
 	}
 
 	public void verifyCheckOutPageWhenNOTLogined(UserInfo user, BillingInfo billing) {
