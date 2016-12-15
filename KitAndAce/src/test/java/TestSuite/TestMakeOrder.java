@@ -88,7 +88,8 @@ public class TestMakeOrder {
 	    wait.threadWait(3000);
 	    uitestOperation.naviToManTShirts();
 	    uitestOperation.buy2ManTshirts();
-	    uitestOperation.checkOut(userHybris,billing);	    
+	    uitestOperation.checkOut(userHybris,billing);	
+	    driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 	    orderNumber=uitestOperation.getOrderNumber();
 	    verifyResult(orderNumber);
 	}

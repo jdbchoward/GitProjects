@@ -88,6 +88,7 @@ public class FW1219 {
 		
 		// click checkout button
 		uitestOperation.checkOut(userHybris,billing);
+		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 		orderNumber = uitestOperation.getOrderNumber();
 		
 		//verify my account

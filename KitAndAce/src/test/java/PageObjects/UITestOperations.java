@@ -504,8 +504,7 @@ public class UITestOperations {
 		if (!ElementExist(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-address']")))
 			addUserInfo(user);
 
-		addBillInfo(billing);
-		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
+		addBillInfo(billing);	
 
 	}
 

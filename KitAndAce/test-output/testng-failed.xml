@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="TestSuite.CheckoutSuite.FW1225">
+      <class name="TestSuite.CheckoutSuite.FW1228">
         <methods>
-          <include name="tearDown"/>
-          <include name="testVerifyPrimaryShippingAddressOnCheckOutPage"/>
           <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="checkTaxRateWhenChangeCountry"/>
         </methods>
-      </class> <!-- TestSuite.CheckoutSuite.FW1225 -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1228 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
