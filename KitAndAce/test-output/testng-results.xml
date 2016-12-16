@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="81989" started-at="2016-12-15T18:52:58Z" finished-at="2016-12-15T18:54:20Z">
+  <suite name="Default suite" duration-ms="130096" started-at="2016-12-16T17:58:44Z" finished-at="2016-12-16T18:00:54Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="81989" started-at="2016-12-15T18:52:58Z" finished-at="2016-12-15T18:54:20Z">
-      <class name="TestSuite.CheckoutSuite.FW1228">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1228@3532ec19]" name="setUp" is-config="true" duration-ms="16" started-at="2016-12-15T10:52:58Z" finished-at="2016-12-15T10:52:58Z">
+    <test name="Default test" duration-ms="130096" started-at="2016-12-16T17:58:44Z" finished-at="2016-12-16T18:00:54Z">
+      <class name="TestSuite.CheckoutSuite.FW1231">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1231@3532ec19]" name="setUp" is-config="true" duration-ms="16" started-at="2016-12-16T09:58:44Z" finished-at="2016-12-16T09:58:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="checkTaxRateWhenChangeCountry()[pri:0, instance:TestSuite.CheckoutSuite.FW1228@3532ec19]" name="checkTaxRateWhenChangeCountry" duration-ms="65774" started-at="2016-12-15T10:52:58Z" finished-at="2016-12-15T10:54:04Z">
+        <test-method status="PASS" signature="testConfirmationPageDisplay()[pri:0, instance:TestSuite.CheckoutSuite.FW1231@3532ec19]" name="testConfirmationPageDisplay" duration-ms="110921" started-at="2016-12-16T09:58:44Z" finished-at="2016-12-16T10:00:35Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- checkTaxRateWhenChangeCountry -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1228@3532ec19]" name="tearDown" is-config="true" duration-ms="16176" started-at="2016-12-15T10:54:04Z" finished-at="2016-12-15T10:54:20Z">
+        </test-method> <!-- testConfirmationPageDisplay -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1231@3532ec19]" name="tearDown" is-config="true" duration-ms="19141" started-at="2016-12-16T10:00:35Z" finished-at="2016-12-16T10:00:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- TestSuite.CheckoutSuite.FW1228 -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1231 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
