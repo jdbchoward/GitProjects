@@ -618,6 +618,34 @@ public class UITestOperations {
 		driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).sendKeys(billing.getCvc());
 
 	}
+	
+	
+	public void fillInSAbillingInfo(UserInfo user)
+	{
+		// fill in checkout information
+				driver.findElement(By.id("checkout-billing-fisrt-name")).clear();
+				driver.findElement(By.id("checkout-billing-fisrt-name")).sendKeys(user.getFirstName());
+				driver.findElement(By.id("checkout-billing-last-name")).clear();
+				driver.findElement(By.id("checkout-billing-last-name")).sendKeys(user.getLastName());
+				driver.findElement(By.id("checkout-billing-address-1")).clear();
+				driver.findElement(By.id("checkout-billing-address-1")).sendKeys(user.getAddress());
+				driver.findElement(By.id("checkout-billing-city")).clear();
+				driver.findElement(By.id("checkout-billing-city")).sendKeys(user.getCity());
+				driver.findElement(By.id("checkout-billing-zip-code")).clear();
+				driver.findElement(By.id("checkout-billing-zip-code")).sendKeys(user.getZip());
+
+				// make selector option visiable so that we can select
+				common.javascriptMakeSelectOptionVisiable(driver, "checkout-billing-region-select");
+				Select provence = new Select(driver.findElement(By.id("checkout-billing-region-select")));
+				provence.selectByIndex(2);
+
+				driver.findElement(By.id("checkout-billingAddressForm-phone-number")).clear();
+				driver.findElement(By.id("checkout-billingAddressForm-phone-number")).sendKeys(user.getPhone());
+
+				common.javascriptMakeSelectOptionVisiable(driver, "billingAddressForm-phoneType-select");
+				Select phoneType = new Select(driver.findElement(By.id("billingAddressForm-phoneType-select")));
+				phoneType.selectByIndex(2);
+	}
 
 	public String getOrderNumber() {
 		String orderNumber = "";
