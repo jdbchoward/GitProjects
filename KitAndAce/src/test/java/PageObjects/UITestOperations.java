@@ -646,6 +646,11 @@ public class UITestOperations {
 				Select phoneType = new Select(driver.findElement(By.id("billingAddressForm-phoneType-select")));
 				phoneType.selectByIndex(2);
 	}
+	
+	public void fillInBillingInfo(BillingInfo billing)
+	{
+		addBillInfo(billing);
+	}
 
 	public String getOrderNumber() {
 		String orderNumber = "";
