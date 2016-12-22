@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="67770" started-at="2016-12-20T23:02:42Z" finished-at="2016-12-20T23:03:49Z">
+  <suite name="Default suite" duration-ms="46775" started-at="2016-12-22T19:06:10Z" finished-at="2016-12-22T19:06:57Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="67770" started-at="2016-12-20T23:02:42Z" finished-at="2016-12-20T23:03:49Z">
-      <class name="TestSuite.CheckoutSuite.FW1241">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1241@3532ec19]" name="setUp" is-config="true" duration-ms="13" started-at="2016-12-20T15:02:42Z" finished-at="2016-12-20T15:02:42Z">
+    <test name="Default test" duration-ms="46775" started-at="2016-12-22T19:06:10Z" finished-at="2016-12-22T19:06:57Z">
+      <class name="TestSuite.CheckoutSuite.FW1244">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1244@3532ec19]" name="setUp" is-config="true" duration-ms="11" started-at="2016-12-22T11:06:10Z" finished-at="2016-12-22T11:06:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testConfirmationPageDisplay()[pri:0, instance:TestSuite.CheckoutSuite.FW1241@3532ec19]" name="testConfirmationPageDisplay" duration-ms="51675" started-at="2016-12-20T15:02:42Z" finished-at="2016-12-20T15:03:33Z">
+        <test-method status="PASS" signature="testEnterShippingAddress4LoggedUser()[pri:0, instance:TestSuite.CheckoutSuite.FW1244@3532ec19]" name="testEnterShippingAddress4LoggedUser" duration-ms="32585" started-at="2016-12-22T11:06:10Z" finished-at="2016-12-22T11:06:43Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testConfirmationPageDisplay -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1241@3532ec19]" name="tearDown" is-config="true" duration-ms="16072" started-at="2016-12-20T15:03:33Z" finished-at="2016-12-20T15:03:49Z">
+        </test-method> <!-- testEnterShippingAddress4LoggedUser -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1244@3532ec19]" name="tearDown" is-config="true" duration-ms="14165" started-at="2016-12-22T11:06:43Z" finished-at="2016-12-22T11:06:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- TestSuite.CheckoutSuite.FW1241 -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1244 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
