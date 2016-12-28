@@ -459,19 +459,20 @@ public class UITestOperations {
 		// click checkout button
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
 		common.javascriptClick(driver, btnCheckOut);
+//		expandCheckout();
 		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
-		btnNext(1);
+//		btnNext(1);
 		addUserInfo(user);
-		btnNext(2);
+//		btnNext(2);
 		addBillInfo(billing);
 		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 	}
 
 	public void AnonymousCheckOutAfterVerifyFields(UserInfo user, BillingInfo billing) {
+		
+//		expandCheckout();
 		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
-		btnNext(1);
 		addUserInfo(user);
-		btnNext(2);
 		addBillInfo(billing);
 		// driver.findElement(By.xpath("//button[contains(text(),' Place my
 		// order')]")).click();
@@ -503,11 +504,12 @@ public class UITestOperations {
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
 		// click checkout button
 		driver.findElement(By.xpath("//button[contains(text(),'Checkout')]")).click();
+		
+//		expandCheckout();
 
 		// if address already been remembered , then skip this step
 		if (!ElementExist(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-address']")))
 			addUserInfo(user);
-		btnNext(1);
 		addBillInfo(billing);
 
 	}
@@ -1004,29 +1006,56 @@ public class UITestOperations {
 
 	}
 
-	public void btnNext(int step) {
-		switch (step) {
-		case 1:
-			if (ElementExist(By.xpath("//button[@class='btn btn--default js-step-1']"))) {
-				WebElement btnNextStep = driver.findElement(By.xpath("//button[@class='btn btn--default js-step-1']"));
-				common.javascriptClick(driver, btnNextStep);
-				wait.threadWait(1500);
-			}
-			break;
-		case 2:
-			if (ElementExist(By.xpath("//button[@class='btn btn--default js-step-2']"))) {
-				WebElement btnNextStep = driver.findElement(By.xpath("//button[@class='btn btn--default js-step-2']"));
-				common.javascriptClick(driver, btnNextStep);
-				wait.threadWait(1500);
-			}
-			break;
-
-		default:
-			System.out.println("not match");
-			break;
-		}
-
-	}
+//	public void btnNext(int step) {
+//		switch (step) {
+//		case 1:
+//			if (ElementExist(By.xpath("//button[@class='btn btn--default js-step-1']"))) {
+//				WebElement btnNextStep = driver.findElement(By.xpath("//button[@class='btn btn--default js-step-1']"));
+//				common.javascriptClick(driver, btnNextStep);
+//				wait.threadWait(1500);
+//			}
+//			break;
+//		case 2:
+//			if (ElementExist(By.xpath("//button[@class='btn btn--default js-step-2']"))) {
+//				WebElement btnNextStep = driver.findElement(By.xpath("//button[@class='btn btn--default js-step-2']"));
+//				common.javascriptClick(driver, btnNextStep);
+//				wait.threadWait(1500);
+//			}
+//			break;
+//
+//		default:
+//			System.out.println("not match");
+//			break;
+//		}
+//
+//	}
+	
+	
+//	public void expandCheckout()
+//	{
+////		WebElement chBoxDeliveryOption=driver.findElement(By.xpath("//div[contains(text(),'Select your shipping option')]"));
+////		WebElement btnPlaceOrder=driver.findElement(By.xpath("//button[contains(text(),' Place my order')]"));
+////		WebElement shopInfo=driver.findElement(By.xpath("//legend[contains(text(),'Shipping Information')]"));
+////		WebElement paymentInfo=driver.findElement(By.xpath("//legend[contains(text(),'Payment Information')]"));
+//		try{
+//			if(!ElementClickable(By.xpath("//div[contains(text(),'Select your shipping option')]")))
+//			{
+//			driver.findElement(By.xpath("//legend[contains(text(),'Shipping Information')]")).click();
+//			}
+//			
+//			if(!ElementClickable(By.xpath("//label[@for='checkout-card-select']")) && !ElementClickable(By.xpath("//div[contains(text(),'Credit Card Information')]")))
+//			driver.findElement(By.xpath("//legend[contains(text(),'Payment Information')]")).click();
+//
+//	
+//		}catch(Exception e)
+//		{
+//			System.out.println("expand failed");
+//			e.printStackTrace();
+//		}
+//		
+//		wait.threadWait(2000);
+//		
+//	}
 
 	public boolean ElementExist(By Locator) {
 		try {
@@ -1036,4 +1065,26 @@ public class UITestOperations {
 			return false;
 		}
 	}
+	
+	
+	public boolean ElementDisplayed(By Locator){		
+		try {
+			driver.findElement(Locator).isDisplayed();
+			return true;
+		} catch (Exception ex) {
+			return false;
+		}
+	}
+	
+	public boolean ElementClickable(By Locator){		
+		try {
+			driver.findElement(Locator).click();
+			return true;
+		} catch (Exception ex) {
+			return false;
+		}
+	}
+	
+	
+	
 }

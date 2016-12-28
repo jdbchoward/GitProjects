@@ -93,7 +93,7 @@ public class FW1235 {
 		common.javascriptClick(driver, btnCheckOut);
 		
 		
-		
+//		uitestOperation.expandCheckout();
 		  //check SA and uncheck SA
 	    common.javascriptClick(driver,driver.findElement(By.id("checkout-address-same-as-shipping")));
 	    userHMC.setLastName("Anonymous");
@@ -112,6 +112,7 @@ public class FW1235 {
 		driver.findElement(By.id("signin-password")).sendKeys(userHybris.getPassword());
 		driver.findElement(By.xpath("//button[@class='btn btn--default btn--md js-checkout-signin-btn']")).click();
 		
+//		uitestOperation.expandCheckout();
 		uitestOperation.fillInBillingInfo(billing);
 
         //place order

@@ -91,6 +91,7 @@ public class FW1243 {
 		common.javascriptClick(driver, driver.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));		
 		WebElement editOptions = driver.findElement(By.xpath("//button[contains(text(),'Edit your options')]"));
 		common.javascriptClick(driver, editOptions);
+//		uitestOperation.expandCheckout();
 		uitestOperation.addCreditCardWhenCheckOut(userHybris,billing);
 
 	}

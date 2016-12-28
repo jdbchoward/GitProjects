@@ -84,6 +84,7 @@ public class FW1231 {
 		// click checkout button
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Edit your options')]"));
 		common.javascriptClick(driver, btnCheckOut);
+//		uitestOperation.expandCheckout();
 		// add another cc
 		uitestOperation.addCreditCardWhenCheckOutSameAsSA(userHMC, uitestOperation.billings.get(1));
 		// verify

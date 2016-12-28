@@ -90,6 +90,7 @@ public class FW1230 {
 		common.javascriptClick(driver, driver.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));		
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
 		common.javascriptClick(driver, btnCheckOut);
+//		uitestOperation.expandCheckout();
 		uitestOperation.addCreditCardWhenCheckOut(userHybris,billing);
 
 	}
