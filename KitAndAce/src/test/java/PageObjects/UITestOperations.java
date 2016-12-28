@@ -422,7 +422,7 @@ public class UITestOperations {
 		// common.javascriptClick(driver,
 		// driver.findElement(By.xpath("//a[@title='West Coast Brushed Long
 		// Sleeve']")));
-
+		driver.manage().window().maximize();
 		driver.get(url_WestCoastBrushedLongSleeve);
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -460,14 +460,18 @@ public class UITestOperations {
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
+		btnNext(1);
 		addUserInfo(user);
+		btnNext(2);
 		addBillInfo(billing);
 		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 	}
 
 	public void AnonymousCheckOutAfterVerifyFields(UserInfo user, BillingInfo billing) {
 		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
+		btnNext(1);
 		addUserInfo(user);
+		btnNext(2);
 		addBillInfo(billing);
 		// driver.findElement(By.xpath("//button[contains(text(),' Place my
 		// order')]")).click();
@@ -503,8 +507,8 @@ public class UITestOperations {
 		// if address already been remembered , then skip this step
 		if (!ElementExist(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-address']")))
 			addUserInfo(user);
-
-		addBillInfo(billing);	
+		btnNext(1);
+		addBillInfo(billing);
 
 	}
 
@@ -599,12 +603,12 @@ public class UITestOperations {
 		common.javascriptMakeSelectOptionVisiable(driver, "phoneType-select");
 		Select phoneType = new Select(driver.findElement(By.id("phoneType-select")));
 		phoneType.selectByIndex(2);
+		driver.findElement(By.cssSelector("div.checkbox__circle.js-gift-option-checkbox")).click();
+		
 
 	}
 
 	private void addBillInfo(BillingInfo billing) {
-
-		driver.findElement(By.cssSelector("div.checkbox__circle.js-gift-option-checkbox")).click();
 		driver.findElement(By.xpath("//input[@placeholder='Enter your credit card number']")).clear();
 		driver.findElement(By.xpath("//input[@placeholder='Enter your credit card number']"))
 				.sendKeys(billing.getCardNum());
@@ -618,37 +622,34 @@ public class UITestOperations {
 		driver.findElement(By.cssSelector("input.field.js-credit-card__cvv")).sendKeys(billing.getCvc());
 
 	}
-	
-	
-	public void fillInSAbillingInfo(UserInfo user)
-	{
+
+	public void fillInSAbillingInfo(UserInfo user) {
 		// fill in checkout information
-				driver.findElement(By.id("checkout-billing-fisrt-name")).clear();
-				driver.findElement(By.id("checkout-billing-fisrt-name")).sendKeys(user.getFirstName());
-				driver.findElement(By.id("checkout-billing-last-name")).clear();
-				driver.findElement(By.id("checkout-billing-last-name")).sendKeys(user.getLastName());
-				driver.findElement(By.id("checkout-billing-address-1")).clear();
-				driver.findElement(By.id("checkout-billing-address-1")).sendKeys(user.getAddress());
-				driver.findElement(By.id("checkout-billing-city")).clear();
-				driver.findElement(By.id("checkout-billing-city")).sendKeys(user.getCity());
-				driver.findElement(By.id("checkout-billing-zip-code")).clear();
-				driver.findElement(By.id("checkout-billing-zip-code")).sendKeys(user.getZip());
+		driver.findElement(By.id("checkout-billing-fisrt-name")).clear();
+		driver.findElement(By.id("checkout-billing-fisrt-name")).sendKeys(user.getFirstName());
+		driver.findElement(By.id("checkout-billing-last-name")).clear();
+		driver.findElement(By.id("checkout-billing-last-name")).sendKeys(user.getLastName());
+		driver.findElement(By.id("checkout-billing-address-1")).clear();
+		driver.findElement(By.id("checkout-billing-address-1")).sendKeys(user.getAddress());
+		driver.findElement(By.id("checkout-billing-city")).clear();
+		driver.findElement(By.id("checkout-billing-city")).sendKeys(user.getCity());
+		driver.findElement(By.id("checkout-billing-zip-code")).clear();
+		driver.findElement(By.id("checkout-billing-zip-code")).sendKeys(user.getZip());
 
-				// make selector option visiable so that we can select
-				common.javascriptMakeSelectOptionVisiable(driver, "checkout-billing-region-select");
-				Select provence = new Select(driver.findElement(By.id("checkout-billing-region-select")));
-				provence.selectByIndex(2);
+		// make selector option visiable so that we can select
+		common.javascriptMakeSelectOptionVisiable(driver, "checkout-billing-region-select");
+		Select provence = new Select(driver.findElement(By.id("checkout-billing-region-select")));
+		provence.selectByIndex(2);
 
-				driver.findElement(By.id("checkout-billingAddressForm-phone-number")).clear();
-				driver.findElement(By.id("checkout-billingAddressForm-phone-number")).sendKeys(user.getPhone());
+		driver.findElement(By.id("checkout-billingAddressForm-phone-number")).clear();
+		driver.findElement(By.id("checkout-billingAddressForm-phone-number")).sendKeys(user.getPhone());
 
-				common.javascriptMakeSelectOptionVisiable(driver, "billingAddressForm-phoneType-select");
-				Select phoneType = new Select(driver.findElement(By.id("billingAddressForm-phoneType-select")));
-				phoneType.selectByIndex(2);
+		common.javascriptMakeSelectOptionVisiable(driver, "billingAddressForm-phoneType-select");
+		Select phoneType = new Select(driver.findElement(By.id("billingAddressForm-phoneType-select")));
+		phoneType.selectByIndex(2);
 	}
-	
-	public void fillInBillingInfo(BillingInfo billing)
-	{
+
+	public void fillInBillingInfo(BillingInfo billing) {
 		addBillInfo(billing);
 	}
 
@@ -833,13 +834,10 @@ public class UITestOperations {
 		wait.threadWait(2000);
 	}
 
-	
-	public void addAddressWhenCheckOut(UserInfo user, BillingInfo billing) {		
+	public void addAddressWhenCheckOut(UserInfo user, BillingInfo billing) {
 		addUserInfo(user);
 	}
 
-
-	
 	public void addUserAddressDetail(UserInfo user, BillingInfo billing) {
 		List<WebElement> btnAccounts = driver.findElements(By.xpath("//a[@href='/ca/en/my-account']"));
 		common.javascriptClick(driver, btnAccounts.get(0));
@@ -919,7 +917,7 @@ public class UITestOperations {
 
 		wait.waitElementToBeDisplayed(By.xpath("//span[@class='icon -close']"));
 		// click close button
-		List<WebElement> btnRemoveItems = driver.findElements(By.xpath("//span[@class='icon -close']"));		
+		List<WebElement> btnRemoveItems = driver.findElements(By.xpath("//span[@class='icon -close']"));
 		wait.threadWait(3000);
 		if (!all) {
 			btnRemoveItems.get(itemIndex + 1).click();
@@ -958,21 +956,18 @@ public class UITestOperations {
 		addBillInfo(billing);
 
 	}
-	
-	
-	public void checkBasicCheckOutInfo(boolean signedIn)
-	{
+
+	public void checkBasicCheckOutInfo(boolean signedIn) {
 		boolean verified = true;
 		// checking the number of blocks :
 		List<WebElement> webElements = driver.findElements(By.xpath("//legend[@class='form__title']"));
 		Assert.assertTrue(webElements != null && webElements.size() >= 2);
 
-		if(!signedIn)
-		{
-		// checking where had sign and email
-		verified = ElementExist(By.xpath("//div[@class='order-summary__title clearfix']"));
-		verified = ElementExist(By.xpath("//a[@class='js-checkout-sign-in']"));
-		verified = ElementExist(By.id("checkout-email"));
+		if (!signedIn) {
+			// checking where had sign and email
+			verified = ElementExist(By.xpath("//div[@class='order-summary__title clearfix']"));
+			verified = ElementExist(By.xpath("//a[@class='js-checkout-sign-in']"));
+			verified = ElementExist(By.id("checkout-email"));
 		}
 		// checking order summary
 		List<String> titles = new ArrayList<String>();
@@ -1006,6 +1001,30 @@ public class UITestOperations {
 				.getText();
 
 		Assert.assertTrue(costString.equalsIgnoreCase("$" + Integer.toString(cost)));
+
+	}
+
+	public void btnNext(int step) {
+		switch (step) {
+		case 1:
+			if (ElementExist(By.xpath("//button[@class='btn btn--default js-step-1']"))) {
+				WebElement btnNextStep = driver.findElement(By.xpath("//button[@class='btn btn--default js-step-1']"));
+				common.javascriptClick(driver, btnNextStep);
+				wait.threadWait(1500);
+			}
+			break;
+		case 2:
+			if (ElementExist(By.xpath("//button[@class='btn btn--default js-step-2']"))) {
+				WebElement btnNextStep = driver.findElement(By.xpath("//button[@class='btn btn--default js-step-2']"));
+				common.javascriptClick(driver, btnNextStep);
+				wait.threadWait(1500);
+			}
+			break;
+
+		default:
+			System.out.println("not match");
+			break;
+		}
 
 	}
 

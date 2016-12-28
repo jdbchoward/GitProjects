@@ -66,7 +66,7 @@ public class TestMakeOrder {
 		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);
 		hmcTestOperation = PageFactory.initElements(driver, HMCTestOperations.class);
 		
-		userHybris=uitestOperation.users.get(0);
+		userHybris=uitestOperation.users.get(1);
 		userHMC=uitestOperation.users.get(2);
 		billing=uitestOperation.billings.get(0);
 	}
@@ -83,10 +83,12 @@ public class TestMakeOrder {
 
 //		String orderNumber="00230007";
 		String orderNumber;
+		init();
+		uitestOperation.registerUser(userHybris);
 		//place order from Hybris system
-		uitestOperation.doSignSite(userHybris);
+//		uitestOperation.doSignSite(userHybris);
 	    wait.threadWait(3000);
-	    uitestOperation.naviToManTShirts();
+//	    uitestOperation.naviToManTShirts();
 	    uitestOperation.buy2ManTshirts();
 	    uitestOperation.checkOut(userHybris,billing);	
 	    driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
@@ -115,7 +117,7 @@ public class TestMakeOrder {
         verifyDriver.findElement(By.id("StringEditor[in GenericCondition[User.uid]]_input")).sendKeys("howard");
         verifyDriver.findElement(By.id("ModalGenericFlexibleSearchOrganizerSearch[User]_searchbutton")).click();
 	    Actions action=new Actions(verifyDriver);
-	    action.doubleClick(verifyDriver.findElement(By.id("StringDisplay[howard.zhang.kitandace@outlook.com]_span"))).perform();
+	    action.doubleClick(verifyDriver.findElement(By.id("StringDisplay[howard.zhangkitandace@yahoo.com]_span"))).perform();
 	    common.switchWindowHandles(verifyDriver, mainPageTilte);
 	    //----------
 	    verifyDriver.findElement(By.id("Content/OrganizerSearch[Order]_searchbutton")).click();

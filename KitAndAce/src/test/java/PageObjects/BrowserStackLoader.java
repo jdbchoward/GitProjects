@@ -115,7 +115,7 @@ public class BrowserStackLoader {
 			caps.setCapability("browser_version", "9.1");
 			caps.setCapability("os", "OS X");
 			caps.setCapability("os_version", "El Capitan");
-			caps.setCapability("resolution", "1920x1080");
+			caps.setCapability("resolution", "1280x1024");
 			caps.setCapability("browserstack.safari.enablePopups", "true");
 		    caps.setCapability("browserstack.local", "true");
 		    try {
