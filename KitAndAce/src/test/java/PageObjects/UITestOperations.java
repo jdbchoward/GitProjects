@@ -898,7 +898,7 @@ public class UITestOperations {
 		selectCC.selectByIndex(1);
 	}
 
-	public void changeCountryWhenCheckOut() {
+	public void changeCountryToJapanWhenCheckOut() {
 		common.javascriptMakeSelectOptionVisiable(driver, "checkout-country-select");
 		Select selectCC = new Select(driver.findElement(By.id("checkout-country-select")));
 		selectCC.selectByIndex(1);
@@ -912,6 +912,22 @@ public class UITestOperations {
 		Assert.assertTrue(totalprice.contains("¥"));
 	}
 
+	
+	public void changeCountryToUSAWhenCheckOut() {
+		common.javascriptMakeSelectOptionVisiable(driver, "checkout-country-select");
+		Select selectCC = new Select(driver.findElement(By.id("checkout-country-select")));
+		selectCC.selectByIndex(4);
+		wait.waitElementToBeDisplayed(
+				By.xpath("//button[@class='modal__content__ok js-checkout-change-country-close is-active']"));
+		driver.findElement(By.xpath("//button[@class='modal__content__ok js-checkout-change-country-close is-active']"))
+				.click();
+		String totalprice = driver.findElement(By.xpath("//div[@class='order-summary__price__val pull-right']"))
+				.getText();
+
+		Assert.assertTrue(totalprice.contains("$"));
+	}
+	
+	
 	public void removeOrderFromCheckOutPage(int itemIndex, boolean all, int totalItems) {
 		// edit order
 		wait.waitElementToBeDisplayed(By.xpath("//a[@class='pull-right js-edit-order']"));
@@ -1005,6 +1021,9 @@ public class UITestOperations {
 		Assert.assertTrue(costString.equalsIgnoreCase("$" + Integer.toString(cost)));
 
 	}
+	
+	
+	
 
 //	public void btnNext(int step) {
 //		switch (step) {

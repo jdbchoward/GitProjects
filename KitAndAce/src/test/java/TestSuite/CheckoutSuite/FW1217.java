@@ -95,7 +95,7 @@ public class FW1217 {
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		//change country and check currecy 
-		uitestOperation.changeCountryWhenCheckOut(); 
+		uitestOperation.changeCountryToJapanWhenCheckOut(); 
     
 	    
 

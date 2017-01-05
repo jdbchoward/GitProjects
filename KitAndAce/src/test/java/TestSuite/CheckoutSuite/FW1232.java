@@ -26,7 +26,7 @@ import junit.framework.Assert;
  * @Description:  Enter shipping address for guest user with an account
  * @author: Howard
  * @compay: Kit and Ace
- * @date 1/16/2016
+ * @date 1/16/2017
  * @version V1.0
  */
 

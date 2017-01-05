@@ -103,7 +103,7 @@ public class FW1222 {
 		log.debug("selected contry is: "+option.getText());		
 		Assert.assertTrue(option.getText().contains("Canada - CAD"));
 		//change country and check currecy 
-		uitestOperation.changeCountryWhenCheckOut(); 
+		uitestOperation.changeCountryToJapanWhenCheckOut(); 
 		//verify province selected
 		common.javascriptMakeSelectOptionVisiable(driver, "checkout-country-select");
 		selectCC = new Select(driver.findElement(By.id("checkout-country-select")));

@@ -26,7 +26,7 @@ import junit.framework.Assert;
  * @Description:  Login user on Checkout page.
  * @author: Howard
  * @compay: Kit and Ace
- * @date 1/17/2016
+ * @date 1/17/2017
  * @version V1.0
  */
 
