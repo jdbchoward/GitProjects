@@ -27,22 +27,22 @@ import junit.framework.Assert;
 /**
  * @Title: Automation TestSuite
  * @Package CheckoutSuite
- * @Description: Tax Calculation - trigger tax calculation for Registered user
- *               with data.
+ * @Description: Tax Calculation - add new address for Registered user with
+ *               data.
  * @author: Howard
  * @compay: Kit and Ace
  * @date 1/25/2016
  * @version V1.0
  */
 
-public class FW2369 {
+public class FW2370 {
 	private WebDriver driver, verifyDriver;
 	private Wait wait, verifyWait;
 	CommonActions common;
 	ElementsRepositoryAction elementsRepositoryAction;
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
-	static Logger log = Logger.getLogger(FW2369.class.getName());
+	static Logger log = Logger.getLogger(FW2370.class.getName());
 	public InitWebDriver initWebDriver;
 	public UserInfo userHybris, userHMC, nonTaxStateUser;
 	public BillingInfo billing;
@@ -76,7 +76,7 @@ public class FW2369 {
 	}
 
 	@Test
-	public void testTaxEstimationTriggerTaxCalculationByAddressChange() throws Exception {
+	public void testTaxEstimationAddNewAddress4RegisteredUser() throws Exception {
 
 		init();
 		uitestOperation.registerUser(userHybris);
@@ -98,16 +98,36 @@ public class FW2369 {
 		// click checkout button
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
 		common.javascriptClick(driver, btnCheckOut);
+		prepareMoreAddresses();
+	}
 
-		// verify select different address
-		common.javascriptMakeSelectOptionVisiable(driver, "checkout-select-delivery-address");
-		Select selectCC = new Select(driver.findElement(By.id("checkout-select-delivery-address")));
-		selectCC.selectByIndex(0);
-		wait.threadWait(4000);
-		selectCC.selectByIndex(1);
-		wait.threadWait(4000);
-		selectCC.selectByIndex(2);
+	private void clickAddAddress() {
+		driver.findElement(By.xpath("//a[@class='form__add-new-btn pull-right js-add-new-address']")).click();
+		wait.threadWait(1000);
+	}
 
+	private void prepareMoreAddresses() {
+		// add new address
+		clickAddAddress();
+		userHybris.setAddress("711 W Century Blvd");
+		uitestOperation.addAddressWhenCheckOut(userHybris, billing);
+		driver.findElement(By.xpath("//a[@class='btn btn--bordered btn--sm js-add-new-address-btn']")).click();
+
+		common.javascriptScrollPage(driver, -1500);
+		wait.threadWait(3000);
+		clickAddAddress();
+		nonTaxStateUser.setAddress("219 SW 6th Ave");
+		nonTaxStateUser.setZip("97204");
+		uitestOperation.addAddressWhenCheckOut(nonTaxStateUser, billing);
+		driver.findElement(By.xpath("//a[@class='btn btn--bordered btn--sm js-add-new-address-btn']")).click();
+
+		common.javascriptScrollPage(driver, -1500);
+		wait.threadWait(3000);
+		clickAddAddress();
+		nonTaxStateUser.setZip("00000");
+		nonTaxStateUser.setAddress("999 invalid address");
+		uitestOperation.addAddressWhenCheckOut(nonTaxStateUser, billing);
+		driver.findElement(By.xpath("//a[@class='btn btn--bordered btn--sm js-add-new-address-btn']")).click();
 	}
 
 	@AfterClass(alwaysRun = true)
