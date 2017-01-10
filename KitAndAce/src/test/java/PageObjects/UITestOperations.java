@@ -1048,6 +1048,52 @@ public class UITestOperations {
 				"//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
 		common.javascriptClick(driver, btnAdd);
 	}
+	
+	
+	public void addUserAddressDetail(UserInfo user, BillingInfo billing,int countryCode,int stateCode) {
+		List<WebElement> btnAccounts = driver.findElements(By.xpath("//a[@href='/ca/en/my-account']"));
+		common.javascriptClick(driver, btnAccounts.get(0));
+		wait.threadWait(2000);
+
+		driver.findElement(By.xpath("//div[@class='action-btn content-block__button big js-account-new-address']"))
+				.click();
+		
+		wait.threadWait(1000);
+		common.javascriptMakeSelectOptionVisiable(driver, "country-select");
+		Select selectCC = new Select(driver.findElement(By.id("country-select")));
+		selectCC.selectByIndex(countryCode);
+		
+		wait.threadWait(1000);
+		// add credit card
+		driver.findElement(By.id("edit-address-form_firstName")).clear();
+		driver.findElement(By.id("edit-address-form_firstName")).sendKeys(user.getFirstName());
+
+		driver.findElement(By.id("edit-address-form_lastName")).clear();
+		driver.findElement(By.id("edit-address-form_lastName")).sendKeys(user.getLastName());
+
+		driver.findElement(By.id("edit-address-form_addressFirst")).clear();
+		driver.findElement(By.id("edit-address-form_addressFirst")).sendKeys(user.getAddress());
+
+		driver.findElement(By.id("edit-address-form_city")).clear();
+		driver.findElement(By.id("edit-address-form_city")).sendKeys(user.getCity());
+
+		driver.findElement(By.id("edit-address-form_zipCode")).clear();
+		driver.findElement(By.id("edit-address-form_zipCode")).sendKeys(user.getZip());
+
+		driver.findElement(By.id("edit-address-form_phone")).clear();
+		driver.findElement(By.id("edit-address-form_phone")).sendKeys(user.getPhone());
+
+		common.javascriptMakeSelectOptionVisiable(driver, "province-select");
+		Select provence = new Select(driver.findElement(By.id("province-select")));
+		provence.selectByIndex(stateCode);
+
+		driver.findElement(By.xpath("//button[@class='button js-account-address-save']")).click();
+
+	}
+	
+	
+	
+	
 
 //	public void btnNext(int step) {
 //		switch (step) {
