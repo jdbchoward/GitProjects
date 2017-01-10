@@ -75,7 +75,7 @@ public class FW2103 {
 	}
 
 	@Test
-	public void testVerifyPrimaryShippingAddressOnCheckOutPage() throws Exception {
+	public void testReDirectionsOnPage() throws Exception {
 		init();
 		// register one new user
 		uitestOperation.registerUser(userHybris);

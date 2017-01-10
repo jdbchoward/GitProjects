@@ -290,17 +290,25 @@ public class UITestOperations {
 
 	/// ----------------------------------------------------------
 
-	private String url_WestCoastBrushedLongSleeve = "https://staging.hybris.kitandace.com/ca/en/Men/T-Shirts-and-Long-Sleeves/p/West-Coast-Brushed-Long-Sleeve/KM031092?color=KM031092-10001";
-	private String url_DoubleTakeButtonUp = "https://staging.hybris.kitandace.com/ca/en/Men/p/Double-Take-Button-Up/KM021086?color=KM021086-10002";
-
+    private String url_WestCoastBrushedLongSleeve = "Men/T-Shirts-and-Long-Sleeves/p/West-Coast-Brushed-Long-Sleeve/KM031092?color=KM031092-10001";
+	private String url_DoubleTakeButtonUp = "Men/p/Double-Take-Button-Up/KM021086?color=KM021086-10002";
+	
+	private String getBaseURL(){
+		String baseURL="";
+		String testEnvironment = common.getSettings().getValue("testEnvironment");
+		if (testEnvironment.equalsIgnoreCase("dev"))	
+			baseURL="https://dev.hybris.kitandace.com/ca/en/";	
+		if (testEnvironment.equalsIgnoreCase("stage"))	
+			baseURL= "https://staging.hybris.kitandace.com/ca/en/";
+	
+		return baseURL;
+		
+		
+	}
 	public void OpenHomepage(WebDriver webdriver) {
 
 		driver.manage().window().maximize();
-		String testEnvironment = common.getSettings().getValue("testEnvironment");
-		if (testEnvironment.equalsIgnoreCase("dev"))
-			driver.get("https://dev.hybris.kitandace.com/ca/en/");
-		if (testEnvironment.equalsIgnoreCase("stage"))
-			driver.get("https://staging.hybris.kitandace.com/ca/en/");
+		driver.get(getBaseURL());
 
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -387,7 +395,7 @@ public class UITestOperations {
 		// driver.findElement(By.xpath("//a[@title='West Coast Brushed Long
 		// Sleeve']")));
 
-		driver.get(url_WestCoastBrushedLongSleeve);
+		driver.get(getBaseURL()+url_WestCoastBrushedLongSleeve);
 		killAdv();
 		// choose size
 		chooseSize("91215", "91216", "91214", "91217", "91213");
@@ -404,7 +412,7 @@ public class UITestOperations {
 		// wait.threadWait(2000);
 		// common.javascriptClick(driver,
 		// driver.findElement(By.xpath("//a[@title='Double Dose Tee']")));
-		driver.get(url_DoubleTakeButtonUp);
+		driver.get(getBaseURL()+url_DoubleTakeButtonUp);
 		wait.threadWait(2000);
 		// choose size
 		chooseSize("88584", "88585", "88583", "88586", "88582");
@@ -423,7 +431,7 @@ public class UITestOperations {
 		// driver.findElement(By.xpath("//a[@title='West Coast Brushed Long
 		// Sleeve']")));
 		driver.manage().window().maximize();
-		driver.get(url_WestCoastBrushedLongSleeve);
+		driver.get(getBaseURL()+url_WestCoastBrushedLongSleeve);
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		killAdv();
@@ -961,7 +969,8 @@ public class UITestOperations {
 		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
 		addUserInfo(user);
 		addBillInfo(billing);
-		verifyAnonymousCheckPage(user, billing);
+//		verifyAnonymousCheckPage(user, billing);
+		checkBasicCheckOutInfo(false);
 
 	}
 
@@ -1023,7 +1032,22 @@ public class UITestOperations {
 	}
 	
 	
-	
+	public void buyUSManTshirtsWithAnonymousUser() {
+		String url = driver.getCurrentUrl();		
+		String baseURL="https://staging.hybris.kitandace.com/us/en/";
+		driver.manage().window().maximize(); 
+		driver.get(baseURL+url_WestCoastBrushedLongSleeve);
+		wait.WaitUntilPageLoaded();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		killAdv();
+		wait.threadWait(1000);
+		// choose size
+		chooseSize("91215", "91216", "91214", "91217", "91213");
+		// add to bag
+		WebElement btnAdd = driver.findElement(By.xpath(
+				"//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
+		common.javascriptClick(driver, btnAdd);
+	}
 
 //	public void btnNext(int step) {
 //		switch (step) {
