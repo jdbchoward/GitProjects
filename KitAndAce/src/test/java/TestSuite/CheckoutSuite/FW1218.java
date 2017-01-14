@@ -97,8 +97,8 @@ public class FW1218 {
         //remove order
 		uitestOperation.removeOrderFromCheckOutPage(1,false,1);
 		//verify redirection
-		wait.threadWait(3000);
-		Assert.assertEquals("https://staging.hybris.kitandace.com/ca/en",driver.getCurrentUrl());
+		wait.threadWait(3000);		
+		Assert.assertEquals("https://staging.hybris.kitandace.com/ca/en/", driver.getCurrentUrl());
 	    
 
 	}

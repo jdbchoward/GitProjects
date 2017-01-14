@@ -79,8 +79,8 @@ public class FW1219 {
 		init();
 		// register one new user
 		uitestOperation.registerUser(userHybris);		
-		wait.threadWait(2000);
-		uitestOperation.doSignSite(userHybris);
+//		wait.threadWait(2000);
+//		uitestOperation.doSignSite(userHybris);
 		
 		// buy items
 		wait.threadWait(5000);
