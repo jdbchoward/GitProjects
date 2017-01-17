@@ -936,6 +936,21 @@ public class UITestOperations {
 	}
 	
 	
+	public void changeCountryToAUWhenCheckOut() {
+		common.javascriptMakeSelectOptionVisiable(driver, "checkout-country-select");
+		Select selectCC = new Select(driver.findElement(By.id("checkout-country-select")));
+		selectCC.selectByIndex(0);
+		wait.waitElementToBeDisplayed(
+				By.xpath("//button[@class='modal__content__ok js-checkout-change-country-close is-active']"));
+		driver.findElement(By.xpath("//button[@class='modal__content__ok js-checkout-change-country-close is-active']"))
+				.click();
+		String totalprice = driver.findElement(By.xpath("//div[@class='order-summary__price__val pull-right']"))
+				.getText();
+
+		Assert.assertTrue(totalprice.contains("$"));
+	}
+	
+	
 	public void removeOrderFromCheckOutPage(int itemIndex, boolean all, int totalItems) {
 		// edit order
 		wait.waitElementToBeDisplayed(By.xpath("//a[@class='pull-right js-edit-order']"));
