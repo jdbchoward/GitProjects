@@ -291,7 +291,7 @@ public class UITestOperations {
 	/// ----------------------------------------------------------
 
     private String url_WestCoastBrushedLongSleeve = "Men/T-Shirts-and-Long-Sleeves/p/West-Coast-Brushed-Long-Sleeve/KM031092?color=KM031092-10001";
-	private String url_DoubleTakeButtonUp = "Men/p/Double-Take-Button-Up/KM021086?color=KM021086-10002";
+	private String url_DoubleTakeButtonUp = "Men/p/Double-Take-Button-Up/KM021086?color=KM021086-10804";
 	
 	private String getBaseURL(){
 		String baseURL="";
@@ -415,7 +415,7 @@ public class UITestOperations {
 		driver.get(getBaseURL()+url_DoubleTakeButtonUp);
 		wait.threadWait(2000);
 		// choose size
-		chooseSize("88584", "88585", "88583", "88586", "88582");
+		chooseSize("88604", "88605", "88603", "88606", "88602");
 		// add to bag
 		btnAdd = driver.findElement(By.xpath(
 				"//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
