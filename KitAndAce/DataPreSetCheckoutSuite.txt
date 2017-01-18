@@ -1,0 +1,3 @@
+1. 91215,88604,110007  change quantiy
+2. make 88604 to discount price, one item to final sale.
+3. make 110007  to only ship to canada.

@@ -459,6 +459,30 @@ public class UITestOperations {
 			}
 		}
 	}
+	
+	
+	
+	public void buyOnlyShipToCanadaItem() {
+		String url = driver.getCurrentUrl();
+		String Four_Button_Brushed_Henley_url="Men/p/Four-Button-Brushed-Henley/KM031195?color=KM031195-10022";
+
+		// common.javascriptClick(driver,
+		// driver.findElement(By.xpath("//a[@title='West Coast Brushed Long
+		// Sleeve']")));
+		driver.manage().window().maximize();
+		driver.get(getBaseURL()+Four_Button_Brushed_Henley_url);
+		wait.WaitUntilPageLoaded();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		killAdv();
+		wait.threadWait(1000);
+		// choose size
+		chooseSize("110007", "110008", "110006", "110009", "110005");
+		// add to bag
+		WebElement btnAdd = driver.findElement(By.xpath(
+				"//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
+		common.javascriptClick(driver, btnAdd);
+	}
+	
 
 	public void AnonymousCheckOut(UserInfo user, BillingInfo billing) {
 		common.javascriptClick(driver, driver
