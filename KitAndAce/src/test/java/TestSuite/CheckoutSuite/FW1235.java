@@ -88,8 +88,8 @@ public class FW1235 {
 		// click checkout button
 		common.javascriptClick(driver, driver
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
-		wait.waitElementToBeDisplayed(By.xpath("//button[contains(text(),'Checkout')]"));		
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		wait.waitElementToBeDisplayed(By.xpath("//button[contains(text(),'Continue')]"));		
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		
 		

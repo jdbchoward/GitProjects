@@ -288,7 +288,7 @@ public class HMCTestOperations {
 		if (testEnvironment.equalsIgnoreCase("dev"))
 			driver.get("https://admindev.hybris.kitandace.com/hmc/hybris");
 		if (testEnvironment.equalsIgnoreCase("stage"))
-			driver.get("http://adminstaging.hybris.kitandace.com/hmc/hybris");
+			driver.get("https://adminstaging.hybris.kitandace.com/hmc/hybris");
 
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

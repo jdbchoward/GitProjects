@@ -489,7 +489,7 @@ public class UITestOperations {
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
 		wait.threadWait(1000);
 		// click checkout button
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);
 //		expandCheckout();
 		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
@@ -513,9 +513,9 @@ public class UITestOperations {
 	public void AnonymousCheckOutAndThenLogin(UserInfo user, BillingInfo billing) {
 		common.javascriptClick(driver, driver
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
-		wait.waitElementToBeDisplayed(By.xpath("//button[contains(text(),'Checkout')]"));
+		wait.waitElementToBeDisplayed(By.xpath("//button[contains(text(),'Continue')]"));
 		// click checkout button
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
 		wait.threadWait(1000);
@@ -535,7 +535,7 @@ public class UITestOperations {
 		common.javascriptClick(driver, driver
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
 		// click checkout button
-		driver.findElement(By.xpath("//button[contains(text(),'Checkout')]")).click();
+		driver.findElement(By.xpath("//button[contains(text(),'Continue')]")).click();
 		
 //		expandCheckout();
 
@@ -909,7 +909,7 @@ public class UITestOperations {
 	public void selectCreditCardWhenCheckOut(BillingInfo billing) {
 		// // click checkout button
 		// WebElement btnCheckOut =
-		// driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		// driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		// common.javascriptClick(driver, btnCheckOut);
 		wait.waitElementToBeEnabled(By.xpath("//button[contains(text(),'Place my order')]"));
 		common.javascriptMakeSelectOptionVisiable(driver, "checkout-card-select");
@@ -1003,7 +1003,7 @@ public class UITestOperations {
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
 		wait.threadWait(1000);
 		// click checkout button
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
 		addUserInfo(user);
