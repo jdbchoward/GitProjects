@@ -61,6 +61,13 @@ public class CommonActions {
 		((JavascriptExecutor) driver).executeScript(js, ele);
 	}
 	
+	public void javascriptInputInToTextArea(WebDriver driver,WebElement ele,String content)
+	{
+		String js = "arguments[0].value=\""+ content + "\"";
+		((JavascriptExecutor) driver).executeScript("arguments[0].enabled = true", ele);	 
+ 		((JavascriptExecutor)driver).executeScript(js, ele);
+	}
+	
 	public void javascriptScrollPage(WebDriver driver,int offset)
 	{
 		String js = "window.scrollBy(0,"+offset+")";		
