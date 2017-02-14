@@ -839,7 +839,8 @@ public class UITestOperations {
 		new Select(driver.findElement(By.id("ccExpYear"))).selectByVisibleText(billing.getExpYear());
 		driver.findElement(By.id("frmCcCvv")).sendKeys(billing.getCvc());
 
-		driver.findElement(By.xpath("//a[@class='btn btn--sm btn--bordered js-add-new-billing-info-btn']")).click();
+		driver.findElement(By.xpath("//a[@class='btn btn--inverse btn--sm js-add-new-billing-info-btn']")).click();
+		                                         
 		wait.threadWait(5000);
 		// check account
 		common.javascriptClick(driver,

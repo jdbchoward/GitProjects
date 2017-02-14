@@ -72,7 +72,7 @@ public class FW2926 {
 
 		init();
 		uitestOperation.buyManTshirtsWithAnonymousUser();
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		uitestOperation.AnonymousCheckOutAfterVerifyFields(userHybris, billing);
 		

@@ -132,7 +132,7 @@ public class FW1235 {
 
 
 	    initVerifyTearDown();
-	 // login to HMC system. prepare to delete test date
+	 // login to HAC system. prepare to delete test date
 	    hacTestOperations.doLogOnSite(userHMC,verifyDriver);
 	    //clean order
 	    hacTestOperations.cleanOrder(orderNumber,verifyDriver);

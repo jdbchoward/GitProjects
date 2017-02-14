@@ -18,6 +18,7 @@ import PageObjects.BrowserLoader;
 import PageObjects.BrowserStackLoader;
 import PageObjects.CommonActions;
 import PageObjects.ElementsRepositoryAction;
+import PageObjects.HACTestOperations;
 import PageObjects.HMCTestOperations;
 import PageObjects.InitWebDriver;
 import PageObjects.UITestOperations;
@@ -45,6 +46,7 @@ public class FW1234 {
 	ElementsRepositoryAction elementsRepositoryAction;
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
+	HACTestOperations hacTestOperations;
 	static Logger log = Logger.getLogger(FW1234.class.getName());
 	public InitWebDriver initWebDriver;
 	public UserInfo userHybris,userHMC;
@@ -67,7 +69,7 @@ public class FW1234 {
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
 		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);
 		hmcTestOperation = PageFactory.initElements(driver, HMCTestOperations.class);
-		
+		hacTestOperations=PageFactory.initElements(driver, HACTestOperations.class);
 		userHybris=uitestOperation.users.get(1);
 		userHMC=uitestOperation.users.get(2);
 		billing=uitestOperation.billings.get(0);
@@ -93,7 +95,7 @@ public class FW1234 {
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
 		wait.threadWait(1000);
 		// click checkout button
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);		
 		//fill in all the information
 	    uitestOperation.AnonymousCheckOutAfterVerifyFields(userHybris,billing);	   
@@ -118,38 +120,46 @@ public class FW1234 {
 
 		initVerifyTearDown();
 
-		// login to HMC system. prepare to delete test date
-		hmcTestOperation.doLogOnSite(userHMC, verifyDriver);
-		verifyWait.threadWait(3000);
-		// expand tree
-		verifyDriver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[order]_treeicon")).click();
-		verifyWait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Order]_label"));
-		verifyDriver.findElement(By.id("Tree/GenericLeafNode[Order]_label")).click();
-		verifyDriver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Order.code]]_input"))
-				.sendKeys(orderNumber);
-		verifyDriver.findElement(By.id("Content/DateEditor[in Content/GenericCondition[Order.date]]_date"))
-				.sendKeys(common.getTodayDate());
-
-		verifyDriver.findElement(By.id("Content/OrganizerSearch[Order]_searchbutton")).click();
-
-		// delete order so that we can delete User later
-		verifyDriver
-				.findElement(By
-						.xpath("//table[@id='Content/ClassificationOrganizerList[Order]_innertable']/tbody/tr[2]/td[4]/div/div"))
-				.click();
-		verifyDriver.findElement(By.id("Content/ClassificationOrganizerList[Order][delete]_img")).click();
-		verifyDriver.switchTo().alert().accept();
-		verifyWait.threadWait(1000);
-		// Navigate to User and Delete that TEST USER
-		verifyDriver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[user]_label")).click();
-		verifyWait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Customer]_label"));
-		verifyDriver.findElement(By.id("Tree/GenericLeafNode[Customer]_label")).click();
-		verifyDriver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Customer.name]]_input"))
-				.sendKeys(userHMC.getFirstName());
-		verifyDriver.findElement(By.id("Content/OrganizerSearch[Customer]_searchbutton")).click();
-		verifyDriver.findElement(By.xpath("//div[contains(text(),'Howard Anonymous')]")).click();
-		verifyDriver.findElement(By.id("Content/ClassificationOrganizerList[Customer][delete]_img")).click();
-		verifyDriver.switchTo().alert().accept();
+		 // login to HAC system. prepare to delete test date
+	    hacTestOperations.doLogOnSite(userHMC,verifyDriver);
+	    //clean order
+	    hacTestOperations.cleanOrder(orderNumber,verifyDriver);
+	    //clean user
+	    hacTestOperations.cleanUser(userHybris,verifyDriver);
+		
+		
+//		// login to HMC system. prepare to delete test date
+//		hmcTestOperation.doLogOnSite(userHMC, verifyDriver);
+//		verifyWait.threadWait(3000);
+//		// expand tree
+//		verifyDriver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[order]_treeicon")).click();
+//		verifyWait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Order]_label"));
+//		verifyDriver.findElement(By.id("Tree/GenericLeafNode[Order]_label")).click();
+//		verifyDriver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Order.code]]_input"))
+//				.sendKeys(orderNumber);
+//		verifyDriver.findElement(By.id("Content/DateEditor[in Content/GenericCondition[Order.date]]_date"))
+//				.sendKeys(common.getTodayDate());
+//
+//		verifyDriver.findElement(By.id("Content/OrganizerSearch[Order]_searchbutton")).click();
+//
+//		// delete order so that we can delete User later
+//		verifyDriver
+//				.findElement(By
+//						.xpath("//table[@id='Content/ClassificationOrganizerList[Order]_innertable']/tbody/tr[2]/td[4]/div/div"))
+//				.click();
+//		verifyDriver.findElement(By.id("Content/ClassificationOrganizerList[Order][delete]_img")).click();
+//		verifyDriver.switchTo().alert().accept();
+//		verifyWait.threadWait(1000);
+//		// Navigate to User and Delete that TEST USER
+//		verifyDriver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[user]_label")).click();
+//		verifyWait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Customer]_label"));
+//		verifyDriver.findElement(By.id("Tree/GenericLeafNode[Customer]_label")).click();
+//		verifyDriver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Customer.name]]_input"))
+//				.sendKeys(userHMC.getFirstName());
+//		verifyDriver.findElement(By.id("Content/OrganizerSearch[Customer]_searchbutton")).click();
+//		verifyDriver.findElement(By.xpath("//div[contains(text(),'Howard Anonymous')]")).click();
+//		verifyDriver.findElement(By.id("Content/ClassificationOrganizerList[Customer][delete]_img")).click();
+//		verifyDriver.switchTo().alert().accept();
 		driver.close();
 		driver.quit();
 		verifyDriver.close();

@@ -1,7 +1,5 @@
 package TestSuite.CheckoutSuite;
 
-
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +15,7 @@ import PageObjects.BrowserLoader;
 import PageObjects.BrowserStackLoader;
 import PageObjects.CommonActions;
 import PageObjects.ElementsRepositoryAction;
+import PageObjects.HACTestOperations;
 import PageObjects.HMCTestOperations;
 import PageObjects.InitWebDriver;
 import PageObjects.UITestOperations;
@@ -24,30 +23,28 @@ import PageObjects.VerifyTearDownOperations;
 import PageObjects.Wait;
 import junit.framework.Assert;
 
-
-/**   
-* @Title: Automation TestSuite 
-* @Package TestSuite 
-* @Description: Logged user without SA, CC data. Page display. Positive
-* @author: Howard
-* @compay: Kit and Ace     
-* @date 1/24/2016 
-* @version V1.0   
-*/
-
-
+/**
+ * @Title: Automation TestSuite
+ * @Package TestSuite
+ * @Description: Logged user without SA, CC data. Page display. Positive
+ * @author: Howard
+ * @compay: Kit and Ace
+ * @date 1/24/2016
+ * @version V1.0
+ */
 
 public class FW1236 {
-	private WebDriver driver,verifyDriver;
-	private Wait wait,verifyWait;
+	private WebDriver driver, verifyDriver;
+	private Wait wait, verifyWait;
 	CommonActions common;
 	ElementsRepositoryAction elementsRepositoryAction;
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
+	HACTestOperations hacTestOperations;
 	public VerifyTearDownOperations verifyTearDownOperations;
 	static Logger log = Logger.getLogger(FW1236.class.getName());
 	public InitWebDriver initWebDriver;
-	public UserInfo userHybris,userHMC;
+	public UserInfo userHybris, userHMC;
 	public BillingInfo billing;
 
 	@BeforeTest(alwaysRun = true)
@@ -55,62 +52,61 @@ public class FW1236 {
 
 		common = PageFactory.initElements(driver, CommonActions.class);
 	}
-	
-	
-	private void init()	
-	{
+
+	private void init() {
 		initWebDriver = PageFactory.initElements(driver, InitWebDriver.class);
-		driver=initWebDriver.driver;
+		driver = initWebDriver.driver;
 		wait = new Wait(driver);
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
 		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);
 		hmcTestOperation = PageFactory.initElements(driver, HMCTestOperations.class);
-		
+		hacTestOperations = PageFactory.initElements(driver, HACTestOperations.class);
 		userHybris = uitestOperation.users.get(1);
 		userHMC = uitestOperation.users.get(2);
 		billing = uitestOperation.billings.get(0);
 	}
-	
-	private void initVerifyTearDown()
-	{
-		verifyTearDownOperations= PageFactory.initElements(driver, VerifyTearDownOperations.class);
-		verifyDriver=verifyTearDownOperations.driver;
-		verifyWait=verifyTearDownOperations.wait;
+
+	private void initVerifyTearDown() {
+		verifyTearDownOperations = PageFactory.initElements(driver, VerifyTearDownOperations.class);
+		verifyDriver = verifyTearDownOperations.driver;
+		verifyWait = verifyTearDownOperations.wait;
 	}
 
 	@Test
-	public void testLoggedUserWithoutSACC () throws Exception {
+	public void testLoggedUserWithoutSACC() throws Exception {
 
 		init();
 		// register one new user
 		uitestOperation.registerUser(userHybris);
-	    wait.threadWait(3000);
-	    uitestOperation.buy2ManTshirts();
-	    //if all the field can be input data which means its exist 
-	    uitestOperation.checkOut(userHybris,billing);	
+		wait.threadWait(3000);
+		uitestOperation.buy2ManTshirts();
+		// if all the field can be input data which means its exist
+		uitestOperation.checkOut(userHybris, billing);
 	}
-
-
-
-
 
 	@AfterClass(alwaysRun = true)
 	public void tearDown() throws Exception {
-initVerifyTearDown();
-		
-		// login to HMC system. prepare to delete test date
-		hmcTestOperation.doLogOnSite(userHMC,verifyDriver);
-		verifyWait.threadWait(3000);
-		// Navigate to User and Delete that TEST USER
-		verifyDriver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[user]_label")).click();
-		verifyWait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Customer]_label"));
-		verifyDriver.findElement(By.id("Tree/GenericLeafNode[Customer]_label")).click();
-		verifyDriver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Customer.name]]_input"))
-				.sendKeys(userHMC.getFirstName());
-		verifyDriver.findElement(By.id("Content/OrganizerSearch[Customer]_searchbutton")).click();
-		verifyDriver.findElement(By.xpath("//div[contains(text(),'Howard Anonymous')]")).click();
-		verifyDriver.findElement(By.id("Content/ClassificationOrganizerList[Customer][delete]_img")).click();
-		verifyDriver.switchTo().alert().accept();
+		initVerifyTearDown();
+		// login to HAC system. prepare to delete test date
+		hacTestOperations.doLogOnSite(userHMC, verifyDriver);
+		// clean user
+		hacTestOperations.cleanUser(userHybris, verifyDriver);
+
+		// // login to HMC system. prepare to delete test date
+		// hmcTestOperation.doLogOnSite(userHMC,verifyDriver);
+		// verifyWait.threadWait(3000);
+		// // Navigate to User and Delete that TEST USER
+		// verifyDriver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[user]_label")).click();
+		// verifyWait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Customer]_label"));
+		// verifyDriver.findElement(By.id("Tree/GenericLeafNode[Customer]_label")).click();
+		// verifyDriver.findElement(By.id("Content/StringEditor[in
+		// Content/GenericCondition[Customer.name]]_input"))
+		// .sendKeys(userHMC.getFirstName());
+		// verifyDriver.findElement(By.id("Content/OrganizerSearch[Customer]_searchbutton")).click();
+		// verifyDriver.findElement(By.xpath("//div[contains(text(),'Howard
+		// Anonymous')]")).click();
+		// verifyDriver.findElement(By.id("Content/ClassificationOrganizerList[Customer][delete]_img")).click();
+		// verifyDriver.switchTo().alert().accept();
 		driver.close();
 		driver.quit();
 		verifyDriver.close();
