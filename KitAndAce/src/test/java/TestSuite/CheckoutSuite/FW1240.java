@@ -80,16 +80,16 @@ public class FW1240 {
 		uitestOperation.buy2ManTshirts();
 		
 		// click checkout button
-		wait.waitForElementIsClickable(By.xpath("//button[contains(text(),'Checkout')]"));
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		wait.waitForElementIsClickable(By.xpath("//button[contains(text(),'Continue')]"));
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		
 		//update one order item
 		uitestOperation.editOrder();
 		
 		// click checkout button
-		wait.waitForElementIsClickable(By.xpath("//button[contains(text(),'Checkout')]"));
-		btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		wait.waitForElementIsClickable(By.xpath("//button[contains(text(),'Continue')]"));
+		btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		
 		Assert.assertTrue(uitestOperation.verifyUpdatedQuanlity(2));

@@ -87,9 +87,9 @@ public class FW1237 {
 	public void verifyEmailWhenAnonymousCheckOut(UserInfo user, BillingInfo billing) {
 		common.javascriptClick(driver, driver
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
-		wait.waitElementToBeDisplayed(By.xpath("//button[contains(text(),'Checkout')]"));
+		wait.waitElementToBeDisplayed(By.xpath("//button[contains(text(),'Continue')]"));
 		// click checkout button
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		//Fill in E-Mail Field with data in incorrect format (no "@" character, no ending, no characters before the "@" character etc.)
 		driver.findElement(By.id("checkout-email")).sendKeys("aaaaa.com");

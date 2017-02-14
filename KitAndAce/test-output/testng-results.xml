@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="78950" started-at="2017-02-14T22:23:05Z" finished-at="2017-02-14T22:24:24Z">
+  <suite name="Default suite" duration-ms="24942" started-at="2017-02-14T23:17:53Z" finished-at="2017-02-14T23:18:18Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="78950" started-at="2017-02-14T22:23:05Z" finished-at="2017-02-14T22:24:24Z">
-      <class name="TestSuite.CheckoutSuite.FW2370">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW2370@3532ec19]" name="setUp" is-config="true" duration-ms="10" started-at="2017-02-14T14:23:05Z" finished-at="2017-02-14T14:23:05Z">
+    <test name="Default test" duration-ms="24942" started-at="2017-02-14T23:17:53Z" finished-at="2017-02-14T23:18:18Z">
+      <class name="TestSuite.CheckoutSuite.FW1834">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1834@3532ec19]" name="setUp" is-config="true" duration-ms="11" started-at="2017-02-14T15:17:53Z" finished-at="2017-02-14T15:17:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testTaxEstimationAddNewAddress4RegisteredUser()[pri:0, instance:TestSuite.CheckoutSuite.FW2370@3532ec19]" name="testTaxEstimationAddNewAddress4RegisteredUser" duration-ms="63340" started-at="2017-02-14T14:23:05Z" finished-at="2017-02-14T14:24:09Z">
+        <test-method status="PASS" signature="zipValidationJPanonymousCheckOut()[pri:0, instance:TestSuite.CheckoutSuite.FW1834@3532ec19]" name="zipValidationJPanonymousCheckOut" duration-ms="21998" started-at="2017-02-14T15:17:53Z" finished-at="2017-02-14T15:18:15Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testTaxEstimationAddNewAddress4RegisteredUser -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW2370@3532ec19]" name="tearDown" is-config="true" duration-ms="15588" started-at="2017-02-14T14:24:09Z" finished-at="2017-02-14T14:24:24Z">
+        </test-method> <!-- zipValidationJPanonymousCheckOut -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1834@3532ec19]" name="tearDown" is-config="true" duration-ms="2918" started-at="2017-02-14T15:18:15Z" finished-at="2017-02-14T15:18:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- TestSuite.CheckoutSuite.FW2370 -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1834 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

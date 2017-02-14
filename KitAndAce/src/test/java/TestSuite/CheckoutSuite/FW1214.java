@@ -75,8 +75,8 @@ public class FW1214 {
 		uitestOperation.buy2ManTshirts();
 		
 		// click checkout button
-		wait.waitForElementIsClickable(By.xpath("//button[contains(text(),'Checkout')]"));
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		wait.waitForElementIsClickable(By.xpath("//button[contains(text(),'Continue')]"));
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);
 		
 		//update one order item
