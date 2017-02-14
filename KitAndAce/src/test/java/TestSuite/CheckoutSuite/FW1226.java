@@ -89,7 +89,7 @@ public class FW1226 {
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
 		wait.threadWait(1000);
 		// click checkout button
-		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Checkout')]"));
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);
 	    
 	}

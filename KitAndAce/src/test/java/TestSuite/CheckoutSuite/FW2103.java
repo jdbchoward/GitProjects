@@ -16,6 +16,7 @@ import POJO.BillingInfo;
 import POJO.UserInfo;
 import PageObjects.CommonActions;
 import PageObjects.ElementsRepositoryAction;
+import PageObjects.HACTestOperations;
 import PageObjects.HMCTestOperations;
 import PageObjects.InitWebDriver;
 import PageObjects.UITestOperations;
@@ -40,6 +41,7 @@ public class FW2103 {
 	ElementsRepositoryAction elementsRepositoryAction;
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
+	HACTestOperations hacTestOperations;
 	public VerifyTearDownOperations verifyTearDownOperations;
 	static Logger log = Logger.getLogger(FW2103.class.getName());
 	public InitWebDriver initWebDriver;
@@ -62,6 +64,7 @@ public class FW2103 {
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
 		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);
 		hmcTestOperation = PageFactory.initElements(driver, HMCTestOperations.class);
+		hacTestOperations=PageFactory.initElements(driver, HACTestOperations.class);
 
 		userHybris = uitestOperation.users.get(1);
 		userHMC = uitestOperation.users.get(2);
@@ -105,21 +108,28 @@ public class FW2103 {
 	public void tearDown() throws Exception {
 
 		initVerifyTearDown();
+		
+		 // login to HAC system. prepare to delete test date
+	    hacTestOperations.doLogOnSite(userHMC,verifyDriver);
+	    //clean user
+	    hacTestOperations.cleanUser(userHybris,verifyDriver);
+	    
+	    
 
-		// login to HMC system. prepare to delete test date
-		hmcTestOperation.doLogOnSite(userHMC, verifyDriver);
-		verifyWait.threadWait(3000);
-
-		// Navigate to User and Delete that TEST USER
-		verifyDriver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[user]_label")).click();
-		verifyWait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Customer]_label"));
-		verifyDriver.findElement(By.id("Tree/GenericLeafNode[Customer]_label")).click();
-		verifyDriver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Customer.name]]_input"))
-				.sendKeys(userHMC.getFirstName());
-		verifyDriver.findElement(By.id("Content/OrganizerSearch[Customer]_searchbutton")).click();
-		verifyDriver.findElement(By.xpath("//div[contains(text(),'Howard Anonymous')]")).click();
-		verifyDriver.findElement(By.id("Content/ClassificationOrganizerList[Customer][delete]_img")).click();
-		verifyDriver.switchTo().alert().accept();
+//		// login to HMC system. prepare to delete test date
+//		hmcTestOperation.doLogOnSite(userHMC, verifyDriver);
+//		verifyWait.threadWait(3000);
+//
+//		// Navigate to User and Delete that TEST USER
+//		verifyDriver.findElement(By.id("Tree/GenericExplorerMenuTreeNode[user]_label")).click();
+//		verifyWait.waitElementToBeDisplayed(By.id("Tree/GenericLeafNode[Customer]_label"));
+//		verifyDriver.findElement(By.id("Tree/GenericLeafNode[Customer]_label")).click();
+//		verifyDriver.findElement(By.id("Content/StringEditor[in Content/GenericCondition[Customer.name]]_input"))
+//				.sendKeys(userHMC.getFirstName());
+//		verifyDriver.findElement(By.id("Content/OrganizerSearch[Customer]_searchbutton")).click();
+//		verifyDriver.findElement(By.xpath("//div[contains(text(),'Howard Anonymous')]")).click();
+//		verifyDriver.findElement(By.id("Content/ClassificationOrganizerList[Customer][delete]_img")).click();
+//		verifyDriver.switchTo().alert().accept();
 		driver.close();
 		driver.quit();
 		verifyDriver.close();
