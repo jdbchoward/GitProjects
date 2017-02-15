@@ -30,7 +30,7 @@ public class UITestOperations {
 
 	public UITestOperations(WebDriver driver) {
 		this.driver = driver;
-		baseUrl = "https://demox.mmxreservations.com/";
+//		baseUrl = "https://demox.mmxreservations.com/";
 		wait = new Wait(driver);
 		common = PageFactory.initElements(driver, CommonActions.class);
 		elementsRepositoryAction = new ElementsRepositoryAction(driver);
@@ -38,7 +38,7 @@ public class UITestOperations {
 		this.users = common.getInformation(1).get("users");
 		this.billings = common.getInformation(2).get("billings");
 	}
-
+	/**
 	public void doSignIn(String username, String psw) {
 		driver.manage().window().maximize();
 		driver.get("http://www.shoeme.ca/");
@@ -287,7 +287,7 @@ public class UITestOperations {
 	public void filterShoesUS() {
 		driver.findElement(By.xpath("//a[@data-facetval='adultfootwear:8.5']")).click();
 	}
-
+*/
 	/// ----------------------------------------------------------
 
     private String url_WestCoastBrushedLongSleeve = "Men/T-Shirts-and-Long-Sleeves/p/West-Coast-Brushed-Long-Sleeve/KM031092?color=KM031092-10001";
@@ -958,6 +958,16 @@ public class UITestOperations {
 				.getText();
 
 		Assert.assertTrue(totalprice.contains("$"));
+	}
+	
+	public void changeCountryToWhenCheckOut(int countryNum) {
+		common.javascriptMakeSelectOptionVisiable(driver, "checkout-country-select");
+		Select selectCC = new Select(driver.findElement(By.id("checkout-country-select")));
+		selectCC.selectByIndex(countryNum);
+		wait.waitElementToBeDisplayed(
+				By.xpath("//button[@class='modal__content__ok js-checkout-change-country-close is-active']"));
+		driver.findElement(By.xpath("//button[@class='modal__content__ok js-checkout-change-country-close is-active']"))
+				.click();
 	}
 	
 	
