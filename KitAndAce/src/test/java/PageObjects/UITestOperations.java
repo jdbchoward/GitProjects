@@ -290,8 +290,13 @@ public class UITestOperations {
 */
 	/// ----------------------------------------------------------
 
-    private String url_WestCoastBrushedLongSleeve = "Men/T-Shirts-and-Long-Sleeves/p/West-Coast-Brushed-Long-Sleeve/KM031092?color=KM031092-10001";
-	private String url_DoubleTakeButtonUp = "Men/p/Double-Take-Button-Up/KM021086?color=KM021086-10804";
+//    private String url_WestCoastBrushedLongSleeve = "Men/T-Shirts-and-Long-Sleeves/p/West-Coast-Brushed-Long-Sleeve/KM031092?color=KM031092-10001";
+//	private String url_DoubleTakeButtonUp = "Men/p/Double-Take-Button-Up/KM021086?color=KM021086-10804";
+	
+	private String url_Remsen_Tee="Men/p/Remsen-Tee/KM021038?color=KM021038-10022";
+	private String url_V_Tee="/Men/p/V-Tee/KM021032?color=KM021032-10298";
+	
+	
 	
 	private String getBaseURL(){
 		String baseURL="";
@@ -395,27 +400,27 @@ public class UITestOperations {
 		// driver.findElement(By.xpath("//a[@title='West Coast Brushed Long
 		// Sleeve']")));
 
-		driver.get(getBaseURL()+url_WestCoastBrushedLongSleeve);
+//		driver.get(getBaseURL()+url_WestCoastBrushedLongSleeve);
+		driver.get(getBaseURL()+url_Remsen_Tee);
+		
 		killAdv();
 		// choose size
-		chooseSize("91215", "91216", "91214", "91217", "91213");
+//		chooseSize("91215", "91216", "91214", "91217", "91213");
+		chooseSize("20043", "20044", "20042", "20045", "20041");
 		// add to bag
 		WebElement btnAdd = driver.findElement(By.xpath(
 				"//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
 
 		common.javascriptClick(driver, btnAdd);
 
-		// buy second one
-		// log.debug("url: " + url);
-		// driver.get(url);
-		// common.javascriptScrollPage(driver, 5000);
-		// wait.threadWait(2000);
-		// common.javascriptClick(driver,
-		// driver.findElement(By.xpath("//a[@title='Double Dose Tee']")));
-		driver.get(getBaseURL()+url_DoubleTakeButtonUp);
+	
+//		driver.get(getBaseURL()+url_DoubleTakeButtonUp);
+		driver.get(getBaseURL()+url_V_Tee);
+		
 		wait.threadWait(2000);
 		// choose size
-		chooseSize("88604", "88605", "88603", "88606", "88602");
+//		chooseSize("88604", "88605", "88603", "88606", "88602");
+		chooseSize("20007", "20009", "20005", "20011", "20003");
 		// add to bag
 		btnAdd = driver.findElement(By.xpath(
 				"//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
@@ -431,13 +436,15 @@ public class UITestOperations {
 		// driver.findElement(By.xpath("//a[@title='West Coast Brushed Long
 		// Sleeve']")));
 		driver.manage().window().maximize();
-		driver.get(getBaseURL()+url_WestCoastBrushedLongSleeve);
+//		driver.get(getBaseURL()+url_WestCoastBrushedLongSleeve);
+		driver.get(getBaseURL()+url_Remsen_Tee);
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		killAdv();
 		wait.threadWait(1000);
 		// choose size
-		chooseSize("91215", "91216", "91214", "91217", "91213");
+//		chooseSize("91215", "91216", "91214", "91217", "91213");
+		chooseSize("20043", "20044", "20042", "20045", "20041");
 		// add to bag
 		WebElement btnAdd = driver.findElement(By.xpath(
 				"//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
@@ -1086,13 +1093,15 @@ public class UITestOperations {
 		String url = driver.getCurrentUrl();		
 		String baseURL="https://staging.hybris.kitandace.com/us/en/";
 		driver.manage().window().maximize(); 
-		driver.get(baseURL+url_WestCoastBrushedLongSleeve);
+//		driver.get(baseURL+url_WestCoastBrushedLongSleeve);
+		driver.get(baseURL+url_Remsen_Tee);
 		wait.WaitUntilPageLoaded();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		killAdv();
 		wait.threadWait(1000);
 		// choose size
-		chooseSize("91215", "91216", "91214", "91217", "91213");
+//		chooseSize("91215", "91216", "91214", "91217", "91213");
+		chooseSize("20043", "20044", "20042", "20045", "20041");
 		// add to bag
 		WebElement btnAdd = driver.findElement(By.xpath(
 				"//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
