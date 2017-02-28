@@ -30,23 +30,23 @@ import junit.framework.Assert;
 /**   
 * @Title: Automation TestSuite 
 * @Package CheckoutSuite 
-* @Description:  JP zip code validation - negative.
+* @Description:  UK zip code validation - positive.
 * @author: Howard
 * @compay: Kit and Ace     
-* @date 3/3/2017 
+* @date 3/6/2017 
 * @version V1.0   
 */
 
 
 
-public class FW1884 {
+public class FW1887 {
 	private WebDriver driver,verifyDriver;
 	private Wait wait,verifyWait;
 	CommonActions common;
 	ElementsRepositoryAction elementsRepositoryAction;
 	UITestOperations uitestOperation;
 	HMCTestOperations hmcTestOperation;
-	static Logger log = Logger.getLogger(FW1884.class.getName());
+	static Logger log = Logger.getLogger(FW1887.class.getName());
 	public InitWebDriver initWebDriver;
 	public UserInfo userHybris,userHMC;
 	public BillingInfo billing;
@@ -68,7 +68,7 @@ public class FW1884 {
 		uitestOperation = PageFactory.initElements(driver, UITestOperations.class);
 		hmcTestOperation = PageFactory.initElements(driver, HMCTestOperations.class);
 		
-		userHybris=uitestOperation.users.get(3);
+		userHybris=uitestOperation.users.get(7);
 		userHMC=uitestOperation.users.get(2);
 		billing=uitestOperation.billings.get(0);
 	}
@@ -82,7 +82,7 @@ public class FW1884 {
 	}
 
 	@Test
-	public void AUandNZzipCodeValidation() throws Exception {
+	public void UKzipCodeValidation() throws Exception {
 
 		init();
 	    uitestOperation.buyManTshirtsWithAnonymousUser(); 
@@ -93,47 +93,29 @@ public class FW1884 {
 		// click checkout button
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);		
-		//change country to AU	
-		 uitestOperation.changeCountryToWhenCheckOut(1);	 
+		//change country to UK	
+		 uitestOperation.changeCountryToWhenCheckOut(5);	 
 		 
 		 
-		 //JP is chosen. Examples of valid format: 999-9999 OR 999 9999	
-		 
-//		 Enter non numeric data in all 2 correct formats and trigger validation	Validation failed.
-		 verifyPostCode("AAA-BBBB");
-		 verifyPostCode("AAA BBBB");
-//		 Enter special symbols in all 2 correct formats and trigger validation	Validation failed.
-		 verifyPostCode("9$9-9999");
-		 verifyPostCode("999 99#9");
-//		 Enter mix with special symbols / digits and characters in all 2 correct formats and trigger validation	Validation failed.
-		 verifyPostCode("9/9-9999");
-		 verifyPostCode("9/9 9999");
-//		 Enter 4 digits with space before the 4-th number and trigger validation	Validation failed.
-		 verifyPostCode("9997 999");
-//		 Enter 4 digits without space before the 4-th number and trigger validation	Validation failed.
-		 verifyPostCode("9999999");
-//		 Enter 4 digits with hyphen before the 4-th number and trigger validation	Validation failed.
-		 verifyPostCode("9999-999");
-//		 Enter 4 digits with hyphens (4) before the 4-th number and trigger validation	Validation failed.
-		 verifyPostCode("9999-9999");
-//		 Enter 4 digits with spaces (4) before the 4-th number and trigger validation	Validation failed.
-		 verifyPostCode("9999 999");
-//		 Enter only hyphens and spaces and trigger validation	Validation failed.
-		 verifyPostCode("----   ");
-//		 Enter mix of hyphens/spaces and digits and trigger validation	Validation failed.
-		 verifyPostCode("99 9/9999");
-//		 Enter 7 digits without space/hyphen before the 4-th digit and trigger validation	Validation failed.
-		 verifyPostCode("9999999");
-//		 Enter 7 digits with space/hyphen that is placed in incorrect position and trigger validation	Validation failed.
-		 verifyPostCode("9 99-9999");
-//		 Enter 8 digits and trigger validation	Validation failed.
-		 verifyPostCode("999-99999");
-//		 Enter multi-byte characters and trigger validation	Validation failed.
-		 verifyPostCode("999-99邮编");
+		 driver.findElement(By.id("checkout-address-1")).clear();
+			driver.findElement(By.id("checkout-address-1")).sendKeys(userHybris.getAddress());
+			driver.findElement(By.id("checkout-city")).clear();
+			driver.findElement(By.id("checkout-city")).sendKeys(userHybris.getCity());
+		 //UK is chosen. Examples of valid format: ST16 3QH	
 		 
 		 
-
-		 
+//		 Fill in correct zip code in 5 characters format (first letter and last letter)	Correct data is entered
+		 verifyPostCode(userHybris.getZip());
+//		 Fill in correct zip code in 5 characters format with space (first letter and last letter)	Correct data is entered
+		 verifyPostCode("ST16 H");
+//		 Fill in correct zip code in 6 characters format (first letter and last letter)	Correct data is entered
+		 verifyPostCode("ST163Q");
+//		 Fill in correct zip code in 6 characters format with space (first letter and last letter)	Correct data is entered
+		 verifyPostCode("ST16 3Q");
+//		 Fill in correct zip code in 7 characters format (first letter and last letter)	Correct data is entered
+		 verifyPostCode("ST163QH");
+//		 Fill in correct zip code in 7 characters/digits format with space (first letter and last letter)	Correct data is entered
+		 verifyPostCode("ST16 3QH");
 	}
 	
 
