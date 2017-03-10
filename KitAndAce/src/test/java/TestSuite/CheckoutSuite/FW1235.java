@@ -81,6 +81,7 @@ public class FW1235 {
 	
 		// register one new user
 		uitestOperation.registerUser(userHybris);
+		wait.threadWait(2000);
 		// add 2 credit card
 		uitestOperation.addUserAddressDetail(userHybris, billing);
 		uitestOperation.addUserPaymentDetail(userHybris, billing);

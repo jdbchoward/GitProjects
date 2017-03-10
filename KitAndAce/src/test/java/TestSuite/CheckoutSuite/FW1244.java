@@ -81,6 +81,7 @@ public class FW1244 {
 		init();
 	//register one new user
 		uitestOperation.registerUser(userHybris);
+		wait.threadWait(2000);
 		uitestOperation.addUserAddressDetail(userHybris, billing);
 //		uitestOperation.addUserPaymentDetail(userHybris,billing);
 		uitestOperation.buyManTshirtsWithAnonymousUser();

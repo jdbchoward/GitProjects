@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="34521" started-at="2017-02-28T17:22:53Z" finished-at="2017-02-28T17:23:27Z">
+  <suite name="Default suite" duration-ms="112628" started-at="2017-03-06T18:17:50Z" finished-at="2017-03-06T18:19:43Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="34521" started-at="2017-02-28T17:22:53Z" finished-at="2017-02-28T17:23:27Z">
-      <class name="TestSuite.CheckoutSuite.FW1887">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1887@3532ec19]" name="setUp" is-config="true" duration-ms="12" started-at="2017-02-28T09:22:53Z" finished-at="2017-02-28T09:22:53Z">
+    <test name="Default test" duration-ms="112628" started-at="2017-03-06T18:17:50Z" finished-at="2017-03-06T18:19:43Z">
+      <class name="TestSuite.CheckoutSuite.FW1210">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuite.CheckoutSuite.FW1210@3532ec19]" name="setUp" is-config="true" duration-ms="15" started-at="2017-03-06T10:17:50Z" finished-at="2017-03-06T10:17:50Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="UKzipCodeValidation()[pri:0, instance:TestSuite.CheckoutSuite.FW1887@3532ec19]" name="UKzipCodeValidation" duration-ms="31560" started-at="2017-02-28T09:22:53Z" finished-at="2017-02-28T09:23:24Z">
+        <test-method status="PASS" signature="testVerifyCheckOutPageWhenNOTLogined()[pri:0, instance:TestSuite.CheckoutSuite.FW1210@3532ec19]" name="testVerifyCheckOutPageWhenNOTLogined" duration-ms="96896" started-at="2017-03-06T10:17:50Z" finished-at="2017-03-06T10:19:27Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- UKzipCodeValidation -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1887@3532ec19]" name="tearDown" is-config="true" duration-ms="2938" started-at="2017-02-28T09:23:24Z" finished-at="2017-02-28T09:23:27Z">
+        </test-method> <!-- testVerifyCheckOutPageWhenNOTLogined -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestSuite.CheckoutSuite.FW1210@3532ec19]" name="tearDown" is-config="true" duration-ms="15702" started-at="2017-03-06T10:19:27Z" finished-at="2017-03-06T10:19:43Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- TestSuite.CheckoutSuite.FW1887 -->
+      </class> <!-- TestSuite.CheckoutSuite.FW1210 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -605,10 +605,10 @@ public class UITestOperations {
 		// }
 
 		// change color and size
-		List<WebElement> colors = driver.findElements(By.xpath("//a[@data-colorcode='KM031092-10022']"));
+		List<WebElement> colors = driver.findElements(By.xpath("//a[@data-colorcode='KM021038-10038']"));
 		common.javascriptClick(driver, colors.get(1));
 		wait.threadWait(2000);
-		driver.findElement(By.xpath("//button[@data-colorcode='KM031092-10022' and @data-sizecode='91998']")).click();
+		driver.findElement(By.xpath("//button[@data-colorcode='KM021038-10038' and @data-sizecode='35862']")).click();
 
 		// // click update
 		// List<WebElement> btnUpdate =
@@ -754,7 +754,8 @@ public class UITestOperations {
 		common.javascriptClick(driver,
 				driver.findElement(By.xpath("//button[@class='btn-link' and contains(text(),'Sign in')]")));
 		wait.threadWait(2000);
-		driver.findElement(By.xpath("//button[@class='btn btn--md btn--bordered btn--pw create']")).click();
+//		driver.findElement(By.xpath("//button[@class='btn btn--md btn--bordered btn--pw create']")).click();
+		driver.findElement(By.xpath("//button[@class='btn btn--inverse btn--block create']")).click();
 		// fill in the form
 		driver.findElement(By.id("create-account-form_firstName")).sendKeys(user.getFirstName());
 		driver.findElement(By.id("create-account-form_lastName")).sendKeys(user.getLastName());
@@ -805,7 +806,8 @@ public class UITestOperations {
 		new Select(driver.findElement(By.id("ccExpYear"))).selectByVisibleText(billing.getExpYear());
 		driver.findElement(By.id("frmCcCvv")).clear();
 		driver.findElement(By.id("frmCcCvv")).sendKeys(billing.getCvc());
-		driver.findElement(By.xpath("//button[@class='button js-account-wallet-save']")).click();
+		driver.findElement(By.xpath("//button[@class='btn js-account-wallet-save']")).click();
+		                                              
 
 	}
 

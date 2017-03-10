@@ -93,7 +93,7 @@ public class FW1234 {
 	    //checkout
 	    common.javascriptClick(driver, driver
 				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
-		wait.threadWait(1000);
+		wait.threadWait(2500);
 		// click checkout button
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);		
@@ -102,6 +102,7 @@ public class FW1234 {
 	    //check SA and uncheck SA
 	    common.javascriptClick(driver,driver.findElement(By.id("checkout-address-same-as-shipping")));
 	    userHMC.setLastName("Anonymous");
+	    wait.threadWait(2000);
 	    uitestOperation.fillInSAbillingInfo(userHMC);
 	    
 	    //place order

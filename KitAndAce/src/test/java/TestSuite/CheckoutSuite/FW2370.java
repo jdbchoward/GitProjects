@@ -83,6 +83,7 @@ public class FW2370 {
 
 		init();
 		uitestOperation.registerUser(userHybris);
+		wait.threadWait(2000);
 		// registerUser with non-taxable state and taxable state
 		uitestOperation.addUserAddressDetail(userHybris, billing, 4, 8);
 		uitestOperation.addUserAddressDetail(nonTaxStateUser, billing, 4, 41);

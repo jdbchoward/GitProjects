@@ -89,6 +89,7 @@ public class FW1246 {
 		init();
 		// register one new user
 		uitestOperation.registerUser(userHybris);
+		wait.threadWait(2000);
 		//add more different address
 		uitestOperation.addUserAddressDetail(userHybris, billing);
 		//add japan address

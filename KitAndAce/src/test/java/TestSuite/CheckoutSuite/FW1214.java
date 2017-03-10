@@ -71,6 +71,7 @@ public class FW1214 {
 	@Test
 	public void testEditOrderNotSave() throws Exception {
 		init();
+		driver.manage().window().maximize();
 		// register one new user
 		uitestOperation.buy2ManTshirts();
 		
