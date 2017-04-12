@@ -305,6 +305,7 @@ public class UITestOperations {
 			baseURL="https://dev.hybris.kitandace.com/ca/en/";	
 		if (testEnvironment.equalsIgnoreCase("stage"))	
 			baseURL= "https://staging.hybris.kitandace.com/ca/en/";
+//		baseURL= "https://mig.hybris.kitandace.com/ca/en/";   //automation testing only
 	
 		return baseURL;
 		

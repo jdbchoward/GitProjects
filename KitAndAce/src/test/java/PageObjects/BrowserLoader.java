@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -95,17 +96,21 @@ public class BrowserLoader {
 			break;
 		case chrome:
 			System.setProperty("webdriver.chrome.driver", driverpath + "chromedriver.exe");
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 			ChromeOptions options = new ChromeOptions();
-			options.addArguments("-incognito");
+//			options.addArguments("-incognito");
 			options.addArguments("--disable-popup-blocking");
-			options.addArguments("no-sandbox");
-			options.addArguments("chrome.switches", "--disable-extensions");
+//			options.addArguments("no-sandbox");
+//			options.addArguments("chrome.switches", "--disable-extensions");
+			
 
 			// capabilities.setCapability("chrome.switches",
 			// Arrays.asList("--proxy-server=http://your-proxy-domain:4443"));
-
+			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+			capabilities.setCapability (CapabilityType.ACCEPT_SSL_CERTS, true);
+			
 			if (nodeurl.equals(""))
-				driver = new ChromeDriver(options);
+				driver = new ChromeDriver(capabilities);
 			else
 				try {
 					driver = new RemoteWebDriver(new URL(nodeurl), caps);
