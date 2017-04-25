@@ -40,7 +40,8 @@ public class HACTestOperations {
 			baseUrl = "https://admindev.hybris.kitandace.com/hac";
 		if (testEnvironment.equalsIgnoreCase("stage"))
 			baseUrl = "https://adminstaging.hybris.kitandace.com/hac";
-//		baseUrl = "https://adminmig.hybris.kitandace.com/hac";  //automation testing only
+		if (testEnvironment.equalsIgnoreCase("mig"))
+		    baseUrl = "https://adminmig.hybris.kitandace.com/hac";  //automation testing only
 
 		driver.get(baseUrl);
 		wait.WaitUntilPageLoaded();
