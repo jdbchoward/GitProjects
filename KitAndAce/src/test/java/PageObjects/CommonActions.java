@@ -27,6 +27,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import HMC.TestCheckOrder;
 import POJO.BillingInfo;
+import POJO.GiftCard;
 import POJO.UserInfo;
 
 public class CommonActions {
@@ -134,12 +135,13 @@ public class CommonActions {
 	    return systemInfo;
 	}
 	
-	//typePojo  1.UserInfo;  2.BillingInfo
+	//typePojo  1.UserInfo;  2.BillingInfo  3.GiftCard
 	private Map<String,List> getFromXlsFile(String fileName,int typePojo)
 	{
 		Map<String,List> xlsMap=new HashMap<String,List>();
 		List<UserInfo> users=new ArrayList<UserInfo>();
 		List<BillingInfo> billings=new ArrayList<BillingInfo>();
+		List<GiftCard> giftCards=new ArrayList<GiftCard>();
 		try {
 
 			FileInputStream file = new FileInputStream(new File(filepath + fileName));
@@ -160,7 +162,8 @@ public class CommonActions {
 				        break;
 				case 2: billings.add(assignBilling(row));
 		                break;
-					
+				case 3: giftCards.add(assignGiftCard(row));
+                        break;	
 			}
 				// For each row, iterate through each columns
 //				Iterator<Cell> cellIterator = row.cellIterator();
@@ -184,7 +187,9 @@ public class CommonActions {
 			}
 			xlsMap.put("users", users);
 			xlsMap.put("billings", billings);
-
+			xlsMap.put("giftCards", giftCards);
+			
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -218,7 +223,14 @@ public class CommonActions {
 		return billing;
 	}
 	
-	//typePojo  1.UserInfo;  2.BillingInfo
+	private GiftCard assignGiftCard(Row row){
+		GiftCard giftCard=new GiftCard();
+		giftCard.setCardNum((row.getCell(0).toString()));
+		giftCard.setValue(row.getCell(1).getNumericCellValue());
+		return giftCard;
+	}
+	
+	//typePojo  1.UserInfo;  2.BillingInfo 3.GiftCard
 	public Map<String,List> getInformation(int typePojo)
 	{
 		Map<String,List> xlsMap=new HashMap<String,List>();
@@ -226,6 +238,8 @@ public class CommonActions {
 		case 1:  xlsMap=getFromXlsFile("UserInfo.xls",1);
 		        break;
 		case 2: xlsMap=getFromXlsFile("BillingInfo.xls",2);
+                break;
+		case 3: xlsMap=getFromXlsFile("GiftCard.xls",3);
                 break;
 			
 	     }

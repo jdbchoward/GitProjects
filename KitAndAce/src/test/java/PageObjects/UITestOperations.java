@@ -14,6 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import POJO.BillingInfo;
+import POJO.GiftCard;
 import POJO.UserInfo;
 import junit.framework.Assert;
 
@@ -27,6 +28,7 @@ public class UITestOperations {
 	static Logger log = Logger.getLogger(UITestOperations.class.getName());
 	public List<UserInfo> users = new ArrayList<UserInfo>();
 	public List<BillingInfo> billings = new ArrayList<BillingInfo>();
+	public List<GiftCard> giftCards=new ArrayList<GiftCard>();
 
 	public UITestOperations(WebDriver driver) {
 		this.driver = driver;
@@ -37,6 +39,7 @@ public class UITestOperations {
 
 		this.users = common.getInformation(1).get("users");
 		this.billings = common.getInformation(2).get("billings");
+		this.giftCards = common.getInformation(3).get("giftCards");
 	}
 	/**
 	public void doSignIn(String username, String psw) {
@@ -509,6 +512,52 @@ public class UITestOperations {
 		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 	}
 
+	
+	
+	public void AnonymousGiftCardCheckOut(UserInfo user, BillingInfo billing,GiftCard giftCard) {
+		common.javascriptClick(driver, driver
+				.findElement(By.xpath("//li[@class='sb-tab']/button[@class='btn-link mini-cart js-mini-cart-link']")));
+		wait.threadWait(1000);
+		// click checkout button
+		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
+		common.javascriptClick(driver, btnCheckOut);
+//		expandCheckout();
+		driver.findElement(By.id("checkout-email")).sendKeys(user.getEmail());
+//		btnNext(1);
+		addUserInfo(user);
+//		btnNext(2);
+		
+		//add giftcard
+		addGiftCard(giftCard.getCardNum());		
+		
+		addBillInfo(billing);
+		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
+	}
+	
+	public boolean addGiftCard(String giftCardNum)
+	{
+		WebElement txtGiftCardInput=driver.findElement(By.id(""));
+		txtGiftCardInput.sendKeys("");
+		driver.findElement(By.id("")).click();
+		return verifyAddGiftCard(giftCardNum);
+	}
+	
+	public boolean removeGiftCard(String giftCardNum)
+	{
+		driver.findElement(By.id("")).click();
+		return !verifyAddGiftCard(giftCardNum);
+	}
+	
+	private boolean verifyAddGiftCard(String giftCardNum)
+	{
+	       List<WebElement> giftValues=driver.findElements(By.id(""));
+	       if(giftValues!=null && giftValues.size()>0)
+	    	   return true;
+	       else
+	           return false;
+	
+	}
+	
 	public void AnonymousCheckOutAfterVerifyFields(UserInfo user, BillingInfo billing) {
 		
 //		expandCheckout();
