@@ -37,7 +37,7 @@ import junit.framework.Assert;
 * @Description:  Add/Remove Gift Card. Page display. Positive
 * @author: Howard
 * @compay: Kit and Ace     
-* @date 4/26/2017 
+* @date 5/4/2017 
 * @version V1.0   
 */
 
@@ -94,12 +94,13 @@ public class FW3649 {
 		common.javascriptClick(driver, btnCheckOut);		
 		//add gift card
 		Assert.assertTrue(uitestOperation.addGiftCard(giftCard.getCardNum()));
+		wait.threadWait(5000);
 		
 	}
 	
 	@Test(dependsOnMethods = { "testAddGiftCard" })
 	public void testRemoveGiftCard() throws Exception {
-		Assert.assertTrue(uitestOperation.removeGiftCard(giftCard.getCardNum()));
+		Assert.assertTrue(uitestOperation.removeGiftCard(giftCard.getCardNum(),0));
 	}
 
    

@@ -33,7 +33,7 @@ import junit.framework.Assert;
 * @Description:  Checkout with only Gift Card - negative. 
 * @author: Howard
 * @compay: Kit and Ace     
-* @date 5/1/2017 
+* @date 5/8/2017 
 * @version V1.0   
 */
 
@@ -105,6 +105,7 @@ public class FW3651 {
 	@AfterClass(alwaysRun = true)
 	public void tearDown() throws Exception {
 		
+		initVerifyTearDown();
 		 // login to HAC system. prepare to delete test date
 	    hacTestOperations.doLogOnSite(userHMC,verifyDriver);
 	    //clean order

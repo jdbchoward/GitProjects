@@ -536,21 +536,24 @@ public class UITestOperations {
 	
 	public boolean addGiftCard(String giftCardNum)
 	{
-		WebElement txtGiftCardInput=driver.findElement(By.id(""));
-		txtGiftCardInput.sendKeys("");
-		driver.findElement(By.id("")).click();
+		WebElement txtGiftCardInput=driver.findElement(By.id("gift-card-add"));
+		txtGiftCardInput.clear();
+		txtGiftCardInput.sendKeys(giftCardNum);
+		driver.findElement(By.xpath("//button[contains(text(),'apply card')]")).click();
 		return verifyAddGiftCard(giftCardNum);
 	}
 	
-	public boolean removeGiftCard(String giftCardNum)
+	public boolean removeGiftCard(String giftCardNum,int indexOfCard)
 	{
-		driver.findElement(By.id("")).click();
+		List<WebElement> giftCards = driver.findElements(By.xpath("//button[contains(text(),'remove card')]"));
+		if(giftCards.get(indexOfCard)!=null)
+			giftCards.get(indexOfCard).click();
 		return !verifyAddGiftCard(giftCardNum);
 	}
 	
 	private boolean verifyAddGiftCard(String giftCardNum)
 	{
-	       List<WebElement> giftValues=driver.findElements(By.id(""));
+	       List<WebElement> giftValues=driver.findElements(By.xpath("//button[contains(text(),'remove card')]"));
 	       if(giftValues!=null && giftValues.size()>0)
 	    	   return true;
 	       else
