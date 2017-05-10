@@ -93,14 +93,14 @@ public class FW3649 {
 		WebElement btnCheckOut = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
 		common.javascriptClick(driver, btnCheckOut);		
 		//add gift card
-		Assert.assertTrue(uitestOperation.addGiftCard(giftCard.getCardNum()));
-		wait.threadWait(5000);
+		Assert.assertTrue(uitestOperation.addGiftCard(giftCard));
+		wait.threadWait(2000);
 		
 	}
 	
 	@Test(dependsOnMethods = { "testAddGiftCard" })
 	public void testRemoveGiftCard() throws Exception {
-		Assert.assertTrue(uitestOperation.removeGiftCard(giftCard.getCardNum(),0));
+		Assert.assertTrue(uitestOperation.removeGiftCard(giftCard,0));
 	}
 
    

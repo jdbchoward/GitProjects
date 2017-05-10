@@ -528,33 +528,40 @@ public class UITestOperations {
 //		btnNext(2);
 		
 		//add giftcard
-		addGiftCard(giftCard.getCardNum());		
+		addGiftCard(giftCard);		
 		
 		addBillInfo(billing);
 		driver.findElement(By.xpath("//button[contains(text(),' Place my order')]")).click();
 	}
 	
-	public boolean addGiftCard(String giftCardNum)
+	public boolean addGiftCard(GiftCard giftCard)
 	{
 		WebElement txtGiftCardInput=driver.findElement(By.id("gift-card-add"));
 		txtGiftCardInput.clear();
-		txtGiftCardInput.sendKeys(giftCardNum);
-		driver.findElement(By.xpath("//button[contains(text(),'apply card')]")).click();
-		return verifyAddGiftCard(giftCardNum);
+		txtGiftCardInput.sendKeys(giftCard.getCardNum());
+		driver.findElement(By.xpath("//button[@class='btn btn--inverse btn--naked js-giftcard-apply']")).click();
+		return verifyAddGiftCard(giftCard);
 	}
 	
-	public boolean removeGiftCard(String giftCardNum,int indexOfCard)
+	public boolean removeGiftCard(GiftCard giftCard,int indexOfCard)
 	{
-		List<WebElement> giftCards = driver.findElements(By.xpath("//button[contains(text(),'remove card')]"));
+		List<WebElement> giftCards = driver.findElements(By.xpath("//button[@class='btn btn--link btn--naked js-giftcard-remove']"));
 		if(giftCards.get(indexOfCard)!=null)
 			giftCards.get(indexOfCard).click();
-		return !verifyAddGiftCard(giftCardNum);
+		wait.threadWait(3000);
+		return !verifyAddGiftCard(giftCard);
 	}
 	
-	private boolean verifyAddGiftCard(String giftCardNum)
+	private boolean verifyAddGiftCard(GiftCard giftCard)
 	{
-	       List<WebElement> giftValues=driver.findElements(By.xpath("//button[contains(text(),'remove card')]"));
-	       if(giftValues!=null && giftValues.size()>0)
+	       List<WebElement> giftValues=driver.findElements(By.xpath("//div[@class='order-summary__price__row clearfix order-summary__price__row--total js-giftcard-summary']/div[1]"));
+	       
+	       if(giftValues.size()==0)
+	    	   return false;
+	      
+	       String value = giftValues.get(0).getText().replace("$","");
+	       
+	       if(Double.parseDouble(value)==giftCard.getValue())	     
 	    	   return true;
 	       else
 	           return false;
