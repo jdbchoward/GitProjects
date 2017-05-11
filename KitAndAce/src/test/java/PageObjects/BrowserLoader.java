@@ -18,7 +18,7 @@ public class BrowserLoader {
 
 	public WebDriver driver = null;
 	private FirefoxProfile firefoxprofile = null;
-	private static DesiredCapabilities caps = null;
+//	private static DesiredCapabilities caps = null;
 	private String driverpath = "src\\test\\resources\\";
 
 	public static String nodeurl = "";
@@ -42,7 +42,7 @@ public class BrowserLoader {
 		switch (browserstype) {
 		case firefox:
 			System.setProperty("webdriver.gecko.driver", driverpath + "geckodriver.exe");
-			caps = DesiredCapabilities.firefox();
+			DesiredCapabilities capsFF = DesiredCapabilities.firefox();
 			// File firebug = new
 			// File(respircespath+"/tool/firebug-1.12.1-fx.xpi");
 			// File firepath = new
@@ -61,12 +61,12 @@ public class BrowserLoader {
 				// // TODO Auto-generated catch block
 				// e.printStackTrace();
 			}
-			caps.setCapability(FirefoxDriver.PROFILE, firefoxprofile);
+			capsFF.setCapability(FirefoxDriver.PROFILE, firefoxprofile);
 			if (nodeurl.equals(""))
 				driver = new FirefoxDriver(firefoxprofile);
 			else
 				try {
-					driver = new RemoteWebDriver(new URL(nodeurl), caps);
+					driver = new RemoteWebDriver(new URL(nodeurl), capsFF);
 				} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -75,19 +75,19 @@ public class BrowserLoader {
 			break;
 		case ie:
 			System.setProperty("webdriver.ie.driver", driverpath + "IEDriverServer.exe");
-			caps = DesiredCapabilities.internetExplorer();
-			caps.setCapability(InternetExplorerDriver.FORCE_CREATE_PROCESS, false);
-			caps.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-			caps.setCapability(InternetExplorerDriver.IE_SWITCHES, "-private");
-			caps.setCapability("ignoreZoomSetting", true);
-			caps.setCapability("ignoreProtectedModeSettings", true);
-			caps.setCapability("ie.unexpectedAlertBehaviour", "accept");
+			DesiredCapabilities capsIE = DesiredCapabilities.internetExplorer();
+			capsIE.setCapability(InternetExplorerDriver.FORCE_CREATE_PROCESS, false);
+			capsIE.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+			capsIE.setCapability(InternetExplorerDriver.IE_SWITCHES, "-private");
+			capsIE.setCapability("ignoreZoomSetting", true);
+			capsIE.setCapability("ignoreProtectedModeSettings", true);
+			capsIE.setCapability("ie.unexpectedAlertBehaviour", "accept");
 
 			if (nodeurl.equals(""))
-				driver = new InternetExplorerDriver(caps);
+				driver = new InternetExplorerDriver(capsIE);
 			else
 				try {
-					driver = new RemoteWebDriver(new URL(nodeurl), caps);
+					driver = new RemoteWebDriver(new URL(nodeurl), capsIE);
 				} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -96,7 +96,7 @@ public class BrowserLoader {
 			break;
 		case chrome:
 			System.setProperty("webdriver.chrome.driver", driverpath + "chromedriver.exe");
-			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+			DesiredCapabilities capsChrome = DesiredCapabilities.chrome();
 			ChromeOptions options = new ChromeOptions();
 //			options.addArguments("-incognito");
 			options.addArguments("--disable-popup-blocking");
@@ -106,14 +106,14 @@ public class BrowserLoader {
 
 			// capabilities.setCapability("chrome.switches",
 			// Arrays.asList("--proxy-server=http://your-proxy-domain:4443"));
-			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-			capabilities.setCapability (CapabilityType.ACCEPT_SSL_CERTS, true);
+			capsChrome.setCapability(ChromeOptions.CAPABILITY, options);
+			capsChrome.setCapability (CapabilityType.ACCEPT_SSL_CERTS, true);
 			
 			if (nodeurl.equals(""))
-				driver = new ChromeDriver(capabilities);
+				driver = new ChromeDriver(capsChrome);
 			else
 				try {
-					driver = new RemoteWebDriver(new URL(nodeurl), caps);
+					driver = new RemoteWebDriver(new URL(nodeurl), capsChrome);
 				} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
