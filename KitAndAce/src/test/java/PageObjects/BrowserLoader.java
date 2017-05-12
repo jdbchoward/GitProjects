@@ -1,5 +1,6 @@
 package PageObjects;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -18,9 +19,9 @@ public class BrowserLoader {
 
 	public WebDriver driver = null;
 	private FirefoxProfile firefoxprofile = null;
-//	private static DesiredCapabilities caps = null;
-	private String driverpath = "src\\test\\resources\\";
-
+//	private static DesiredCapabilities caps = null;	
+//	private String driverpath = "src\\test\\resources\\";
+	private String driverpath = "src"+File.separator+"test"+File.separator+"resources"+File.separator;
 	public static String nodeurl = "";
 
 	public BrowserLoader(String browsertype) {

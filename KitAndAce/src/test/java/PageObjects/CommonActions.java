@@ -27,15 +27,18 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import HMC.TestCheckOrder;
 import POJO.BillingInfo;
+import POJO.BuyingItem;
 import POJO.GiftCard;
 import POJO.UserInfo;
 
 public class CommonActions {
 
 	private ParseProperties settings;
-	private String parsePath = "src\\test\\resources\\Setting.properties";
+//	private String parsePath = "src\\test\\resources\\Setting.properties";
+	private String parsePath = "src"+File.separator+"test"+File.separator+"resources"+File.separator+"Setting.properties";
 	static Logger log = Logger.getLogger(CommonActions.class.getName());
-	private static String filepath = "src\\test\\resources\\information\\";
+//	private static String filepath = "src\\test\\resources\\information\\";
+	private static String filepath = "src"+File.separator+"test"+File.separator+"resources"+File.separator+"information"+File.separator;
 
 	public ParseProperties getSettings() {
 		return new ParseProperties(parsePath);
@@ -53,52 +56,48 @@ public class CommonActions {
 		String href = webElement.getAttribute("href");
 		((JavascriptExecutor) driver).executeScript("window.open('" + href + "')");
 	}
-	
-	
-	public void javascriptInputToTextField(WebDriver driver,WebElement ele,String content)
-	{//this element could be input's iframe
-		String js = "arguments[0].contentWindow.document.body.innerHTML='"
-				+ content + "'";
+
+	public void javascriptInputToTextField(WebDriver driver, WebElement ele, String content) {// this
+																								// element
+																								// could
+																								// be
+																								// input's
+																								// iframe
+		String js = "arguments[0].contentWindow.document.body.innerHTML='" + content + "'";
 		((JavascriptExecutor) driver).executeScript(js, ele);
 	}
-	
-	public void javascriptInputInToTextArea(WebDriver driver,WebElement ele,String content)
-	{
-		String js = "arguments[0].value=\""+ content + "\"";
-		((JavascriptExecutor) driver).executeScript("arguments[0].enabled = true", ele);	 
- 		((JavascriptExecutor)driver).executeScript(js, ele);
+
+	public void javascriptInputInToTextArea(WebDriver driver, WebElement ele, String content) {
+		String js = "arguments[0].value=\"" + content + "\"";
+		((JavascriptExecutor) driver).executeScript("arguments[0].enabled = true", ele);
+		((JavascriptExecutor) driver).executeScript(js, ele);
 	}
-	
-	public void javascriptScrollPage(WebDriver driver,int offset)
-	{
-		String js = "window.scrollBy(0,"+offset+")";		
+
+	public void javascriptScrollPage(WebDriver driver, int offset) {
+		String js = "window.scrollBy(0," + offset + ")";
 		((JavascriptExecutor) driver).executeScript(js, "");
 	}
-	
-	
-	public void javascriptMakeSelectOptionVisiable(WebDriver driver,String jQueryId)
-	{
-		String id="#"+jQueryId;
-		String js="jQuery("+"'"+id+"').css('display','block')";
-		 //Use JavascriptExecutor to make the element visible 
-//		((JavascriptExecutor)wd).executeScript("jQuery('#assignee').css('display','block')");
-		((JavascriptExecutor)driver).executeScript(js);
-		
+
+	public void javascriptMakeSelectOptionVisiable(WebDriver driver, String jQueryId) {
+		String id = "#" + jQueryId;
+		String js = "jQuery(" + "'" + id + "').css('display','block')";
+		// Use JavascriptExecutor to make the element visible
+		// ((JavascriptExecutor)wd).executeScript("jQuery('#assignee').css('display','block')");
+		((JavascriptExecutor) driver).executeScript(js);
+
 	}
-	
-	
+
 	public void javascripDoubleClick(WebDriver driver, WebElement webElement) {
 		((JavascriptExecutor) driver).executeScript("arguments[0].dblclick();", webElement);
 	}
-	
-	public String getTodayDate()
-	{
+
+	public String getTodayDate() {
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date date = new Date();
-		date.setDate(date.getDate()-1);
+		date.setDate(date.getDate() - 1);
 		log.debug(dateFormat.format(date));
 		return dateFormat.format(date);
-		
+
 	}
 
 	/**
@@ -117,31 +116,28 @@ public class CommonActions {
 
 		}
 	}
-	
-	
-	public Map<String,String> getBrowserName(WebDriver driver)
-	{
-		Map<String,String> systemInfo=new HashMap<String,String>();
+
+	public Map<String, String> getBrowserName(WebDriver driver) {
+		Map<String, String> systemInfo = new HashMap<String, String>();
 		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
-	    String browserName = cap.getBrowserName().toLowerCase();
-	    systemInfo.put("browserName", browserName);
-	    log.debug(browserName);
-	    String os = cap.getPlatform().toString();
-	    systemInfo.put("os", os);
-	    log.debug(os);
-	    String v = cap.getVersion().toString();
-	    systemInfo.put("version", v);
-	    log.debug(v);
-	    return systemInfo;
+		String browserName = cap.getBrowserName().toLowerCase();
+		systemInfo.put("browserName", browserName);
+		log.debug(browserName);
+		String os = cap.getPlatform().toString();
+		systemInfo.put("os", os);
+		log.debug(os);
+		String v = cap.getVersion().toString();
+		systemInfo.put("version", v);
+		log.debug(v);
+		return systemInfo;
 	}
-	
-	//typePojo  1.UserInfo;  2.BillingInfo  3.GiftCard
-	private Map<String,List> getFromXlsFile(String fileName,int typePojo)
-	{
-		Map<String,List> xlsMap=new HashMap<String,List>();
-		List<UserInfo> users=new ArrayList<UserInfo>();
-		List<BillingInfo> billings=new ArrayList<BillingInfo>();
-		List<GiftCard> giftCards=new ArrayList<GiftCard>();
+
+	// typePojo 1.UserInfo; 2.BillingInfo 3.GiftCard
+	private Map<String, List> getFromXlsFile(String fileName, int typePojo) {
+		Map<String, List> xlsMap = new HashMap<String, List>();
+		List<UserInfo> users = new ArrayList<UserInfo>();
+		List<BillingInfo> billings = new ArrayList<BillingInfo>();
+		List<GiftCard> giftCards = new ArrayList<GiftCard>();
 		try {
 
 			FileInputStream file = new FileInputStream(new File(filepath + fileName));
@@ -158,50 +154,51 @@ public class CommonActions {
 				Row row = rowIterator.next();
 
 				switch (typePojo) {
-				case 1: users.add(assignUser(row));
-				        break;
-				case 2: billings.add(assignBilling(row));
-		                break;
-				case 3: giftCards.add(assignGiftCard(row));
-                        break;	
-			}
+				case 1:
+					users.add(assignUser(row));
+					break;
+				case 2:
+					billings.add(assignBilling(row));
+					break;
+				case 3:
+					giftCards.add(assignGiftCard(row));
+					break;
+				}
 				// For each row, iterate through each columns
-//				Iterator<Cell> cellIterator = row.cellIterator();
-//				while (cellIterator.hasNext()) {
-//
-//					Cell cell = cellIterator.next();
-//
-//					switch (cell.getCellType()) {
-//					case Cell.CELL_TYPE_BOOLEAN:
-//						System.out.print(cell.getBooleanCellValue() + "\t\t");
-//						break;
-//					case Cell.CELL_TYPE_NUMERIC:
-//						System.out.print(cell.getNumericCellValue() + "\t\t");
-//						break;
-//					case Cell.CELL_TYPE_STRING:
-//						System.out.print(cell.getStringCellValue() + "\t\t");
-//						break;
-//					}
-//				}
-//				System.out.println("");
+				// Iterator<Cell> cellIterator = row.cellIterator();
+				// while (cellIterator.hasNext()) {
+				//
+				// Cell cell = cellIterator.next();
+				//
+				// switch (cell.getCellType()) {
+				// case Cell.CELL_TYPE_BOOLEAN:
+				// System.out.print(cell.getBooleanCellValue() + "\t\t");
+				// break;
+				// case Cell.CELL_TYPE_NUMERIC:
+				// System.out.print(cell.getNumericCellValue() + "\t\t");
+				// break;
+				// case Cell.CELL_TYPE_STRING:
+				// System.out.print(cell.getStringCellValue() + "\t\t");
+				// break;
+				// }
+				// }
+				// System.out.println("");
 			}
 			xlsMap.put("users", users);
 			xlsMap.put("billings", billings);
 			xlsMap.put("giftCards", giftCards);
-			
-			
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return xlsMap;
 	}
-	
-	
-	private UserInfo assignUser(Row row){
-		UserInfo user=new UserInfo();
+
+	private UserInfo assignUser(Row row) {
+		UserInfo user = new UserInfo();
 		user.setFirstName(row.getCell(0).toString());
 		user.setLastName(row.getCell(1).toString());
 		user.setAddress(row.getCell(2).toString());
@@ -213,37 +210,81 @@ public class CommonActions {
 		user.setSystem(row.getCell(8).toString());
 		return user;
 	}
-	
-	private BillingInfo assignBilling(Row row){
-		BillingInfo billing=new BillingInfo();
+
+	private BillingInfo assignBilling(Row row) {
+		BillingInfo billing = new BillingInfo();
 		billing.setCardNum((row.getCell(0).toString()));
 		billing.setExpMonth(row.getCell(1).toString());
-		billing.setExpYear(row.getCell(2).toString().substring(0,4));
-		billing.setCvc(row.getCell(3).toString().substring(0,3));
+		billing.setExpYear(row.getCell(2).toString().substring(0, 4));
+		billing.setCvc(row.getCell(3).toString().substring(0, 3));
 		return billing;
 	}
-	
-	private GiftCard assignGiftCard(Row row){
-		GiftCard giftCard=new GiftCard();
+
+	private GiftCard assignGiftCard(Row row) {
+		GiftCard giftCard = new GiftCard();
 		giftCard.setCardNum((row.getCell(0).toString()));
 		giftCard.setValue(row.getCell(1).getNumericCellValue());
 		return giftCard;
 	}
-	
-	//typePojo  1.UserInfo;  2.BillingInfo 3.GiftCard
-	public Map<String,List> getInformation(int typePojo)
-	{
-		Map<String,List> xlsMap=new HashMap<String,List>();
+
+	// typePojo 1.UserInfo; 2.BillingInfo 3.GiftCard
+	public Map<String, List> getInformation(int typePojo) {
+		Map<String, List> xlsMap = new HashMap<String, List>();
 		switch (typePojo) {
-		case 1:  xlsMap=getFromXlsFile("UserInfo.xls",1);
-		        break;
-		case 2: xlsMap=getFromXlsFile("BillingInfo.xls",2);
-                break;
-		case 3: xlsMap=getFromXlsFile("GiftCard.xls",3);
-                break;
-			
-	     }
-		
+		case 1:
+			xlsMap = getFromXlsFile("UserInfo.xls", 1);
+			break;
+		case 2:
+			xlsMap = getFromXlsFile("BillingInfo.xls", 2);
+			break;
+		case 3:
+			xlsMap = getFromXlsFile("GiftCard.xls", 3);
+			break;
+
+		}
+
 		return xlsMap;
+	}
+
+	public List<BuyingItem> getBuyingItems() {
+		return getBuyingItemsFromXML("BuyingItem.xls");
+	}
+
+	private List<BuyingItem> getBuyingItemsFromXML(String fileName) {
+		List<BuyingItem> buyingItem = new ArrayList<BuyingItem>();
+		try {
+
+			FileInputStream file = new FileInputStream(new File(filepath + fileName));
+
+			// Get the workbook instance for XLS file
+			HSSFWorkbook workbook = new HSSFWorkbook(file);
+
+			// Get first sheet from the workbook
+			HSSFSheet sheet = workbook.getSheetAt(0);
+
+			// Iterate through each rows from first sheet
+			Iterator<Row> rowIterator = sheet.iterator();
+			while (rowIterator.hasNext()) {
+				Row row = rowIterator.next();
+				buyingItem.add(assignItem(row));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return buyingItem;
+	}
+
+	private BuyingItem assignItem(Row row) {
+		BuyingItem item = new BuyingItem();
+		item.setItemLink(row.getCell(0).toString());
+		item.setDataCode(row.getCell(1).toString());
+		item.setSize(row.getCell(2).toString());
+		item.setItemName(row.getCell(3).toString());
+		double qty=Double.parseDouble(row.getCell(4).toString());
+		item.setBuyingQty((int)qty);
+
+		return item;
 	}
 }

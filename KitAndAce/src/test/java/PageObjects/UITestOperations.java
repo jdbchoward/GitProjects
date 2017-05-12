@@ -14,6 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import POJO.BillingInfo;
+import POJO.BuyingItem;
 import POJO.GiftCard;
 import POJO.UserInfo;
 import junit.framework.Assert;
@@ -29,6 +30,7 @@ public class UITestOperations {
 	public List<UserInfo> users = new ArrayList<UserInfo>();
 	public List<BillingInfo> billings = new ArrayList<BillingInfo>();
 	public List<GiftCard> giftCards=new ArrayList<GiftCard>();
+	public List<BuyingItem> buyingItem=new ArrayList<BuyingItem>();
 
 	public UITestOperations(WebDriver driver) {
 		this.driver = driver;
@@ -40,6 +42,7 @@ public class UITestOperations {
 		this.users = common.getInformation(1).get("users");
 		this.billings = common.getInformation(2).get("billings");
 		this.giftCards = common.getInformation(3).get("giftCards");
+		this.buyingItem=common.getBuyingItems();
 	}
 	/**
 	public void doSignIn(String username, String psw) {
@@ -434,6 +437,28 @@ public class UITestOperations {
 
 	}
 
+	
+	
+	public void buyItemsFromXML(BuyingItem buyingItem) {
+		String url = driver.getCurrentUrl();        
+		driver.manage().window().maximize();
+		driver.get(getBaseURL()+buyingItem.getItemLink());
+		wait.WaitUntilPageLoaded();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		killAdv();
+		wait.threadWait(1000);
+		// choose size
+        WebElement item=driver.findElement(By.xpath("//li[@data-code='" + buyingItem.getDataCode() + "' and @data-size='"+buyingItem.getSize()+"']"));
+        if (!item.getAttribute("data-online").equalsIgnoreCase("outOfStock")) 
+        	item.click();
+		// add to bag
+		WebElement btnAdd = driver.findElement(By.xpath(
+				"//button[@class='pdp-actions__buttons__button pdp-actions__buttons__button_btn-bag js-pdp-add-to-cart']"));
+		common.javascriptClick(driver, btnAdd);
+	}
+	
+	
+	
 	public void buyManTshirtsWithAnonymousUser() {
 		String url = driver.getCurrentUrl();
 
